@@ -1,0 +1,465 @@
+{
+  "auditedAt": "2026-11-20T07:51:33.789Z",
+  "baselineFingerprint": "de766b018848a279d13875db9a7d55e77f5d56d12e67d8b32052b5f50461e3ad",
+  "definition": "원본 필드의 인용문 및 코드 템플릿과 출력이 일치하는지 검사한다. 질문 관련성·정답성·안내 사유의 적절성은 별도 검토한다.",
+  "summary": {
+    "total": 30,
+    "sourceAndTemplateMatch": 30,
+    "quotedFields": 72,
+    "answersWithQuotes": 25,
+    "notices": 5,
+    "apiErrors": 0
+  },
+  "results": [
+    {
+      "id": "T01",
+      "status": "answered",
+      "passed": true,
+      "evidenceCount": 3,
+      "designatedPolicyRetrieved": true,
+      "designatedPolicyExcludedByScope": false,
+      "scopedPolicies": 4610,
+      "requestedTopics": [
+        "benefit",
+        "eligibility"
+      ],
+      "selectedPolicies": [
+        "GOV24-125000000015"
+      ]
+    },
+    {
+      "id": "T02",
+      "status": "answered",
+      "passed": true,
+      "evidenceCount": 2,
+      "designatedPolicyRetrieved": true,
+      "designatedPolicyExcludedByScope": false,
+      "scopedPolicies": 4610,
+      "requestedTopics": [
+        "eligibility"
+      ],
+      "selectedPolicies": [
+        "GOV24-135200000085"
+      ]
+    },
+    {
+      "id": "T03",
+      "status": "answered",
+      "passed": true,
+      "evidenceCount": 5,
+      "designatedPolicyRetrieved": true,
+      "designatedPolicyExcludedByScope": false,
+      "scopedPolicies": 4610,
+      "requestedTopics": [
+        "overview"
+      ],
+      "selectedPolicies": [
+        "GOV24-138300000016"
+      ]
+    },
+    {
+      "id": "T04",
+      "status": "answered",
+      "passed": true,
+      "evidenceCount": 3,
+      "designatedPolicyRetrieved": true,
+      "designatedPolicyExcludedByScope": false,
+      "scopedPolicies": 4610,
+      "requestedTopics": [
+        "eligibility"
+      ],
+      "selectedPolicies": [
+        "GOV24-138300000017"
+      ]
+    },
+    {
+      "id": "T05",
+      "status": "answered",
+      "passed": true,
+      "evidenceCount": 3,
+      "designatedPolicyRetrieved": true,
+      "designatedPolicyExcludedByScope": false,
+      "scopedPolicies": 4610,
+      "requestedTopics": [
+        "benefit"
+      ],
+      "selectedPolicies": [
+        "GOV24-161300000001"
+      ]
+    },
+    {
+      "id": "T06",
+      "status": "answered",
+      "passed": true,
+      "evidenceCount": 3,
+      "designatedPolicyRetrieved": true,
+      "designatedPolicyExcludedByScope": false,
+      "scopedPolicies": 4610,
+      "requestedTopics": [
+        "benefit"
+      ],
+      "selectedPolicies": [
+        "GOV24-161300000077"
+      ]
+    },
+    {
+      "id": "T07",
+      "status": "answered",
+      "passed": true,
+      "evidenceCount": 3,
+      "designatedPolicyRetrieved": true,
+      "designatedPolicyExcludedByScope": false,
+      "scopedPolicies": 4610,
+      "requestedTopics": [
+        "eligibility"
+      ],
+      "selectedPolicies": [
+        "GOV24-161300000101"
+      ]
+    },
+    {
+      "id": "T08",
+      "status": "answered",
+      "passed": true,
+      "evidenceCount": 3,
+      "designatedPolicyRetrieved": true,
+      "designatedPolicyExcludedByScope": false,
+      "scopedPolicies": 4610,
+      "requestedTopics": [
+        "benefit"
+      ],
+      "selectedPolicies": [
+        "GOV24-161300000106"
+      ]
+    },
+    {
+      "id": "T09",
+      "status": "answered",
+      "passed": true,
+      "evidenceCount": 2,
+      "designatedPolicyRetrieved": true,
+      "designatedPolicyExcludedByScope": false,
+      "scopedPolicies": 4610,
+      "requestedTopics": [
+        "benefit"
+      ],
+      "selectedPolicies": [
+        "GOV24-303000000344"
+      ]
+    },
+    {
+      "id": "T10",
+      "status": "answered",
+      "passed": true,
+      "evidenceCount": 2,
+      "designatedPolicyRetrieved": true,
+      "designatedPolicyExcludedByScope": false,
+      "scopedPolicies": 4610,
+      "requestedTopics": [
+        "eligibility"
+      ],
+      "selectedPolicies": [
+        "GOV24-304000000134"
+      ]
+    },
+    {
+      "id": "T11",
+      "status": "answered",
+      "passed": true,
+      "evidenceCount": 2,
+      "designatedPolicyRetrieved": true,
+      "designatedPolicyExcludedByScope": false,
+      "scopedPolicies": 4610,
+      "requestedTopics": [
+        "benefit",
+        "eligibility"
+      ],
+      "selectedPolicies": [
+        "GOV24-305000000275"
+      ]
+    },
+    {
+      "id": "T12",
+      "status": "partial",
+      "passed": true,
+      "evidenceCount": 3,
+      "designatedPolicyRetrieved": true,
+      "designatedPolicyExcludedByScope": false,
+      "scopedPolicies": 4610,
+      "requestedTopics": [
+        "benefit"
+      ],
+      "selectedPolicies": [
+        "GOV24-313000000114"
+      ]
+    },
+    {
+      "id": "T13",
+      "status": "answered",
+      "passed": true,
+      "evidenceCount": 2,
+      "designatedPolicyRetrieved": true,
+      "designatedPolicyExcludedByScope": false,
+      "scopedPolicies": 4610,
+      "requestedTopics": [
+        "benefit",
+        "eligibility"
+      ],
+      "selectedPolicies": [
+        "YOUTHCENTER-20260522005400213216"
+      ]
+    },
+    {
+      "id": "T14",
+      "status": "answered",
+      "passed": true,
+      "evidenceCount": 3,
+      "designatedPolicyRetrieved": true,
+      "designatedPolicyExcludedByScope": false,
+      "scopedPolicies": 4610,
+      "requestedTopics": [
+        "benefit"
+      ],
+      "selectedPolicies": [
+        "YOUTHCENTER-20260522005400213215"
+      ]
+    },
+    {
+      "id": "T15",
+      "status": "answered",
+      "passed": true,
+      "evidenceCount": 2,
+      "designatedPolicyRetrieved": true,
+      "designatedPolicyExcludedByScope": false,
+      "scopedPolicies": 4610,
+      "requestedTopics": [
+        "benefit",
+        "method"
+      ],
+      "selectedPolicies": [
+        "YOUTHCENTER-20260522005400213214"
+      ]
+    },
+    {
+      "id": "T16",
+      "status": "answered",
+      "passed": true,
+      "evidenceCount": 3,
+      "designatedPolicyRetrieved": true,
+      "designatedPolicyExcludedByScope": false,
+      "scopedPolicies": 4610,
+      "requestedTopics": [
+        "benefit"
+      ],
+      "selectedPolicies": [
+        "YOUTHCENTER-20260522005400213213"
+      ]
+    },
+    {
+      "id": "T17",
+      "status": "answered",
+      "passed": true,
+      "evidenceCount": 2,
+      "designatedPolicyRetrieved": true,
+      "designatedPolicyExcludedByScope": false,
+      "scopedPolicies": 4610,
+      "requestedTopics": [
+        "benefit"
+      ],
+      "selectedPolicies": [
+        "YOUTHCENTER-20260522005400213212"
+      ]
+    },
+    {
+      "id": "T18",
+      "status": "answered",
+      "passed": true,
+      "evidenceCount": 3,
+      "designatedPolicyRetrieved": true,
+      "designatedPolicyExcludedByScope": false,
+      "scopedPolicies": 4610,
+      "requestedTopics": [
+        "benefit",
+        "period"
+      ],
+      "selectedPolicies": [
+        "YOUTHCENTER-20260513005400213204"
+      ]
+    },
+    {
+      "id": "T19",
+      "status": "answered",
+      "passed": true,
+      "evidenceCount": 5,
+      "designatedPolicyRetrieved": true,
+      "designatedPolicyExcludedByScope": false,
+      "scopedPolicies": 4610,
+      "requestedTopics": [
+        "benefit",
+        "eligibility"
+      ],
+      "selectedPolicies": [
+        "YOUTHCENTER-20260513005400213200",
+        "GOV24-626000000113"
+      ]
+    },
+    {
+      "id": "T20",
+      "status": "answered",
+      "passed": true,
+      "evidenceCount": 3,
+      "designatedPolicyRetrieved": true,
+      "designatedPolicyExcludedByScope": false,
+      "scopedPolicies": 4610,
+      "requestedTopics": [
+        "benefit",
+        "eligibility"
+      ],
+      "selectedPolicies": [
+        "YOUTHCENTER-20260513005400213198"
+      ]
+    },
+    {
+      "id": "T21",
+      "status": "needs_clarification",
+      "passed": true,
+      "evidenceCount": 6,
+      "designatedPolicyRetrieved": true,
+      "designatedPolicyExcludedByScope": false,
+      "scopedPolicies": 4610,
+      "requestedTopics": [
+        "benefit"
+      ],
+      "selectedPolicies": [
+        "YOUTHCENTER-20250515005400210827",
+        "YOUTHCENTER-20260513005400213197"
+      ]
+    },
+    {
+      "id": "T22",
+      "status": "answered",
+      "passed": true,
+      "evidenceCount": 2,
+      "designatedPolicyRetrieved": true,
+      "designatedPolicyExcludedByScope": false,
+      "scopedPolicies": 4610,
+      "requestedTopics": [
+        "benefit",
+        "eligibility"
+      ],
+      "selectedPolicies": [
+        "YOUTHCENTER-20260513005400213193"
+      ]
+    },
+    {
+      "id": "T23",
+      "status": "answered",
+      "passed": true,
+      "evidenceCount": 3,
+      "designatedPolicyRetrieved": true,
+      "designatedPolicyExcludedByScope": false,
+      "scopedPolicies": 4610,
+      "requestedTopics": [
+        "benefit",
+        "method"
+      ],
+      "selectedPolicies": [
+        "YOUTHCENTER-20260513005400213195"
+      ]
+    },
+    {
+      "id": "T24",
+      "status": "answered",
+      "passed": true,
+      "evidenceCount": 3,
+      "designatedPolicyRetrieved": true,
+      "designatedPolicyExcludedByScope": false,
+      "scopedPolicies": 4610,
+      "requestedTopics": [
+        "benefit",
+        "eligibility"
+      ],
+      "selectedPolicies": [
+        "YOUTHCENTER-20260513005400213189"
+      ]
+    },
+    {
+      "id": "T25",
+      "status": "answered",
+      "passed": true,
+      "evidenceCount": 1,
+      "designatedPolicyRetrieved": true,
+      "designatedPolicyExcludedByScope": false,
+      "scopedPolicies": 4610,
+      "requestedTopics": [
+        "benefit"
+      ],
+      "selectedPolicies": [
+        "YOUTHCENTER-20260513005400213190"
+      ]
+    },
+    {
+      "id": "T26",
+      "status": "insufficient",
+      "passed": true,
+      "evidenceCount": 0,
+      "designatedPolicyRetrieved": true,
+      "designatedPolicyExcludedByScope": false,
+      "scopedPolicies": 4610,
+      "requestedTopics": [
+        "benefit"
+      ],
+      "selectedPolicies": []
+    },
+    {
+      "id": "T27",
+      "status": "insufficient",
+      "passed": true,
+      "evidenceCount": 0,
+      "designatedPolicyRetrieved": true,
+      "designatedPolicyExcludedByScope": false,
+      "scopedPolicies": 4610,
+      "requestedTopics": [
+        "benefit",
+        "eligibility"
+      ],
+      "selectedPolicies": []
+    },
+    {
+      "id": "T28",
+      "status": "personal",
+      "passed": true,
+      "evidenceCount": 0,
+      "designatedPolicyRetrieved": true,
+      "designatedPolicyExcludedByScope": false,
+      "scopedPolicies": 4610,
+      "requestedTopics": [],
+      "selectedPolicies": []
+    },
+    {
+      "id": "T29",
+      "status": "no_related",
+      "passed": true,
+      "evidenceCount": 0,
+      "designatedPolicyRetrieved": false,
+      "designatedPolicyExcludedByScope": false,
+      "scopedPolicies": 4610,
+      "requestedTopics": [
+        "benefit",
+        "method"
+      ],
+      "selectedPolicies": []
+    },
+    {
+      "id": "T30",
+      "status": "out_of_scope",
+      "passed": true,
+      "evidenceCount": 0,
+      "designatedPolicyRetrieved": false,
+      "designatedPolicyExcludedByScope": false,
+      "scopedPolicies": 4610,
+      "requestedTopics": [],
+      "selectedPolicies": []
+    }
+  ]
+}

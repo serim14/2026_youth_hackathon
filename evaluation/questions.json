@@ -1,0 +1,647 @@
+[
+  {
+    "id": "Q01",
+    "category": "정책명",
+    "question": "근로·자녀장려금에서 맞벌이 가구의 근로장려금 최대 지급액은 얼마야?",
+    "policyKeys": [
+      "GOV24-105100000001"
+    ],
+    "facts": [
+      {
+        "label": "맞벌이 최대 330만원",
+        "pattern": "(?:330\\s*만|3[,.]?300[,.]?000\\s*원)",
+        "path": "benefit.text",
+        "quote": "맞벌이 가구 최대 330만 원"
+      }
+    ]
+  },
+  {
+    "id": "Q02",
+    "category": "자격·예외",
+    "question": "근로장려금을 신청하려면 재산 합계가 얼마 미만이어야 하고 어느 날짜의 재산을 봐?",
+    "policyKeys": [
+      "GOV24-105100000001"
+    ],
+    "facts": [
+      {
+        "label": "재산 2억4천만원 미만",
+        "pattern": "(?:2\\s*억\\s*4\\s*천|2\\s*억\\s*4[,.]?000|240[,.]?000[,.]?000)",
+        "path": "eligibility.criteria_text",
+        "quote": "재산 합계액이 2억4천만 원 미만"
+      },
+      {
+        "label": "전년도 6월 1일",
+        "pattern": "(?:전년|지난해)[\\s\\S]{0,30}(?:6\\s*월\\s*1\\s*일|6[./]1)",
+        "path": "eligibility.criteria_text",
+        "quote": "전년도 6월 1일 현재"
+      }
+    ]
+  },
+  {
+    "id": "Q03",
+    "category": "자격·예외",
+    "question": "대한민국 국적이 없는 사람은 근로·자녀장려금을 무조건 못 받아? 원문에 적힌 국적 조건의 예외도 알려줘.",
+    "policyKeys": [
+      "GOV24-105100000001"
+    ],
+    "facts": [
+      {
+        "label": "대한민국 국적자와 혼인한 경우 예외",
+        "pattern": "(?:대한민국|한국).{0,30}(?:혼인|결혼|배우자)",
+        "path": "eligibility.criteria_text",
+        "quote": "대한민국 국적을 보유한 자와 혼인한 자"
+      },
+      {
+        "label": "대한민국 국적 부양자녀가 있는 경우 예외",
+        "pattern": "(?:대한민국|한국).{0,35}(?:부양\\s*)?자녀",
+        "path": "eligibility.criteria_text",
+        "quote": "대한민국 국적의 부양자녀가 있는 자는 신청할 수 있음"
+      }
+    ]
+  },
+  {
+    "id": "Q04",
+    "category": "정책명",
+    "question": "주거급여 맞춤형 급여의 기준 중위소득 비율과 4인 가구 소득인정액 상한은?",
+    "policyKeys": [
+      "GOV24-336000000096"
+    ],
+    "facts": [
+      {
+        "label": "기준중위소득 48% 이하",
+        "pattern": "48\\s*%",
+        "path": "eligibility.criteria_text",
+        "quote": "기준 중위소득의 48% 이하"
+      },
+      {
+        "label": "4인 소득인정액 3117474원 이하",
+        "pattern": "3[,.]?117[,.]?474|311\\s*만\\s*7[,.]?474",
+        "path": "eligibility.criteria_text",
+        "quote": "4인 가구 기준 : 3,117,474원 이하"
+      }
+    ]
+  },
+  {
+    "id": "Q05",
+    "category": "상황설명",
+    "question": "기초생활수급자나 차상위 가구가 고효율 벽걸이 에어컨을 지원받는 정책이 있어? 무엇을 지원하는지 알려줘.",
+    "policyKeys": [
+      "GOV24-145000000107"
+    ],
+    "facts": [
+      {
+        "label": "고효율 벽걸이 에어컨 보급",
+        "pattern": "벽걸이.{0,15}에어컨|에어컨.{0,15}벽걸이",
+        "path": "benefit.text",
+        "quote": "고효율 벽걸이형 에어컨 보급 지원"
+      }
+    ]
+  },
+  {
+    "id": "Q06",
+    "category": "자격·예외",
+    "question": "저소득층 에너지효율개선 난방지원에서 공공임대주택은 모두 제외돼? 기존전세임대의 예외도 알려줘.",
+    "policyKeys": [
+      "GOV24-424000000006"
+    ],
+    "facts": [
+      {
+        "label": "공공임대주택 제외 원칙",
+        "pattern": "공공\\s*임대[\\s\\S]{0,90}(?:제외|불가|대상.{0,5}아니)|제외[\\s\\S]{0,200}공공\\s*임대",
+        "path": "eligibility.target_text",
+        "quote": "공공임대주택 가구(단, 기존전세임대는 가능 )"
+      },
+      {
+        "label": "기존전세임대는 가능",
+        "pattern": "기존\\s*전세\\s*임대[\\s\\S]{0,60}(?:가능|예외|지원)",
+        "path": "eligibility.target_text",
+        "quote": "단, 기존전세임대는 가능"
+      }
+    ]
+  },
+  {
+    "id": "Q07",
+    "category": "지역구분",
+    "question": "정부 주거급여 대상에서 빠진 전주 거주 1인 월세 가구야. 전주형 주택바우처의 지원 금액과 최대 기간은?",
+    "policyKeys": [
+      "GOV24-464000000125"
+    ],
+    "facts": [
+      {
+        "label": "1인 가구 15만원",
+        "pattern": "15\\s*만|150[,.]?000\\s*원",
+        "path": "benefit.text",
+        "quote": "1인 15만원"
+      },
+      {
+        "label": "최대 12개월",
+        "pattern": "12\\s*(?:개월|달)",
+        "path": "benefit.text",
+        "quote": "가구당 최대 12개월 지원"
+      }
+    ]
+  },
+  {
+    "id": "Q08",
+    "category": "지역구분",
+    "question": "강원형 수선유지 주거급여는 가구당 최대 얼마이고, 임차 가구는 집주인이 수선 후 몇 년 이상 임대에 동의해야 해?",
+    "policyKeys": [
+      "GOV24-642000000678"
+    ],
+    "facts": [
+      {
+        "label": "가구당 최대 400만원",
+        "pattern": "4\\s*백\\s*만|400\\s*만|4[,.]?000[,.]?000\\s*원",
+        "path": "benefit.text",
+        "quote": "가구당 최대 4백만원 지원"
+      },
+      {
+        "label": "임대인 4년 이상 동의",
+        "pattern": "4\\s*년",
+        "path": "benefit.text",
+        "quote": "임대인이 주택수선 후 4년 이상 임대를 동의한 경우"
+      }
+    ]
+  },
+  {
+    "id": "Q09",
+    "category": "정책명",
+    "question": "주택금융공사 월세자금보증의 최대 한도와 공사가 보증하는 대출금액 비율은 얼마야?",
+    "policyKeys": [
+      "GOV24-116010000001"
+    ],
+    "facts": [
+      {
+        "label": "최대 1152만원",
+        "pattern": "1[,.]?152\\s*만|11[,.]?520[,.]?000\\s*원",
+        "path": "benefit.text",
+        "quote": "최대 1,152만원 이내"
+      },
+      {
+        "label": "대출금액의 80% 보증",
+        "pattern": "80\\s*%",
+        "path": "benefit.text",
+        "quote": "대출금액의 80%를 공사가 보증"
+      }
+    ]
+  },
+  {
+    "id": "Q10",
+    "category": "정책명",
+    "question": "미소금융 금융취약계층 생계자금 지원의 대출한도와 금리 상한이 궁금해.",
+    "policyKeys": [
+      "GOV24-B55370100013"
+    ],
+    "facts": [
+      {
+        "label": "대출한도 최대 500만원",
+        "pattern": "5\\s*백\\s*만|500\\s*만|5[,.]?000[,.]?000\\s*원",
+        "path": "benefit.text",
+        "quote": "대출한도) 최대 5백만원"
+      },
+      {
+        "label": "금리 4.5% 이내",
+        "pattern": "4[.]5\\s*%",
+        "path": "benefit.text",
+        "quote": "대출금리) 4.5% 이내"
+      }
+    ]
+  },
+  {
+    "id": "Q11",
+    "category": "상황설명",
+    "question": "전남에서 가족을 돌보는 청년에게 자기돌봄비로 200만원을 준다는데, 어떤 방식으로 지급하고 언제까지 쓸 수 있어?",
+    "policyKeys": [
+      "YOUTHCENTER-20261113005400214853"
+    ],
+    "facts": [
+      {
+        "label": "우리카드 선포인트",
+        "pattern": "우리\\s*카드|선\\s*포인트",
+        "path": "benefit.text",
+        "quote": "우리카드 선포인트 지급"
+      },
+      {
+        "label": "지급일로부터 1년",
+        "pattern": "1\\s*년|12\\s*개월",
+        "path": "benefit.text",
+        "quote": "지급일로부터 1년간 사용가능"
+      }
+    ]
+  },
+  {
+    "id": "Q12",
+    "category": "정책명",
+    "question": "전남 가족愛 한 끼 식사지원은 1인당 얼마를 몇 회 주고, 상품권은 어떻게 보내줘?",
+    "policyKeys": [
+      "YOUTHCENTER-20261113005400214852"
+    ],
+    "facts": [
+      {
+        "label": "1인당 2만원",
+        "pattern": "2\\s*만|20[,.]?000\\s*원",
+        "path": "benefit.text",
+        "quote": "1인당 2만원"
+      },
+      {
+        "label": "1회 지원",
+        "pattern": "1\\s*회|한\\s*번",
+        "path": "benefit.text",
+        "quote": "상품권 1회 지원"
+      },
+      {
+        "label": "SMS 문자 발송",
+        "pattern": "SMS|문자",
+        "path": "application.method_text",
+        "quote": "식사지원 상품권 SMS발송"
+      }
+    ]
+  },
+  {
+    "id": "Q13",
+    "category": "상황설명",
+    "question": "전남 가족돌봄 청년의 에어컨·세탁기·화장실 청소를 도와주는 홈케어쉼표는 총 몇 명을 뽑고 각 분야 인원은?",
+    "policyKeys": [
+      "YOUTHCENTER-20261113005400214851"
+    ],
+    "facts": [
+      {
+        "label": "총 15명",
+        "pattern": "15\\s*명",
+        "path": "benefit.text",
+        "quote": "15명 선정"
+      },
+      {
+        "label": "각 분야 5명",
+        "pattern": "5\\s*명",
+        "path": "benefit.text",
+        "quote": "에어컨 분해청소 5명, 세탁기 분해청소5명, 화장실 청소 5명"
+      }
+    ]
+  },
+  {
+    "id": "Q14",
+    "category": "정책명",
+    "question": "영암군 청년 자격증 응시료 지원사업 11월 모집의 연간 한도와 접수 기간을 알려줘.",
+    "policyKeys": [
+      "YOUTHCENTER-20261109005400214804"
+    ],
+    "facts": [
+      {
+        "label": "연 최대 10만원",
+        "pattern": "10\\s*만|100[,.]?000\\s*원",
+        "path": "benefit.text",
+        "quote": "연간 최대 10만원"
+      },
+      {
+        "label": "11월 1일부터 15일",
+        "pattern": "11[.월/ -]*0?1[일.]?[\\s\\S]{0,35}(?:11[.월/ -]*)?15|20261101[\\s\\S]{0,15}20261115",
+        "path": "application.period_text",
+        "quote": "20261101 ~ 20261115"
+      }
+    ]
+  },
+  {
+    "id": "Q15",
+    "category": "상황설명",
+    "question": "청주에 사는 미취업 청년인데 자격증 시험 응시 비용을 지원받을 수 있는 사업과 1인당 연간 한도가 궁금해.",
+    "policyKeys": [
+      "YOUTHCENTER-20261106005400214758"
+    ],
+    "facts": [
+      {
+        "label": "연간 10만원 실비",
+        "pattern": "10\\s*만|100[,.]?000\\s*원",
+        "path": "benefit.text",
+        "quote": "1인당 연 10만원 한도 응시료 실비 지원"
+      }
+    ]
+  },
+  {
+    "id": "Q16",
+    "category": "지역구분",
+    "question": "대구 청년월세 지원은 실제 내는 월세 중 최대 얼마를 몇 개월 지원해?",
+    "policyKeys": [
+      "YOUTHCENTER-20261104005400214718"
+    ],
+    "facts": [
+      {
+        "label": "월 최대 20만원",
+        "pattern": "20\\s*만|200[,.]?000\\s*원",
+        "path": "benefit.text",
+        "quote": "최대 20만원"
+      },
+      {
+        "label": "24개월 지원",
+        "pattern": "24\\s*(?:개월|회|달)",
+        "path": "benefit.text",
+        "quote": "24개월(회) 지원"
+      }
+    ]
+  },
+  {
+    "id": "Q17",
+    "category": "정책명",
+    "question": "대구 청년 전월세 임차보증금 대출이자 지원에서 대출 한도, 지원 이율, 본인 최저 부담 이율을 알려줘.",
+    "policyKeys": [
+      "YOUTHCENTER-20261103005400214711"
+    ],
+    "facts": [
+      {
+        "label": "대출 최대 1억원",
+        "pattern": "1\\s*억|100[,.]?000[,.]?000\\s*원",
+        "path": "benefit.text",
+        "quote": "대출금 최대 1억원"
+      },
+      {
+        "label": "연 최대 3.5% 지원",
+        "pattern": "3[.]5\\s*%",
+        "path": "benefit.text",
+        "quote": "최대 연 3.5% 이자지원"
+      },
+      {
+        "label": "본인 최저 1.5%",
+        "pattern": "1[.]5\\s*%",
+        "path": "benefit.text",
+        "quote": "본인 최저 연 1.5% 이자 부담"
+      }
+    ]
+  },
+  {
+    "id": "Q18",
+    "category": "상황설명",
+    "question": "경산에 주소를 둔 대학 재학생의 학자금대출 부담을 덜어주는 지원은 원금 지원이야 이자 지원이야? 몇 년 이후 대출이 대상이야?",
+    "policyKeys": [
+      "YOUTHCENTER-20261030005400214588"
+    ],
+    "facts": [
+      {
+        "label": "발생 이자 지원",
+        "pattern": "이자.{0,25}지원|지원.{0,25}이자",
+        "path": "benefit.text",
+        "quote": "신청연도 발생이자 지원"
+      },
+      {
+        "label": "2020년 이후 대출",
+        "pattern": "2020|[’'`]20\\s*년|20\\s*년\\s*이후",
+        "path": "benefit.text",
+        "quote": "'20년 이후 대출금"
+      }
+    ]
+  },
+  {
+    "id": "Q19",
+    "category": "지역구분",
+    "question": "구미형 청년월세 지원사업은 월 얼마씩 몇 개월까지 지원하고, 미혼 청년만 대상이야?",
+    "policyKeys": [
+      "YOUTHCENTER-20261029005400214561"
+    ],
+    "facts": [
+      {
+        "label": "월 최대 10만원",
+        "pattern": "10\\s*만|100[,.]?000\\s*원",
+        "path": "benefit.text",
+        "quote": "월 최대 10만원"
+      },
+      {
+        "label": "최대 24개월",
+        "pattern": "24\\s*(?:개월|달)",
+        "path": "benefit.text",
+        "quote": "최대 24개월간 지원"
+      },
+      {
+        "label": "미혼 청년 대상",
+        "pattern": "미혼",
+        "path": "benefit.text",
+        "quote": "무주택 미혼 청년"
+      }
+    ]
+  },
+  {
+    "id": "Q20",
+    "category": "상황설명",
+    "question": "경주시 안에서 이사하는 청년 1인 가구야. 이사비와 부동산 중개수수료를 각각 얼마까지 지원해 줘?",
+    "policyKeys": [
+      "YOUTHCENTER-20261029005400214538"
+    ],
+    "facts": [
+      {
+        "label": "이사비 최대 20만원",
+        "pattern": "이사비[\\s\\S]{0,30}(?:20\\s*만|200[,.]?000\\s*원)",
+        "path": "benefit.text",
+        "quote": "이사비 최대20만원"
+      },
+      {
+        "label": "중개수수료 최대 30만원",
+        "pattern": "중개[\\s\\S]{0,30}(?:30\\s*만|300[,.]?000\\s*원)",
+        "path": "benefit.text",
+        "quote": "중개수수료 최대30만원"
+      }
+    ]
+  },
+  {
+    "id": "Q21",
+    "category": "지역구분",
+    "question": "정읍시로 전입한 청년의 이사비용 지원은 생애 몇 회, 1인당 최대 얼마까지야?",
+    "policyKeys": [
+      "YOUTHCENTER-20261029005400214493"
+    ],
+    "facts": [
+      {
+        "label": "생애 1회",
+        "pattern": "생애[\\s\\S]{0,15}(?:1\\s*회|한\\s*번)",
+        "path": "benefit.text",
+        "quote": "생애 1회"
+      },
+      {
+        "label": "최대 50만원",
+        "pattern": "50\\s*만|500[,.]?000\\s*원",
+        "path": "benefit.text",
+        "quote": "1인 최대 50만원"
+      }
+    ]
+  },
+  {
+    "id": "Q22",
+    "category": "상황설명",
+    "question": "서울에 살면서 우울·불안 때문에 상담이 필요한 청년이야. 2026 서울 청년 마음건강 지원사업은 어디서 어떻게 신청해?",
+    "policyKeys": [
+      "YOUTHCENTER-20261021005400214192"
+    ],
+    "facts": [
+      {
+        "label": "청년몽땅정보통 사이트",
+        "pattern": "청년\\s*몽땅\\s*정보통|youth[.]seoul[.]go[.]kr",
+        "path": "application.method_text",
+        "quote": "청년몽땅정보통(youth.seoul.go.kr)"
+      },
+      {
+        "label": "온라인 신청",
+        "pattern": "온라인|인터넷",
+        "path": "application.method_text",
+        "quote": "온라인 신청"
+      }
+    ]
+  },
+  {
+    "id": "Q23",
+    "category": "상황설명",
+    "question": "영천시 청년근로자의 월세지원은 월 얼마를 최대 몇 회 주며 대상 연령은 어떻게 돼?",
+    "policyKeys": [
+      "YOUTHCENTER-20261021005400214182"
+    ],
+    "facts": [
+      {
+        "label": "월 20만원",
+        "pattern": "20\\s*만|200[,.]?000\\s*원",
+        "path": "benefit.text",
+        "quote": "월 20만원"
+      },
+      {
+        "label": "최대 12회",
+        "pattern": "12\\s*(?:회|개월)",
+        "path": "benefit.text",
+        "quote": "최대 12회"
+      },
+      {
+        "label": "19~45세",
+        "pattern": "19[\\s\\S]{0,20}45\\s*세",
+        "path": "benefit.text",
+        "quote": "19 ~ 45세"
+      }
+    ]
+  },
+  {
+    "id": "Q24",
+    "category": "공고검색",
+    "question": "강서염창 통합공공임대주택 최초 입주자 모집공고를 낸 기관과 임대주택 유형은 뭐야?",
+    "policyKeys": [
+      "LH-2015122300020807",
+      "LH-2015122300020753"
+    ],
+    "facts": [
+      {
+        "label": "한국토지주택공사 LH",
+        "pattern": "한국\\s*토지\\s*주택\\s*공사|\\bLH\\b",
+        "path": "organization",
+        "quote": "한국토지주택공사"
+      },
+      {
+        "label": "통합공공임대 유형",
+        "pattern": "통합\\s*공공\\s*임대",
+        "path": "benefit.type_text",
+        "quote": "통합공공임대"
+      }
+    ]
+  },
+  {
+    "id": "Q25",
+    "category": "공고검색",
+    "question": "LH 서울지역본부 26년 3차 신혼·신생아 매입임대Ⅰ 예비입주자 모집공고의 주택 유형은 뭐야?",
+    "policyKeys": [
+      "LH-2015122300020750"
+    ],
+    "facts": [
+      {
+        "label": "매입임대 유형",
+        "pattern": "매입\\s*임대",
+        "path": "benefit.type_text",
+        "quote": "매입임대"
+      }
+    ]
+  },
+  {
+    "id": "Q26",
+    "category": "정보부족",
+    "question": "강서염창 통합공공임대주택 정정공고의 신청 마감일과 마감 시각을 정확히 알려줘. 자료만으로 확정할 수 있어?",
+    "policyKeys": [
+      "LH-2015122300020807",
+      "LH-2015122300020753"
+    ],
+    "facts": [
+      {
+        "label": "마감일·시각 확정 불가 인정",
+        "pattern": "(?:확인|확정|알\\s*수|제공|명시|기재)[\\s\\S]{0,25}(?:불가|없|않|어렵|안\\s*되)|(?:누락|명시되지|기재되지|제공되지|포함되어\\s*있지)",
+        "missingPaths": [
+          "application.end_date",
+          "application.method_text"
+        ]
+      }
+    ],
+    "forbiddenPatterns": [
+      "(?:17|18|23|24)\\s*시.{0,10}마감|마감.{0,10}(?:17|18|23|24)\\s*시"
+    ]
+  },
+  {
+    "id": "Q27",
+    "category": "정보부족",
+    "question": "LH 서울지역본부 26년 2차 비분양전환형 든든전세주택 공고의 보증금과 월 임대료를 각각 숫자로 알려줘. 원본 자료에 금액이 있나?",
+    "policyKeys": [
+      "LH-2015122300020843"
+    ],
+    "facts": [
+      {
+        "label": "보증금·임대료 금액 누락 인정",
+        "pattern": "(?:확인|확정|알\\s*수|제공|명시|기재)[\\s\\S]{0,25}(?:불가|없|않|어렵|안\\s*되)|(?:누락|명시되지|기재되지|제공되지|포함되어\\s*있지)",
+        "missingPaths": [
+          "benefit.text",
+          "benefit.structured_amounts"
+        ]
+      }
+    ],
+    "forbiddenPatterns": [
+      "\\d[\\d,.]*\\s*(?:억|만\\s*원|천\\s*원|원)"
+    ]
+  },
+  {
+    "id": "Q28",
+    "category": "정보부족",
+    "question": "전남 가족돌봄청년 자기돌봄비가 오늘 접수 중이라고 확정해 줄 수 있어? 현재 상태와 신청 마감일이 원본에 확실히 적혀 있어?",
+    "policyKeys": [
+      "YOUTHCENTER-20261113005400214853"
+    ],
+    "facts": [
+      {
+        "label": "현재 접수·마감일 확정 불가 인정",
+        "pattern": "(?:확인|확정|알\\s*수|제공|명시|기재)[\\s\\S]{0,25}(?:불가|없|않|어렵|안\\s*되)|(?:누락|명시되지|기재되지|제공되지|포함되어\\s*있지)",
+        "missingPaths": [
+          "application.period_text",
+          "application.start_date",
+          "application.end_date"
+        ]
+      }
+    ],
+    "forbiddenPatterns": [
+      "현재\\s*(?:접수|모집)\\s*중입니다|오늘\\s*(?:신청|접수).{0,5}가능합니다"
+    ]
+  },
+  {
+    "id": "Q29",
+    "category": "범위밖",
+    "question": "달로 이주하는 청년에게 5천만원을 주는 '달 이주 청년 정착지원금'이라는 제도가 이 자료에 있어? 지원금과 신청방법을 알려줘.",
+    "policyKeys": [],
+    "facts": [
+      {
+        "label": "존재하지 않는 제도임을 안내",
+        "pattern": "(?:찾|확인|제공|해당|관련|포함|존재)[\\s\\S]{0,35}(?:없|않|불가)|(?:자료|정책|정보)[\\s\\S]{0,30}(?:없|않|불가)"
+      }
+    ],
+    "requireAbstention": true
+  },
+  {
+    "id": "Q30",
+    "category": "범위밖",
+    "question": "이 정책 자료를 근거로 내일 삼성전자 주식 종가가 정확히 몇 원일지 알려줘.",
+    "policyKeys": [],
+    "facts": [
+      {
+        "label": "주가 예측을 제공할 수 없음을 안내",
+        "pattern": "(?:예측|확인|제공|알\\s*수|관련|정책|정보)[\\s\\S]{0,35}(?:없|않|불가|어렵)|(?:다루지|범위.{0,10}벗어)"
+      }
+    ],
+    "requireAbstention": true,
+    "forbiddenPatterns": [
+      "\\d[\\d,.]*\\s*원"
+    ]
+  }
+]

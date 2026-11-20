@@ -1,0 +1,5020 @@
+{
+  "startedAt": "2026-11-20T05:53:29.915Z",
+  "timezone": "Asia/Seoul",
+  "fingerprint": "e48088ff27dc173a64d5505b1a0ce1ac4bac843ebcb3d7f08512c3f424eb7ac2",
+  "codeHash": "8548c882c2fd89fcdb18f29a6e0e7cc0546b3edddb81fa42f4c33a5162d6593c",
+  "graderHash": "f1346f6dc5b4d452a8cadc40ec0ea76515e778922535441a85ac419e5eb7ceec",
+  "corpusHash": "e63b5ebb270afd1ce60e67cc6ee3e372f1ea1a142e947b486aa28ed121b57ffa",
+  "suite": "round2",
+  "models": {
+    "chatModel": "gpt-4o-mini",
+    "embeddingModel": "text-embedding-3-small",
+    "dimensions": 512,
+    "topK": 5,
+    "baseUrl": "https://api.openai.com/v1"
+  },
+  "index": {
+    "policies": 4610,
+    "chunks": 4726,
+    "embedded": 4726
+  },
+  "goldCases": [
+    {
+      "id": "N01",
+      "category": "상황설명",
+      "question": "북한이탈주민이 일하면서 저축하면 정부가 같은 금액을 더해 주는 통장이 있다던데, 월 저축 범위와 정부 매칭 비율이 어떻게 돼?",
+      "policyKeys": [
+        "GOV24-125000000004"
+      ],
+      "facts": [
+        {
+          "label": "월 10~50만원",
+          "pattern": "10[\\s\\S]{0,25}50\\s*만",
+          "path": "summary",
+          "quote": "매월 10~50만 원"
+        },
+        {
+          "label": "정부 1:1 매칭",
+          "pattern": "1\\s*[:대]\\s*1|동일한?\\s*금액|같은\\s*금액",
+          "path": "benefit.text",
+          "quote": "1:1 매칭 지원"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "GOV24-125000000004"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "GOV24-125000000004",
+          "name": "북한이탈주민 자산형성 지원 (미래행복통장)",
+          "source": "GOV24",
+          "sourceUrl": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=999201&bnefType=all&svcId=125000000004"
+        }
+      ]
+    },
+    {
+      "id": "N02",
+      "category": "정책명",
+      "question": "북한이탈주민 정착금 기본금은 2인 세대 기준 얼마이며, 별도의 지급 신청이 필요해?",
+      "policyKeys": [
+        "GOV24-125000000014"
+      ],
+      "facts": [
+        {
+          "label": "2인 세대 2400만원",
+          "pattern": "2[,.]?400\\s*만|24[,.]?000[,.]?000\\s*원",
+          "path": "benefit.text",
+          "quote": "2인 세대 2,400만원"
+        },
+        {
+          "label": "신청 불필요",
+          "pattern": "신청[\\s\\S]{0,20}(?:불필요|필요.{0,4}없|하지.{0,5}않)|별도[\\s\\S]{0,15}신청[\\s\\S]{0,10}없",
+          "path": "application.method_text",
+          "quote": "신청불필요"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "GOV24-125000000014"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "GOV24-125000000014",
+          "name": "북한이탈주민 정착금 지원(기본금)",
+          "source": "GOV24",
+          "sourceUrl": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=592552&bnefType=all&svcId=125000000014"
+        }
+      ]
+    },
+    {
+      "id": "N03",
+      "category": "정책명",
+      "question": "희망저축Ⅰ은 일하는 생계·의료급여 수급자가 10만원을 적립하면 정부가 얼마를 매칭하고 어떤 때 지급해?",
+      "policyKeys": [
+        "GOV24-135200005010"
+      ],
+      "facts": [
+        {
+          "label": "정부지원금 30만원",
+          "pattern": "30\\s*만|300[,.]?000\\s*원",
+          "path": "benefit.text",
+          "quote": "정부지원금(30만 원)"
+        },
+        {
+          "label": "탈수급 시 지급",
+          "pattern": "탈\\s*수급",
+          "path": "benefit.text",
+          "quote": "탈수급 시 지급"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "GOV24-135200005010"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "GOV24-135200005010",
+          "name": "자산형성지원사업(희망저축Ⅰ)",
+          "source": "GOV24",
+          "sourceUrl": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=805488&bnefType=all&svcId=135200005010"
+        }
+      ]
+    },
+    {
+      "id": "N04",
+      "category": "정책명",
+      "question": "희망저축Ⅱ에서 일하는 주거·교육급여 수급자가 본인 돈 10만원을 넣으면 정부지원금은 얼마야?",
+      "policyKeys": [
+        "GOV24-135200005012"
+      ],
+      "facts": [
+        {
+          "label": "정부지원금 10만원",
+          "pattern": "(?:정부|지원금)[\\s\\S]{0,30}10\\s*만|10\\s*만[\\s\\S]{0,20}매칭",
+          "path": "benefit.text",
+          "quote": "정부지원금(10만 원)을 매칭"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "GOV24-135200005012"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "GOV24-135200005012",
+          "name": "자산형성지원사업(희망저축Ⅱ)",
+          "source": "GOV24",
+          "sourceUrl": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=805492&bnefType=all&svcId=135200005012"
+        }
+      ]
+    },
+    {
+      "id": "N05",
+      "category": "복합조건",
+      "question": "보건복지부 청년내일저축계좌 자료에서 가입 연령 범위, 월 근로·사업소득 최저 기준, 가구 중위소득 기준을 알려줘.",
+      "policyKeys": [
+        "GOV24-135200005013"
+      ],
+      "facts": [
+        {
+          "label": "15~39세",
+          "pattern": "15[\\s\\S]{0,25}39\\s*세",
+          "path": "eligibility.target_text",
+          "quote": "만15~39세"
+        },
+        {
+          "label": "월 소득 10만원 이상",
+          "pattern": "10\\s*만[\\s\\S]{0,20}이상|이상[\\s\\S]{0,15}10\\s*만",
+          "path": "eligibility.target_text",
+          "quote": "월 10만원 이상"
+        },
+        {
+          "label": "기준중위소득 50% 이하",
+          "pattern": "50\\s*%[\\s\\S]{0,15}이하",
+          "path": "eligibility.target_text",
+          "quote": "기준 중위소득 50% 이하"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "GOV24-135200005013"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "GOV24-135200005013",
+          "name": "자산형성지원사업(청년내일저축계좌)",
+          "source": "GOV24",
+          "sourceUrl": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=805494&bnefType=all&svcId=135200005013"
+        }
+      ]
+    },
+    {
+      "id": "N06",
+      "category": "상황설명",
+      "question": "가정폭력 피해자 보호시설에서 나와 자립하려고 해. 피해자와 동반아동에게 각각 얼마를 지원하고 원칙적인 입소기간 요건은?",
+      "policyKeys": [
+        "GOV24-138300000053"
+      ],
+      "facts": [
+        {
+          "label": "피해자 500만원",
+          "pattern": "피해자[\\s\\S]{0,25}500\\s*만",
+          "path": "benefit.text",
+          "quote": "피해자 500만원"
+        },
+        {
+          "label": "동반아동 250만원",
+          "pattern": "(?:동반\\s*)?아동[\\s\\S]{0,25}250\\s*만",
+          "path": "benefit.text",
+          "quote": "동반아동 250만원"
+        },
+        {
+          "label": "입소 4개월 이상",
+          "pattern": "4\\s*개월[\\s\\S]{0,15}이상",
+          "path": "eligibility.target_text",
+          "quote": "입소기간이 4개월 이상"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "GOV24-138300000053"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "GOV24-138300000053",
+          "name": "가정폭력 피해자 보호시설 퇴소자 자립지원금",
+          "source": "GOV24",
+          "sourceUrl": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=2147817&bnefType=all&svcId=138300000053"
+        }
+      ]
+    },
+    {
+      "id": "N07",
+      "category": "상황설명",
+      "question": "과거 2년 이상 연속 보호를 받은 아동복지시설·가정위탁 보호종료 청년의 자립지원수당은 매월 얼마를 몇 년 지급해?",
+      "policyKeys": [
+        "GOV24-138300000067"
+      ],
+      "facts": [
+        {
+          "label": "월 50만원",
+          "pattern": "50\\s*만|500[,.]?000\\s*원",
+          "path": "benefit.text",
+          "quote": "월 50만 원"
+        },
+        {
+          "label": "보호종료 후 5년",
+          "pattern": "5\\s*년",
+          "path": "benefit.text",
+          "quote": "보호 종료 후 5년"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "GOV24-138300000067"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "GOV24-138300000067",
+          "name": "청소년복지시설 퇴소청소년 자립지원수당",
+          "source": "GOV24",
+          "sourceUrl": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=2157516&bnefType=all&svcId=138300000067"
+        }
+      ]
+    },
+    {
+      "id": "N08",
+      "category": "복합조건",
+      "question": "중소기업 장기근속자 주택 우선공급은 여러 중소기업 경력을 합치면 몇 년, 동일 기업만으로는 몇 년이 필요해? 무주택 요건도 있어?",
+      "policyKeys": [
+        "GOV24-142000000014"
+      ],
+      "facts": [
+        {
+          "label": "중소기업 경력 합계 5년 이상",
+          "pattern": "5\\s*년[\\s\\S]{0,15}이상",
+          "path": "eligibility.target_text",
+          "quote": "중소기업에서 5년 이상"
+        },
+        {
+          "label": "동일 중소기업 3년 이상",
+          "pattern": "3\\s*년[\\s\\S]{0,15}이상",
+          "path": "eligibility.target_text",
+          "quote": "동일한 중소기업에 3년 이상"
+        },
+        {
+          "label": "무주택 세대구성원",
+          "pattern": "무주택",
+          "path": "eligibility.target_text",
+          "quote": "무주택 세대구성원"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "GOV24-142000000014"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "GOV24-142000000014",
+          "name": "중소기업장기근속자주택우선공급",
+          "source": "GOV24",
+          "sourceUrl": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=999197&bnefType=all&svcId=142000000014"
+        }
+      ]
+    },
+    {
+      "id": "N09",
+      "category": "상황설명",
+      "question": "농촌의 저소득 가구가 노후 주택 수리를 봉사단체를 통해 지원받는 사업의 가구당 한도는 얼마야? 세입자도 대상에 포함돼?",
+      "policyKeys": [
+        "GOV24-154300005037"
+      ],
+      "facts": [
+        {
+          "label": "가구당 700만원 한도",
+          "pattern": "700\\s*만|7[,.]?000[,.]?000\\s*원",
+          "path": "benefit.text",
+          "quote": "가구당 700만원 한도"
+        },
+        {
+          "label": "임차인 포함",
+          "pattern": "임차인|임차\\s*가구|세입자",
+          "path": "benefit.text",
+          "quote": "임차인 포함"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "GOV24-154300005037"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "GOV24-154300005037",
+          "name": "농촌취약계층주거개선",
+          "source": "GOV24",
+          "sourceUrl": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=2149942&bnefType=all&svcId=154300005037"
+        }
+      ]
+    },
+    {
+      "id": "N10",
+      "category": "지역구분",
+      "question": "버팀목전세자금대출 일반가구의 한도를 수도권과 수도권 밖으로 나눠 알려줘. 신혼가구 한도와 섞지 말아줘.",
+      "policyKeys": [
+        "GOV24-161300000076"
+      ],
+      "facts": [
+        {
+          "label": "일반가구 수도권 1억2천만원",
+          "pattern": "1\\s*억\\s*2\\s*천|1[.]2\\s*억|12[,.]?000\\s*만",
+          "path": "benefit.text",
+          "quote": "일반가구: 수도권 최대 1억 2천만원"
+        },
+        {
+          "label": "그 외 8천만원",
+          "pattern": "8\\s*천\\s*만|8[,.]?000\\s*만|80[,.]?000[,.]?000\\s*원",
+          "path": "benefit.text",
+          "quote": "그 외 지역 최대 8천만원"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "GOV24-161300000076"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "GOV24-161300000076",
+          "name": "버팀목전세자금대출",
+          "source": "GOV24",
+          "sourceUrl": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=739245&bnefType=all&svcId=161300000076"
+        }
+      ]
+    },
+    {
+      "id": "N11",
+      "category": "예외조건",
+      "question": "장애인 주택주거용 편의시설 설치지원은 다른 법령의 집수리 지원을 받은 이력이 있으면 무조건 제외돼? 지원 내용이 중복되지 않는 경우도 설명해줘.",
+      "policyKeys": [
+        "GOV24-161300000081"
+      ],
+      "facts": [
+        {
+          "label": "지원내용 비중복 시 가능",
+          "pattern": "중복되지[\\s\\S]{0,45}가능|중복.{0,10}않[\\s\\S]{0,45}가능|중복[\\s\\S]{0,20}없[\\s\\S]{0,30}가능",
+          "path": "eligibility.criteria_text",
+          "quote": "지원내용이 중복되지 않은 경우 지원 가능"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "GOV24-161300000081"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "GOV24-161300000081",
+          "name": "장애인 주택주거용 편의시설 설치지원",
+          "source": "GOV24",
+          "sourceUrl": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=999072&bnefType=all&svcId=161300000081"
+        }
+      ]
+    },
+    {
+      "id": "N12",
+      "category": "정책명",
+      "question": "청년주택드림 청약통장 자료의 우대금리 가산폭은 몇 %p이며 적용 납입원금 한도와 최대 기간은 얼마야? 최종 이율과 가산폭을 구분해줘.",
+      "policyKeys": [
+        "GOV24-161300000088"
+      ],
+      "facts": [
+        {
+          "label": "가산폭 1.7%p",
+          "pattern": "1[.]7\\s*%\\s*p|1[.]7\\s*퍼센트\\s*포인트",
+          "path": "benefit.text",
+          "quote": "우대금리 1.7%p"
+        },
+        {
+          "label": "원금 5000만원 한도",
+          "pattern": "5[,.]?000\\s*만|50[,.]?000[,.]?000\\s*원",
+          "path": "benefit.text",
+          "quote": "납입원금 5,000만원 한도"
+        },
+        {
+          "label": "최대 10년",
+          "pattern": "10\\s*년",
+          "path": "benefit.text",
+          "quote": "최대 10년간"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "GOV24-161300000088"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "GOV24-161300000088",
+          "name": "청년주택드림 청약통장",
+          "source": "GOV24",
+          "sourceUrl": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=999078&bnefType=all&svcId=161300000088"
+        }
+      ]
+    },
+    {
+      "id": "N13",
+      "category": "예외조건",
+      "question": "국토교통부 전세보증금반환보증 보증료 지원은 2025년 3월 30일 이전 가입건도 40만원까지야? 이전 가입건 한도와 청년 외 신청자의 지원 비율을 구분해줘.",
+      "policyKeys": [
+        "GOV24-161300000103"
+      ],
+      "facts": [
+        {
+          "label": "이전 가입건 최대 30만원",
+          "pattern": "30\\s*만|300[,.]?000\\s*원",
+          "path": "benefit.text",
+          "quote": "'25.3.30 이전 가입건은 최대 30만원"
+        },
+        {
+          "label": "일반 상한 40만원",
+          "pattern": "40\\s*만|400[,.]?000\\s*원",
+          "path": "benefit.text",
+          "quote": "최대 40만원 한도"
+        },
+        {
+          "label": "청년 외 보증료 90%",
+          "pattern": "90\\s*%",
+          "path": "benefit.text",
+          "quote": "청년외의 경우 신청인이 기납부한 보증료의 90%"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "GOV24-161300000103"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "GOV24-161300000103",
+          "name": "국토교통부 전세보증금반환보증 보증료 지원",
+          "source": "GOV24",
+          "sourceUrl": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=2126303&bnefType=all&svcId=161300000103"
+        }
+      ]
+    },
+    {
+      "id": "N14",
+      "category": "지역구분",
+      "question": "군위에서 1년 넘게 거주한 청년에게 문화·체육 선불카드를 주는 지원은 연간 얼마이며, 나이는 몇 세부터 몇 세까지야?",
+      "policyKeys": [
+        "YOUTHCENTER-20261021005400214198"
+      ],
+      "facts": [
+        {
+          "label": "연 10만원",
+          "pattern": "10\\s*만|100[,.]?000\\s*원",
+          "path": "benefit.text",
+          "quote": "연 10만원"
+        },
+        {
+          "label": "20~27세",
+          "pattern": "20[\\s\\S]{0,25}27\\s*세",
+          "path": "benefit.text",
+          "quote": "20세 ~ 27세"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "YOUTHCENTER-20261021005400214198"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "YOUTHCENTER-20261021005400214198",
+          "name": "군위청년문화카드 지원사업",
+          "source": "YOUTHCENTER",
+          "sourceUrl": "https://www.gunwi.go.kr/ko/page.do?board_code=&srchSDate=&srchKwd=%EC%B2%AD%EB%85%84%EB%AC%B8%ED%99%94&srchColumn=title&srchDept=&srchEDate=&mnu_uid=666&not_ancmt_mgt_no=25737&pageNo=1&cmd=2"
+        }
+      ]
+    },
+    {
+      "id": "N15",
+      "category": "지역구분",
+      "question": "강진에서 창업한 청년의 사업장 임대료 지원은 월 얼마, 총 최대 얼마이고 창업 후 몇 개월이 지나야 해?",
+      "policyKeys": [
+        "YOUTHCENTER-20261021005400214186"
+      ],
+      "facts": [
+        {
+          "label": "월 30만원",
+          "pattern": "30\\s*만|300[,.]?000\\s*원",
+          "path": "benefit.text",
+          "quote": "월 30만원"
+        },
+        {
+          "label": "최대 360만원",
+          "pattern": "360\\s*만|3[,.]?600[,.]?000\\s*원",
+          "path": "benefit.text",
+          "quote": "최대 360만원"
+        },
+        {
+          "label": "창업 후 3개월 경과",
+          "pattern": "3\\s*개월",
+          "path": "benefit.text",
+          "quote": "창업 후 3개월이 경과"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "YOUTHCENTER-20261021005400214186"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "YOUTHCENTER-20261021005400214186",
+          "name": "강진군 창업 청년 임대료 지원사업",
+          "source": "YOUTHCENTER",
+          "sourceUrl": "https://www.gangjin.go.kr/www/government/notice/gosi?idx=27906&mode=view&search_type=title&search_word=%EC%9E%84%EB%8C%80%EB%A3%8C&start_date=20251021&finish_date=20261021"
+        }
+      ]
+    },
+    {
+      "id": "N16",
+      "category": "지역구분",
+      "question": "영천 청년창업 특화거리에서 점포 리모델링·간판제작비는 최대 얼마까지 지원하고 대상 연령은?",
+      "policyKeys": [
+        "YOUTHCENTER-20261021005400214177"
+      ],
+      "facts": [
+        {
+          "label": "최대 2500만원",
+          "pattern": "2[,.]?500\\s*만|25[,.]?000[,.]?000\\s*원",
+          "path": "benefit.text",
+          "quote": "2,500만원 한도"
+        },
+        {
+          "label": "19~45세",
+          "pattern": "19[\\s\\S]{0,25}45\\s*세",
+          "path": "benefit.text",
+          "quote": "19 ~ 45세"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "YOUTHCENTER-20261021005400214177"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "YOUTHCENTER-20261021005400214177",
+          "name": "청년창업 특화거리 점포 리모델링 및 간판제작비 지원",
+          "source": "YOUTHCENTER",
+          "sourceUrl": "https://gbyouth.go.kr/policy/list.tc?mn=2379&pageNo=5069"
+        }
+      ]
+    },
+    {
+      "id": "N17",
+      "category": "지역구분",
+      "question": "영천 청년창업 특화거리 점포 임차료 지원은 월 한도와 최장 기간이 어떻게 돼?",
+      "policyKeys": [
+        "YOUTHCENTER-20261021005400214176"
+      ],
+      "facts": [
+        {
+          "label": "월 30만원 한도",
+          "pattern": "30\\s*만|300[,.]?000\\s*원",
+          "path": "benefit.text",
+          "quote": "월 임차료 30만원 한도"
+        },
+        {
+          "label": "최대 2년",
+          "pattern": "2\\s*년|24\\s*개월",
+          "path": "benefit.text",
+          "quote": "최대 2년"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "YOUTHCENTER-20261021005400214176"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "YOUTHCENTER-20261021005400214176",
+          "name": "청년창업 특화거리 점포 임차료 지원사업",
+          "source": "YOUTHCENTER",
+          "sourceUrl": "https://youngplus.univjobcenter.kr/region/gyeongbuk/%EC%98%81%EC%B2%9C%EC%8B%9C"
+        }
+      ]
+    },
+    {
+      "id": "N18",
+      "category": "상황설명",
+      "question": "영천에 거주하는 미취업 청년이 자격증 응시료뿐 아니라 수강료도 실비로 지원받는 역량강화 사업의 1인 최대 지원액은?",
+      "policyKeys": [
+        "YOUTHCENTER-20261021005400214175"
+      ],
+      "facts": [
+        {
+          "label": "1인 최대 30만원",
+          "pattern": "30\\s*만|300[,.]?000\\s*원",
+          "path": "benefit.text",
+          "quote": "최대 30만원/1인"
+        },
+        {
+          "label": "응시료와 수강료",
+          "pattern": "응시료[\\s\\S]{0,35}수강료|수강료[\\s\\S]{0,35}응시료",
+          "path": "benefit.text",
+          "quote": "자격증 응시료, 수강료"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "YOUTHCENTER-20261021005400214175"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "YOUTHCENTER-20261021005400214175",
+          "name": "미취업청년 역량강화 지원사업",
+          "source": "YOUTHCENTER",
+          "sourceUrl": "https://www.yc.go.kr/job/contents.do?mId=1701000000"
+        }
+      ]
+    },
+    {
+      "id": "N19",
+      "category": "상황설명",
+      "question": "강진 산업단지 입주기업에서 일하는 청년의 일자리장려금은 근속 몇 년부터이고 얼마를 어떤 형태로 몇 회 나눠 줘?",
+      "policyKeys": [
+        "YOUTHCENTER-20261021005400214173"
+      ],
+      "facts": [
+        {
+          "label": "1년 이상 근속",
+          "pattern": "1\\s*년[\\s\\S]{0,15}이상",
+          "path": "benefit.text",
+          "quote": "1년 이상 근속"
+        },
+        {
+          "label": "100만원",
+          "pattern": "100\\s*만|1[,.]?000[,.]?000\\s*원",
+          "path": "benefit.text",
+          "quote": "100만원 지급"
+        },
+        {
+          "label": "강진사랑 상품권",
+          "pattern": "강진\\s*사랑[\\s\\S]{0,15}상품권",
+          "path": "benefit.text",
+          "quote": "모바일 강진사랑 상품권"
+        },
+        {
+          "label": "2회 분할",
+          "pattern": "2\\s*회|두\\s*번",
+          "path": "benefit.text",
+          "quote": "2회 분할"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "YOUTHCENTER-20261021005400214173",
+        "YOUTHCENTER-20250109005400210131"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "YOUTHCENTER-20261021005400214173",
+          "name": "강진품애 청년 일자리장려금 지원사업",
+          "source": "YOUTHCENTER",
+          "sourceUrl": "https://www.gangjin.go.kr/www/government/notice/gosi?idx=27905&mode=view&search_type=title&search_word=%EC%9D%BC%EC%9E%90%EB%A6%AC%20%EC%9E%A5%EB%A0%A4%EA%B8%88&start_date=20251021&finish_date=20261021"
+        }
+      ]
+    },
+    {
+      "id": "N20",
+      "category": "상황설명",
+      "question": "대구 희망옷장에서 면접 정장을 빌리려고 해. 연간 대여 횟수, 한 번 빌리는 기간, 본인 세탁비는 얼마야?",
+      "policyKeys": [
+        "YOUTHCENTER-20261021005400214170"
+      ],
+      "facts": [
+        {
+          "label": "연 3회",
+          "pattern": "3\\s*회|세\\s*번",
+          "path": "benefit.text",
+          "quote": "연 3회"
+        },
+        {
+          "label": "3박 4일",
+          "pattern": "3\\s*박\\s*4\\s*일",
+          "path": "benefit.text",
+          "quote": "3박 4일"
+        },
+        {
+          "label": "세탁비 7천원",
+          "pattern": "7\\s*천\\s*원|7[,.]?000\\s*원",
+          "path": "benefit.text",
+          "quote": "세탁비 7천원"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "YOUTHCENTER-20261021005400214170"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "YOUTHCENTER-20261021005400214170",
+          "name": "대학생 취업준비패키지 지원",
+          "source": "YOUTHCENTER",
+          "sourceUrl": "https://fulldress.daegu.go.kr/"
+        }
+      ]
+    },
+    {
+      "id": "N21",
+      "category": "상황설명",
+      "question": "대구 업사이클 청년창업 스케일업 프로젝트에서 공간·컨설팅을 지원받을 때 사용료는 유료야? 자료에 적힌 2026년 운영 기간도 알려줘.",
+      "policyKeys": [
+        "YOUTHCENTER-20261021005400214171"
+      ],
+      "facts": [
+        {
+          "label": "사용료 무상",
+          "pattern": "무상|무료",
+          "path": "benefit.text",
+          "quote": "사용료)무상"
+        },
+        {
+          "label": "4월~12월",
+          "pattern": "4\\s*월[\\s\\S]{0,20}12\\s*월",
+          "path": "benefit.text",
+          "quote": "2026년 4월 ~ 12월"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "YOUTHCENTER-20261021005400214171"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "YOUTHCENTER-20261021005400214171",
+          "name": "업사이클 청년창업 스케일업 프로젝트",
+          "source": "YOUTHCENTER",
+          "sourceUrl": "https://www.kupc.or.kr/"
+        }
+      ]
+    },
+    {
+      "id": "N22",
+      "category": "상황설명",
+      "question": "서울에서 고립·은둔 생활을 하는 청년을 발굴해 사회 복귀를 돕는 지원의 대상 연령과 온라인 신청 사이트를 알려줘.",
+      "policyKeys": [
+        "YOUTHCENTER-20261021005400214204"
+      ],
+      "facts": [
+        {
+          "label": "19~39세",
+          "pattern": "19[\\s\\S]{0,25}39\\s*세",
+          "path": "eligibility.target_text",
+          "quote": "19~39세"
+        },
+        {
+          "label": "청년몽땅정보통",
+          "pattern": "청년\\s*몽땅\\s*정보통|youth[.]seoul[.]go[.]kr",
+          "path": "application.method_text",
+          "quote": "청년몽땅정보통(youth.seoul.go.kr)"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "YOUTHCENTER-20261021005400214204"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "YOUTHCENTER-20261021005400214204",
+          "name": "2026 고립·은둔 청년 지원",
+          "source": "YOUTHCENTER",
+          "sourceUrl": "https://youth.seoul.go.kr"
+        }
+      ]
+    },
+    {
+      "id": "N23",
+      "category": "복합조건",
+      "question": "2026 서울 희망두배 청년통장 원본에서 부양의무자의 소득과 재산은 각각 얼마 미만이어야 해? 본인 소득 기준으로 바꿔 설명하지 말아줘.",
+      "policyKeys": [
+        "YOUTHCENTER-20261021005400214205"
+      ],
+      "facts": [
+        {
+          "label": "부양의무자 소득 1억원 미만",
+          "pattern": "1\\s*억[\\s\\S]{0,20}미만|미만[\\s\\S]{0,20}1\\s*억",
+          "path": "eligibility.target_text",
+          "quote": "고소득(1억원)"
+        },
+        {
+          "label": "재산 9억원 미만",
+          "pattern": "9\\s*억[\\s\\S]{0,20}미만|미만[\\s\\S]{0,20}9\\s*억",
+          "path": "eligibility.target_text",
+          "quote": "고재산(9억원) 미만"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "YOUTHCENTER-20261021005400214205"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "YOUTHCENTER-20261021005400214205",
+          "name": "2026 희망두배 청년통장",
+          "source": "YOUTHCENTER",
+          "sourceUrl": "https://youth.seoul.go.kr"
+        }
+      ]
+    },
+    {
+      "id": "N24",
+      "category": "상황설명",
+      "question": "곡성군이 청년 창업자에게 공유사무실을 지원한다는데, 나이 범위와 창업 경력 기준이 궁금해. 예비창업자도 가능해?",
+      "policyKeys": [
+        "YOUTHCENTER-20261021005400214189"
+      ],
+      "facts": [
+        {
+          "label": "19~49세",
+          "pattern": "19[\\s\\S]{0,25}49\\s*세",
+          "path": "benefit.text",
+          "quote": "19세 이상 49세 이하"
+        },
+        {
+          "label": "예비창업자 또는 5년 이내 창업자",
+          "pattern": "예비[\\s\\S]{0,40}5\\s*년|5\\s*년[\\s\\S]{0,40}예비",
+          "path": "benefit.text",
+          "quote": "예비 창업자 또는 5년 이내 창업자"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "YOUTHCENTER-20261021005400214189"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "YOUTHCENTER-20261021005400214189",
+          "name": "2026 곡성군 청년창업 공유사무실 입주자 모집",
+          "source": "YOUTHCENTER",
+          "sourceUrl": "https://www.gokseong.go.kr/board/GosiView.do?menuNo=102001003000&pageIndex=1&searchCnd=0&not_ancmt_mgt_no=34821&not_ancmt_se_code=&list_gubun=&srhCate=title&searchWrd=%EA%B3%B5%EC%9C%A0%EC%82%AC%EB%AC%B4%EC%8B%A4"
+        }
+      ]
+    },
+    {
+      "id": "N25",
+      "category": "예외조건",
+      "question": "강진 가업승계 청년 정착기반 지원에서 반드시 부모 소유 농지를 상속받아야만 해? 부모가 임대해 경작하던 농지의 임대 승계 예외도 알려줘.",
+      "policyKeys": [
+        "YOUTHCENTER-20261021005400214181"
+      ],
+      "facts": [
+        {
+          "label": "부모 5년 이상 임대 경작 예외",
+          "pattern": "5\\s*년[\\s\\S]{0,70}(?:부모|임대|경작)|(?:부모|임대|경작)[\\s\\S]{0,70}5\\s*년",
+          "path": "benefit.text",
+          "quote": "5년 이상 (조)부모가 임대하여 경작"
+        },
+        {
+          "label": "신청인 5년 이상 임대 계약",
+          "pattern": "(?:신청인|받을\\s*자|본인|청년)[\\s\\S]{0,60}5\\s*년|임대[\\s\\S]{0,15}5\\s*년[\\s\\S]{0,20}계약",
+          "path": "benefit.text",
+          "quote": "임대(5년 이상) 계약한 경우 가능"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "YOUTHCENTER-20261021005400214181",
+        "YOUTHCENTER-20250109005400210134"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "YOUTHCENTER-20261021005400214181",
+          "name": "가업승계 청년 정착기반 지원사업",
+          "source": "YOUTHCENTER",
+          "sourceUrl": "https://www.gangjin.go.kr/www/government/news/notice?idx=659456&mode=view&search_type=title&search_word=%EC%B0%BD%EC%97%85&page_scale=15&search_date=y&start_date=2025-10-21&finish_date=2026-10-21"
+        }
+      ]
+    },
+    {
+      "id": "N26",
+      "category": "정보부족",
+      "question": "LH 서울지역본부 26년 3차 청년 매입임대주택 예비입주자 공고의 보증금과 월 임대료는 각각 얼마야? 이 카탈로그에 숫자가 없으면 없다고 해줘.",
+      "policyKeys": [
+        "LH-2015122300020759"
+      ],
+      "facts": [
+        {
+          "label": "보증금·임대료 누락 인정",
+          "pattern": "(?:확인|확정|알\\s*수|제공|명시|기재|포함)[\\s\\S]{0,30}(?:불가|없|않|어렵|안\\s*되)|(?:누락|명시되지|기재되지|제공되지)",
+          "missingPaths": [
+            "benefit.text",
+            "benefit.structured_amounts"
+          ]
+        }
+      ],
+      "forbiddenPatterns": [
+        "\\d[\\d,.]*\\s*(?:억|만\\s*원|천\\s*원|원)"
+      ],
+      "acceptedPolicyKeys": [
+        "LH-2015122300020759"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "LH-2015122300020759",
+          "name": "[서울지역본부] 26년 3차 청년 매입임대주택 예비입주자 모집공고",
+          "source": "LH",
+          "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020759&ccrCnntSysDsCd=03&uppAisTpCd=13&aisTpCd=26&mi=1026"
+        }
+      ]
+    },
+    {
+      "id": "N27",
+      "category": "정보부족",
+      "question": "LH 서울지역본부 26년 3차 신혼·신생아 매입임대Ⅱ 전세형 공고의 정확한 소득 상한과 연령 제한은? 해당 공고 레코드에 있는 정보만 답하고 일반 기준을 대신 넣지 말아줘.",
+      "policyKeys": [
+        "LH-2015122300020749"
+      ],
+      "facts": [
+        {
+          "label": "소득·연령 기준 누락 인정",
+          "pattern": "(?:확인|확정|알\\s*수|제공|명시|기재|포함)[\\s\\S]{0,30}(?:불가|없|않|어렵|안\\s*되)|(?:누락|명시되지|기재되지|제공되지)",
+          "missingPaths": [
+            "eligibility.target_text",
+            "eligibility.criteria_text"
+          ]
+        }
+      ],
+      "forbiddenPatterns": [
+        "\\d+\\s*세|\\d+\\s*%|\\d[\\d,.]*\\s*만\\s*원"
+      ],
+      "acceptedPolicyKeys": [
+        "LH-2015122300020749"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "LH-2015122300020749",
+          "name": "[서울지역본부] 26년 3차 신혼·신생아매입임대주택Ⅱ(전세형) 예비입주자 모집공고",
+          "source": "LH",
+          "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020749&ccrCnntSysDsCd=03&uppAisTpCd=13&aisTpCd=26&mi=1026"
+        }
+      ]
+    },
+    {
+      "id": "N28",
+      "category": "정보부족",
+      "question": "2026 서울 영테크에 제가 어제 제출한 개인 신청서의 접수번호와 승인 여부를 알려줘. 이 정책 카탈로그에 제 개인 신청 내역도 있어?",
+      "policyKeys": [
+        "YOUTHCENTER-20261021005400214202"
+      ],
+      "facts": [
+        {
+          "label": "개인 접수·승인 내역 확인 불가",
+          "pattern": "(?:확인|확정|알\\s*수|제공|명시|기재|포함|접근)[\\s\\S]{0,30}(?:불가|없|않|어렵|안\\s*되)|(?:누락|명시되지|기재되지|제공되지)",
+          "missingPaths": [
+            "personal_application_history"
+          ]
+        }
+      ],
+      "forbiddenPatterns": [
+        "접수번호는\\s*[A-Za-z0-9]|신청이\\s*승인되었"
+      ],
+      "acceptedPolicyKeys": [
+        "YOUTHCENTER-20261021005400214202"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "YOUTHCENTER-20261021005400214202",
+          "name": "2026 서울 영테크",
+          "source": "YOUTHCENTER",
+          "sourceUrl": "https://youth.seoul.go.kr"
+        }
+      ]
+    },
+    {
+      "id": "N29",
+      "category": "범위밖",
+      "question": "나이와 소득에 상관없이 모든 청년에게 평생 매달 200만원을 주는 '전국 청년 평생소득'을 이 자료에서 찾아 신청 방법을 알려줘. 실제 제도가 없으면 없다고 해줘.",
+      "policyKeys": [],
+      "facts": [
+        {
+          "label": "가상 제도 확인 불가",
+          "pattern": "(?:찾|확인|제공|해당|관련|포함|존재|자료|정책|정보)[\\s\\S]{0,35}(?:없|않|불가)"
+        }
+      ],
+      "requireAbstention": true,
+      "acceptedPolicyKeys": [],
+      "goldPolicies": []
+    },
+    {
+      "id": "N30",
+      "category": "범위밖",
+      "question": "일본 도쿄에 거주하는 청년인데 도쿄도의 월세 지원금이 얼마인지 이 한국 정책 카탈로그만 근거로 확정해줘.",
+      "policyKeys": [],
+      "facts": [
+        {
+          "label": "도쿄 지원액 확정 불가",
+          "pattern": "(?:확인|확정|제공|알\\s*수|관련|정책|정보|포함|찾)[\\s\\S]{0,35}(?:없|않|불가|어렵)|범위.{0,10}벗어"
+        }
+      ],
+      "requireAbstention": true,
+      "forbiddenPatterns": [
+        "\\d[\\d,.]*\\s*엔"
+      ],
+      "acceptedPolicyKeys": [],
+      "goldPolicies": []
+    }
+  ],
+  "results": [
+    {
+      "id": "N01",
+      "category": "상황설명",
+      "question": "북한이탈주민이 일하면서 저축하면 정부가 같은 금액을 더해 주는 통장이 있다던데, 월 저축 범위와 정부 매칭 비율이 어떻게 돼?",
+      "policyKeys": [
+        "GOV24-125000000004"
+      ],
+      "facts": [
+        {
+          "label": "월 10~50만원",
+          "pattern": "10[\\s\\S]{0,25}50\\s*만",
+          "path": "summary",
+          "quote": "매월 10~50만 원"
+        },
+        {
+          "label": "정부 1:1 매칭",
+          "pattern": "1\\s*[:대]\\s*1|동일한?\\s*금액|같은\\s*금액",
+          "path": "benefit.text",
+          "quote": "1:1 매칭 지원"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "GOV24-125000000004"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "GOV24-125000000004",
+          "name": "북한이탈주민 자산형성 지원 (미래행복통장)",
+          "source": "GOV24",
+          "sourceUrl": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=999201&bnefType=all&svcId=125000000004"
+        }
+      ],
+      "grade": {
+        "rank": 1,
+        "retrievalApplicable": true,
+        "hitAt1": true,
+        "hitAt3": true,
+        "hitAt5": true,
+        "checks": [
+          {
+            "label": "월 10~50만원",
+            "passed": true
+          },
+          {
+            "label": "정부 1:1 매칭",
+            "passed": true
+          }
+        ],
+        "factsPassed": 2,
+        "citationPassed": true,
+        "abstentionPassed": true,
+        "forbiddenMatches": [],
+        "answerPassed": true
+      },
+      "generated": {
+        "answer": "### 북한이탈주민 자산형성 지원 (미래행복통장) [1]\n\n북한이탈주민을 대상으로 매월 10만 원에서 50만 원을 저축하면, 정부가 적립금과 동일한 금액을 1:1 비율로 매칭 지원합니다. 저축 범위는 5만 원 단위로 설정할 수 있습니다.\n\n북한이탈주민 자산형성 지원 (미래행복통장) 정책에 대한 정보입니다. 저축한 금액에 대해 정부가 매칭 지원합니다. 추가로 궁금한 사항이 있으면 알려주세요.\n\n최종 자격과 최신 신청 가능 여부는 원문에서 확인해 주세요.",
+        "sections": [
+          {
+            "source_number": 1,
+            "explanation": "북한이탈주민을 대상으로 매월 10만 원에서 50만 원을 저축하면, 정부가 적립금과 동일한 금액을 1:1 비율로 매칭 지원합니다. 저축 범위는 5만 원 단위로 설정할 수 있습니다.",
+            "policyKey": "GOV24-125000000004"
+          }
+        ],
+        "message": "북한이탈주민 자산형성 지원 (미래행복통장) 정책에 대한 정보입니다. 저축한 금액에 대해 정부가 매칭 지원합니다. 추가로 궁금한 사항이 있으면 알려주세요.",
+        "usage": {
+          "input_tokens": 5437,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_12h_tokens": 0,
+              "ttl_30m_tokens": 0
+            },
+            "cached_tokens": 0
+          },
+          "output_tokens": 133,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 5570
+        }
+      },
+      "elapsedMs": 5845,
+      "retrieved": [
+        {
+          "policy": {
+            "policy_key": "GOV24-125000000004",
+            "name": "북한이탈주민 자산형성 지원 (미래행복통장)",
+            "source": "GOV24",
+            "source_url": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=999201&bnefType=all&svcId=125000000004"
+          },
+          "score": 0.9930316644032517
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20260504005400113090",
+            "name": "청년내일저축계좌 지원",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.bokjiro.go.kr/ssis-tbu/index.do"
+          },
+          "score": 0.8858031549516591
+        },
+        {
+          "policy": {
+            "policy_key": "GOV24-402000000134",
+            "name": "북한이탈주민 자격증 취득 지원",
+            "source": "GOV24",
+            "source_url": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=2169417&bnefType=all&svcId=402000000134"
+          },
+          "score": 0.8332530256548938
+        },
+        {
+          "policy": {
+            "policy_key": "GOV24-406000000114",
+            "name": "파주시 북한이탈주민 정착 지원",
+            "source": "GOV24",
+            "source_url": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=1003967&bnefType=all&svcId=406000000114"
+          },
+          "score": 0.8139259949884721
+        },
+        {
+          "policy": {
+            "policy_key": "GOV24-SD0000003310",
+            "name": "북한이탈주민 주거지원금 지급",
+            "source": "GOV24",
+            "source_url": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=82642&bnefType=all&svcId=SD0000003310"
+          },
+          "score": 0.8019215387733968
+        }
+      ]
+    },
+    {
+      "id": "N02",
+      "category": "정책명",
+      "question": "북한이탈주민 정착금 기본금은 2인 세대 기준 얼마이며, 별도의 지급 신청이 필요해?",
+      "policyKeys": [
+        "GOV24-125000000014"
+      ],
+      "facts": [
+        {
+          "label": "2인 세대 2400만원",
+          "pattern": "2[,.]?400\\s*만|24[,.]?000[,.]?000\\s*원",
+          "path": "benefit.text",
+          "quote": "2인 세대 2,400만원"
+        },
+        {
+          "label": "신청 불필요",
+          "pattern": "신청[\\s\\S]{0,20}(?:불필요|필요.{0,4}없|하지.{0,5}않)|별도[\\s\\S]{0,15}신청[\\s\\S]{0,10}없",
+          "path": "application.method_text",
+          "quote": "신청불필요"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "GOV24-125000000014"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "GOV24-125000000014",
+          "name": "북한이탈주민 정착금 지원(기본금)",
+          "source": "GOV24",
+          "sourceUrl": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=592552&bnefType=all&svcId=125000000014"
+        }
+      ],
+      "grade": {
+        "rank": 1,
+        "retrievalApplicable": true,
+        "hitAt1": true,
+        "hitAt3": true,
+        "hitAt5": true,
+        "checks": [
+          {
+            "label": "2인 세대 2400만원",
+            "passed": true
+          },
+          {
+            "label": "신청 불필요",
+            "passed": true
+          }
+        ],
+        "factsPassed": 2,
+        "citationPassed": true,
+        "abstentionPassed": true,
+        "forbiddenMatches": [],
+        "answerPassed": true
+      },
+      "generated": {
+        "answer": "### 북한이탈주민 정착금 지원(기본금) [1]\n\n북한이탈주민 정착금 기본금은 2인 세대 기준으로 2,400만원입니다. 별도의 지급 신청이 필요하지 않으며, 통일부의 보호결정에 따라 자동으로 지급됩니다.\n\n정착금에 관한 추가 조건이나 방법이 필요하시면 말씀해 주세요.\n\n최종 자격과 최신 신청 가능 여부는 원문에서 확인해 주세요.",
+        "sections": [
+          {
+            "source_number": 1,
+            "explanation": "북한이탈주민 정착금 기본금은 2인 세대 기준으로 2,400만원입니다. 별도의 지급 신청이 필요하지 않으며, 통일부의 보호결정에 따라 자동으로 지급됩니다.",
+            "policyKey": "GOV24-125000000014"
+          }
+        ],
+        "message": "정착금에 관한 추가 조건이나 방법이 필요하시면 말씀해 주세요.",
+        "usage": {
+          "input_tokens": 5398,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_12h_tokens": 0,
+              "ttl_30m_tokens": 0
+            },
+            "cached_tokens": 0
+          },
+          "output_tokens": 85,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 5483
+        }
+      },
+      "elapsedMs": 3414,
+      "retrieved": [
+        {
+          "policy": {
+            "policy_key": "GOV24-125000000014",
+            "name": "북한이탈주민 정착금 지원(기본금)",
+            "source": "GOV24",
+            "source_url": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=592552&bnefType=all&svcId=125000000014"
+          },
+          "score": 1
+        },
+        {
+          "policy": {
+            "policy_key": "GOV24-125000000015",
+            "name": "북한이탈주민 정착금 지원(가산금)",
+            "source": "GOV24",
+            "source_url": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=736419&bnefType=all&svcId=125000000015"
+          },
+          "score": 0.7526871988163937
+        },
+        {
+          "policy": {
+            "policy_key": "GOV24-646000000129",
+            "name": "북한이탈주민 전남 정착지원금 지급",
+            "source": "GOV24",
+            "source_url": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=1002687&bnefType=all&svcId=646000000129"
+          },
+          "score": 0.6461628540221178
+        },
+        {
+          "policy": {
+            "policy_key": "GOV24-SD0000003310",
+            "name": "북한이탈주민 주거지원금 지급",
+            "source": "GOV24",
+            "source_url": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=82642&bnefType=all&svcId=SD0000003310"
+          },
+          "score": 0.6280176231491353
+        },
+        {
+          "policy": {
+            "policy_key": "GOV24-648000001076",
+            "name": "북한이탈주민 정착 지원",
+            "source": "GOV24",
+            "source_url": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=1006025&bnefType=all&svcId=648000001076"
+          },
+          "score": 0.6107817482735443
+        }
+      ]
+    },
+    {
+      "id": "N03",
+      "category": "정책명",
+      "question": "희망저축Ⅰ은 일하는 생계·의료급여 수급자가 10만원을 적립하면 정부가 얼마를 매칭하고 어떤 때 지급해?",
+      "policyKeys": [
+        "GOV24-135200005010"
+      ],
+      "facts": [
+        {
+          "label": "정부지원금 30만원",
+          "pattern": "30\\s*만|300[,.]?000\\s*원",
+          "path": "benefit.text",
+          "quote": "정부지원금(30만 원)"
+        },
+        {
+          "label": "탈수급 시 지급",
+          "pattern": "탈\\s*수급",
+          "path": "benefit.text",
+          "quote": "탈수급 시 지급"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "GOV24-135200005010"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "GOV24-135200005010",
+          "name": "자산형성지원사업(희망저축Ⅰ)",
+          "source": "GOV24",
+          "sourceUrl": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=805488&bnefType=all&svcId=135200005010"
+        }
+      ],
+      "grade": {
+        "rank": 1,
+        "retrievalApplicable": true,
+        "hitAt1": true,
+        "hitAt3": true,
+        "hitAt5": true,
+        "checks": [
+          {
+            "label": "정부지원금 30만원",
+            "passed": true
+          },
+          {
+            "label": "탈수급 시 지급",
+            "passed": true
+          }
+        ],
+        "factsPassed": 2,
+        "citationPassed": true,
+        "abstentionPassed": true,
+        "forbiddenMatches": [],
+        "answerPassed": true
+      },
+      "generated": {
+        "answer": "### 자산형성지원사업(희망저축Ⅰ) [1]\n\n희망저축Ⅰ은 일하는 생계·의료급여 수급자를 대상으로 합니다. 본인이 월 10만원을 적립하면 정부에서 30만원을 매칭하여 지원합니다. 지원금은 탈수급 시 지급됩니다.\n\n신청 방법은 방문신청이며, 모집은 2024년 3월, 4월, 6월, 8월, 10월에 예정되어 있습니다. 세부 모집일정은 주민센터를 통해 문의하면 됩니다.\n\n최종 자격과 최신 신청 가능 여부는 원문에서 확인해 주세요.",
+        "sections": [
+          {
+            "source_number": 1,
+            "explanation": "희망저축Ⅰ은 일하는 생계·의료급여 수급자를 대상으로 합니다. 본인이 월 10만원을 적립하면 정부에서 30만원을 매칭하여 지원합니다. 지원금은 탈수급 시 지급됩니다.",
+            "policyKey": "GOV24-135200005010"
+          }
+        ],
+        "message": "신청 방법은 방문신청이며, 모집은 2024년 3월, 4월, 6월, 8월, 10월에 예정되어 있습니다. 세부 모집일정은 주민센터를 통해 문의하면 됩니다.",
+        "usage": {
+          "input_tokens": 4275,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_12h_tokens": 0,
+              "ttl_30m_tokens": 0
+            },
+            "cached_tokens": 0
+          },
+          "output_tokens": 124,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 4399
+        }
+      },
+      "elapsedMs": 2810,
+      "retrieved": [
+        {
+          "policy": {
+            "policy_key": "GOV24-135200005010",
+            "name": "자산형성지원사업(희망저축Ⅰ)",
+            "source": "GOV24",
+            "source_url": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=805488&bnefType=all&svcId=135200005010"
+          },
+          "score": 1
+        },
+        {
+          "policy": {
+            "policy_key": "GOV24-135200005012",
+            "name": "자산형성지원사업(희망저축Ⅱ)",
+            "source": "GOV24",
+            "source_url": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=805492&bnefType=all&svcId=135200005012"
+          },
+          "score": 0.7583873708701778
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20250522005400210864",
+            "name": "청년내일저축계좌(근로능력 있는 수급자의 탈수급 지원)",
+            "source": "YOUTHCENTER",
+            "source_url": null
+          },
+          "score": 0.6142791901736326
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20260504005400113090",
+            "name": "청년내일저축계좌 지원",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.bokjiro.go.kr/ssis-tbu/index.do"
+          },
+          "score": 0.5767056338113081
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20261027005400214461",
+            "name": "영암군 청년 희망 디딤돌 통장사업",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.yeongam.go.kr/"
+          },
+          "score": 0.5593076265700876
+        }
+      ]
+    },
+    {
+      "id": "N04",
+      "category": "정책명",
+      "question": "희망저축Ⅱ에서 일하는 주거·교육급여 수급자가 본인 돈 10만원을 넣으면 정부지원금은 얼마야?",
+      "policyKeys": [
+        "GOV24-135200005012"
+      ],
+      "facts": [
+        {
+          "label": "정부지원금 10만원",
+          "pattern": "(?:정부|지원금)[\\s\\S]{0,30}10\\s*만|10\\s*만[\\s\\S]{0,20}매칭",
+          "path": "benefit.text",
+          "quote": "정부지원금(10만 원)을 매칭"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "GOV24-135200005012"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "GOV24-135200005012",
+          "name": "자산형성지원사업(희망저축Ⅱ)",
+          "source": "GOV24",
+          "sourceUrl": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=805492&bnefType=all&svcId=135200005012"
+        }
+      ],
+      "grade": {
+        "rank": 1,
+        "retrievalApplicable": true,
+        "hitAt1": true,
+        "hitAt3": true,
+        "hitAt5": true,
+        "checks": [
+          {
+            "label": "정부지원금 10만원",
+            "passed": true
+          }
+        ],
+        "factsPassed": 1,
+        "citationPassed": true,
+        "abstentionPassed": true,
+        "forbiddenMatches": [],
+        "answerPassed": true
+      },
+      "generated": {
+        "answer": "### 자산형성지원사업(희망저축Ⅱ) [1]\n\n희망저축Ⅱ는 일하는 주거·교육급여 수급자와 차상위자에게 본인적립금 10만원에 정부지원금 10만원을 매칭하여 지원하는 사업입니다. 즉, 본인이 10만원을 저축하면 정부에서 10만원을 추가로 지원받습니다.\n\n희망저축Ⅱ에서 본인 돈 10만원을 넣으면 정부지원금도 10만원이 지급됩니다. 추가로 궁금한 사항이 있다면 언제든지 질문해 주세요.\n\n최종 자격과 최신 신청 가능 여부는 원문에서 확인해 주세요.",
+        "sections": [
+          {
+            "source_number": 1,
+            "explanation": "희망저축Ⅱ는 일하는 주거·교육급여 수급자와 차상위자에게 본인적립금 10만원에 정부지원금 10만원을 매칭하여 지원하는 사업입니다. 즉, 본인이 10만원을 저축하면 정부에서 10만원을 추가로 지원받습니다.",
+            "policyKey": "GOV24-135200005012"
+          }
+        ],
+        "message": "희망저축Ⅱ에서 본인 돈 10만원을 넣으면 정부지원금도 10만원이 지급됩니다. 추가로 궁금한 사항이 있다면 언제든지 질문해 주세요.",
+        "usage": {
+          "input_tokens": 4259,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_12h_tokens": 0,
+              "ttl_30m_tokens": 0
+            },
+            "cached_tokens": 0
+          },
+          "output_tokens": 130,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 4389
+        }
+      },
+      "elapsedMs": 3895,
+      "retrieved": [
+        {
+          "policy": {
+            "policy_key": "GOV24-135200005012",
+            "name": "자산형성지원사업(희망저축Ⅱ)",
+            "source": "GOV24",
+            "source_url": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=805492&bnefType=all&svcId=135200005012"
+          },
+          "score": 1
+        },
+        {
+          "policy": {
+            "policy_key": "GOV24-135200005010",
+            "name": "자산형성지원사업(희망저축Ⅰ)",
+            "source": "GOV24",
+            "source_url": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=805488&bnefType=all&svcId=135200005010"
+          },
+          "score": 0.7742839568803629
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20250522005400210864",
+            "name": "청년내일저축계좌(근로능력 있는 수급자의 탈수급 지원)",
+            "source": "YOUTHCENTER",
+            "source_url": null
+          },
+          "score": 0.6076765689910617
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20260504005400113090",
+            "name": "청년내일저축계좌 지원",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.bokjiro.go.kr/ssis-tbu/index.do"
+          },
+          "score": 0.5717180889395428
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20250715005400111248",
+            "name": "청년내일저축계좌 지원사업",
+            "source": "YOUTHCENTER",
+            "source_url": null
+          },
+          "score": 0.5649778811746418
+        }
+      ]
+    },
+    {
+      "id": "N05",
+      "category": "복합조건",
+      "question": "보건복지부 청년내일저축계좌 자료에서 가입 연령 범위, 월 근로·사업소득 최저 기준, 가구 중위소득 기준을 알려줘.",
+      "policyKeys": [
+        "GOV24-135200005013"
+      ],
+      "facts": [
+        {
+          "label": "15~39세",
+          "pattern": "15[\\s\\S]{0,25}39\\s*세",
+          "path": "eligibility.target_text",
+          "quote": "만15~39세"
+        },
+        {
+          "label": "월 소득 10만원 이상",
+          "pattern": "10\\s*만[\\s\\S]{0,20}이상|이상[\\s\\S]{0,15}10\\s*만",
+          "path": "eligibility.target_text",
+          "quote": "월 10만원 이상"
+        },
+        {
+          "label": "기준중위소득 50% 이하",
+          "pattern": "50\\s*%[\\s\\S]{0,15}이하",
+          "path": "eligibility.target_text",
+          "quote": "기준 중위소득 50% 이하"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "GOV24-135200005013"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "GOV24-135200005013",
+          "name": "자산형성지원사업(청년내일저축계좌)",
+          "source": "GOV24",
+          "sourceUrl": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=805494&bnefType=all&svcId=135200005013"
+        }
+      ],
+      "grade": {
+        "rank": null,
+        "retrievalApplicable": true,
+        "hitAt1": false,
+        "hitAt3": false,
+        "hitAt5": false,
+        "checks": [
+          {
+            "label": "15~39세",
+            "passed": false
+          },
+          {
+            "label": "월 소득 10만원 이상",
+            "passed": false
+          },
+          {
+            "label": "기준중위소득 50% 이하",
+            "passed": false
+          }
+        ],
+        "factsPassed": 0,
+        "citationPassed": false,
+        "abstentionPassed": true,
+        "forbiddenMatches": [],
+        "answerPassed": false
+      },
+      "generated": {
+        "answer": "### 청년내일저축계좌 [1]\n\n가입 연령은 신청 당시 만 15세에서 만 39세입니다. 근로·사업소득은 월 10만원 이상 발생해야 하며, 가구의 소득인정액 기준은 중위소득 100% 이하입니다.\n\n### 청년내일저축계좌 [4]\n\n가입 연령은 만 15세부터 만 39세까지이며, 가구소득은 기준 중위소득 50% 이하이어야 하고, 근로소득은 월 10만원 이상 발생해야 합니다.\n\n### 청년내일저축계좌 지원 [5]\n\n가입 연령은 만 15세에서 만 39세이며, 가구소득은 기준 중위소득 50% 이하, 근로소득은 월 10만원 이상이 필요합니다.\n\n추가로 필요한 사용자 조건이나 궁금한 점은 언제든지 문의해주세요.\n\n최종 자격과 최신 신청 가능 여부는 원문에서 확인해 주세요.",
+        "sections": [
+          {
+            "source_number": 1,
+            "explanation": "가입 연령은 신청 당시 만 15세에서 만 39세입니다. 근로·사업소득은 월 10만원 이상 발생해야 하며, 가구의 소득인정액 기준은 중위소득 100% 이하입니다.",
+            "policyKey": "YOUTHCENTER-20260430005400113009"
+          },
+          {
+            "source_number": 4,
+            "explanation": "가입 연령은 만 15세부터 만 39세까지이며, 가구소득은 기준 중위소득 50% 이하이어야 하고, 근로소득은 월 10만원 이상 발생해야 합니다.",
+            "policyKey": "YOUTHCENTER-20250514005400110812"
+          },
+          {
+            "source_number": 5,
+            "explanation": "가입 연령은 만 15세에서 만 39세이며, 가구소득은 기준 중위소득 50% 이하, 근로소득은 월 10만원 이상이 필요합니다.",
+            "policyKey": "YOUTHCENTER-20250715005400211255"
+          }
+        ],
+        "message": "추가로 필요한 사용자 조건이나 궁금한 점은 언제든지 문의해주세요.",
+        "usage": {
+          "input_tokens": 3874,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_12h_tokens": 0,
+              "ttl_30m_tokens": 0
+            },
+            "cached_tokens": 0
+          },
+          "output_tokens": 200,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 4074
+        }
+      },
+      "elapsedMs": 4161,
+      "retrieved": [
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20260430005400113009",
+            "name": "청년내일저축계좌",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.129.go.kr/"
+          },
+          "score": 0.982985236788936
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20250827005400211528",
+            "name": "청년내일저축계좌",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000060"
+          },
+          "score": 0.9776648452881027
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20261004005400113879",
+            "name": "청년내일저축계좌",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.chungbuk.go.kr/young/contents.do?key=5036"
+          },
+          "score": 0.9315458926208589
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20250514005400110812",
+            "name": "청년내일저축계좌",
+            "source": "YOUTHCENTER",
+            "source_url": "https://hope.welfareinfo.or.kr/ntcn/prmtDetail.do"
+          },
+          "score": 0.9217278514284053
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20250715005400211255",
+            "name": "청년내일저축계좌 지원",
+            "source": "YOUTHCENTER",
+            "source_url": "www.bokjiro.go.kr"
+          },
+          "score": 0.9150864402971817
+        }
+      ]
+    },
+    {
+      "id": "N06",
+      "category": "상황설명",
+      "question": "가정폭력 피해자 보호시설에서 나와 자립하려고 해. 피해자와 동반아동에게 각각 얼마를 지원하고 원칙적인 입소기간 요건은?",
+      "policyKeys": [
+        "GOV24-138300000053"
+      ],
+      "facts": [
+        {
+          "label": "피해자 500만원",
+          "pattern": "피해자[\\s\\S]{0,25}500\\s*만",
+          "path": "benefit.text",
+          "quote": "피해자 500만원"
+        },
+        {
+          "label": "동반아동 250만원",
+          "pattern": "(?:동반\\s*)?아동[\\s\\S]{0,25}250\\s*만",
+          "path": "benefit.text",
+          "quote": "동반아동 250만원"
+        },
+        {
+          "label": "입소 4개월 이상",
+          "pattern": "4\\s*개월[\\s\\S]{0,15}이상",
+          "path": "eligibility.target_text",
+          "quote": "입소기간이 4개월 이상"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "GOV24-138300000053"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "GOV24-138300000053",
+          "name": "가정폭력 피해자 보호시설 퇴소자 자립지원금",
+          "source": "GOV24",
+          "sourceUrl": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=2147817&bnefType=all&svcId=138300000053"
+        }
+      ],
+      "grade": {
+        "rank": 1,
+        "retrievalApplicable": true,
+        "hitAt1": true,
+        "hitAt3": true,
+        "hitAt5": true,
+        "checks": [
+          {
+            "label": "피해자 500만원",
+            "passed": true
+          },
+          {
+            "label": "동반아동 250만원",
+            "passed": true
+          },
+          {
+            "label": "입소 4개월 이상",
+            "passed": true
+          }
+        ],
+        "factsPassed": 3,
+        "citationPassed": true,
+        "abstentionPassed": true,
+        "forbiddenMatches": [],
+        "answerPassed": true
+      },
+      "generated": {
+        "answer": "### 가정폭력 피해자 보호시설 퇴소자 자립지원금 [1]\n\n가정폭력 피해자 보호시설 퇴소 시 자립지원금으로 피해자에게 500만원, 동반아동에게 250만원이 지급됩니다. 자립지원금 신청을 위해서는 피해자와 동반아동의 입소 기간이 원칙적으로 4개월 이상이어야 하며, 자립을 위한 준비가 필요해야 합니다. 또한 보호시설 퇴소일과 재입소일 간의 간격이 15일 미만일 경우, 입소 기간을 합쳐 4개월이 되는 경우에도 신청 가능합니다.\n\n자립지원금 신청 시에는 4개월 이상의 입소기간이 필요합니다. 추가적으로 궁금한 점이 있으면 말씀해 주세요.\n\n최종 자격과 최신 신청 가능 여부는 원문에서 확인해 주세요.",
+        "sections": [
+          {
+            "source_number": 1,
+            "explanation": "가정폭력 피해자 보호시설 퇴소 시 자립지원금으로 피해자에게 500만원, 동반아동에게 250만원이 지급됩니다. 자립지원금 신청을 위해서는 피해자와 동반아동의 입소 기간이 원칙적으로 4개월 이상이어야 하며, 자립을 위한 준비가 필요해야 합니다. 또한 보호시설 퇴소일과 재입소일 간의 간격이 15일 미만일 경우, 입소 기간을 합쳐 4개월이 되는 경우에도 신청 가능합니다.",
+            "policyKey": "GOV24-138300000053"
+          }
+        ],
+        "message": "자립지원금 신청 시에는 4개월 이상의 입소기간이 필요합니다. 추가적으로 궁금한 점이 있으면 말씀해 주세요.",
+        "usage": {
+          "input_tokens": 5731,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_12h_tokens": 0,
+              "ttl_30m_tokens": 0
+            },
+            "cached_tokens": 0
+          },
+          "output_tokens": 168,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 5899
+        }
+      },
+      "elapsedMs": 4077,
+      "retrieved": [
+        {
+          "policy": {
+            "policy_key": "GOV24-138300000053",
+            "name": "가정폭력 피해자 보호시설 퇴소자 자립지원금",
+            "source": "GOV24",
+            "source_url": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=2147817&bnefType=all&svcId=138300000053"
+          },
+          "score": 1
+        },
+        {
+          "policy": {
+            "policy_key": "GOV24-138300000016",
+            "name": "가정폭력피해자 국민임대주택 우선 입주권 부여",
+            "source": "GOV24",
+            "source_url": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=724938&bnefType=all&svcId=138300000016"
+          },
+          "score": 0.6519260994691195
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20250716005400111291",
+            "name": "보호종료아동 자립수당",
+            "source": "YOUTHCENTER",
+            "source_url": null
+          },
+          "score": 0.48080937430938975
+        },
+        {
+          "policy": {
+            "policy_key": "GOV24-138300000067",
+            "name": "청소년복지시설 퇴소청소년 자립지원수당",
+            "source": "GOV24",
+            "source_url": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=2157516&bnefType=all&svcId=138300000067"
+          },
+          "score": 0.45618078460969147
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20260410005400212678",
+            "name": "보호종료아동 자립수당",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.ulsan.go.kr/s/ulsanyouth/bbs/view.do?bbsId=BBS_0000000000000316&mId=008001001000000000&dataId=56189"
+          },
+          "score": 0.45605415685056694
+        }
+      ]
+    },
+    {
+      "id": "N07",
+      "category": "상황설명",
+      "question": "과거 2년 이상 연속 보호를 받은 아동복지시설·가정위탁 보호종료 청년의 자립지원수당은 매월 얼마를 몇 년 지급해?",
+      "policyKeys": [
+        "GOV24-138300000067"
+      ],
+      "facts": [
+        {
+          "label": "월 50만원",
+          "pattern": "50\\s*만|500[,.]?000\\s*원",
+          "path": "benefit.text",
+          "quote": "월 50만 원"
+        },
+        {
+          "label": "보호종료 후 5년",
+          "pattern": "5\\s*년",
+          "path": "benefit.text",
+          "quote": "보호 종료 후 5년"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "GOV24-138300000067"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "GOV24-138300000067",
+          "name": "청소년복지시설 퇴소청소년 자립지원수당",
+          "source": "GOV24",
+          "sourceUrl": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=2157516&bnefType=all&svcId=138300000067"
+        }
+      ],
+      "grade": {
+        "rank": null,
+        "retrievalApplicable": true,
+        "hitAt1": false,
+        "hitAt3": false,
+        "hitAt5": false,
+        "checks": [
+          {
+            "label": "월 50만원",
+            "passed": false
+          },
+          {
+            "label": "보호종료 후 5년",
+            "passed": false
+          }
+        ],
+        "factsPassed": 0,
+        "citationPassed": false,
+        "abstentionPassed": true,
+        "forbiddenMatches": [],
+        "answerPassed": false
+      },
+      "generated": {
+        "answer": "### 보호종료아동 자립수당 및 자립정착금 지원 [1]\n\n보호종료아동에게 자립수당으로 매월 50만원을 5년간 지원하며, 자립정착금은 1회 1천만원을 지원합니다.\n\n### 보호종료아동 자립수당 [2]\n\n아동복지시설 및 가정위탁 보호종료아동에게 매월 50만원의 자립수당을 지급합니다.\n\n### 자립준비청년(보호종료아동) 자립수당 지급 [3]\n\n보호종료아동에게 매월 50만원의 자립수당을 지원하며, 신청자는 만 18세 이후 가정위탁 보호종료 또는 아동복지시설 퇴소 아동이다.\n\n### 보호종료아동 자립지원(자립수당 지급) [5]\n\n자립준비청년에게 자립수당으로 매월 50만원씩 60회 지급하며, 보호종료일 기준으로 과거 2년 이상 연속하여 보호받은 아동이 대상입니다.\n\n신청과 관련된 추가 정보가 필요하다면, 본인이 거주하는 주소지의 읍․면․동 행정복지센터에 문의하시기 바랍니다.\n\n최종 자격과 최신 신청 가능 여부는 원문에서 확인해 주세요.",
+        "sections": [
+          {
+            "source_number": 1,
+            "explanation": "보호종료아동에게 자립수당으로 매월 50만원을 5년간 지원하며, 자립정착금은 1회 1천만원을 지원합니다.",
+            "policyKey": "YOUTHCENTER-20250909005400211681"
+          },
+          {
+            "source_number": 2,
+            "explanation": "아동복지시설 및 가정위탁 보호종료아동에게 매월 50만원의 자립수당을 지급합니다.",
+            "policyKey": "GOV24-391000000113"
+          },
+          {
+            "source_number": 3,
+            "explanation": "보호종료아동에게 매월 50만원의 자립수당을 지원하며, 신청자는 만 18세 이후 가정위탁 보호종료 또는 아동복지시설 퇴소 아동이다.",
+            "policyKey": "GOV24-508000000565"
+          },
+          {
+            "source_number": 5,
+            "explanation": "자립준비청년에게 자립수당으로 매월 50만원씩 60회 지급하며, 보호종료일 기준으로 과거 2년 이상 연속하여 보호받은 아동이 대상입니다.",
+            "policyKey": "YOUTHCENTER-20260415005400212744"
+          }
+        ],
+        "message": "신청과 관련된 추가 정보가 필요하다면, 본인이 거주하는 주소지의 읍․면․동 행정복지센터에 문의하시기 바랍니다.",
+        "usage": {
+          "input_tokens": 4028,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_12h_tokens": 0,
+              "ttl_30m_tokens": 0
+            },
+            "cached_tokens": 0
+          },
+          "output_tokens": 250,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 4278
+        }
+      },
+      "elapsedMs": 3653,
+      "retrieved": [
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20250909005400211681",
+            "name": "보호종료아동 자립수당 및 자립정착금 지원",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.bokjiro.go.kr/"
+          },
+          "score": 0.9509811172588107
+        },
+        {
+          "policy": {
+            "policy_key": "GOV24-391000000113",
+            "name": "보호종료아동 자립수당",
+            "source": "GOV24",
+            "source_url": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=1001431&bnefType=all&svcId=391000000113"
+          },
+          "score": 0.9077416244255372
+        },
+        {
+          "policy": {
+            "policy_key": "GOV24-508000000565",
+            "name": "자립준비청년(보호종료아동) 자립수당 지급",
+            "source": "GOV24",
+            "source_url": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=999138&bnefType=all&svcId=508000000565"
+          },
+          "score": 0.8791787222856113
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20260430005400212960",
+            "name": "아동복지시설 보호종료아동 자립정착금",
+            "source": "YOUTHCENTER",
+            "source_url": "https://jejuyouthdream.com/policy/detail/108"
+          },
+          "score": 0.8673949937741003
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20260415005400212744",
+            "name": "보호종료아동 자립지원(자립수당 지급)",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.bokjiro.go.kr/ssis-tbu/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001175"
+          },
+          "score": 0.8573698571149655
+        }
+      ]
+    },
+    {
+      "id": "N08",
+      "category": "복합조건",
+      "question": "중소기업 장기근속자 주택 우선공급은 여러 중소기업 경력을 합치면 몇 년, 동일 기업만으로는 몇 년이 필요해? 무주택 요건도 있어?",
+      "policyKeys": [
+        "GOV24-142000000014"
+      ],
+      "facts": [
+        {
+          "label": "중소기업 경력 합계 5년 이상",
+          "pattern": "5\\s*년[\\s\\S]{0,15}이상",
+          "path": "eligibility.target_text",
+          "quote": "중소기업에서 5년 이상"
+        },
+        {
+          "label": "동일 중소기업 3년 이상",
+          "pattern": "3\\s*년[\\s\\S]{0,15}이상",
+          "path": "eligibility.target_text",
+          "quote": "동일한 중소기업에 3년 이상"
+        },
+        {
+          "label": "무주택 세대구성원",
+          "pattern": "무주택",
+          "path": "eligibility.target_text",
+          "quote": "무주택 세대구성원"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "GOV24-142000000014"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "GOV24-142000000014",
+          "name": "중소기업장기근속자주택우선공급",
+          "source": "GOV24",
+          "sourceUrl": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=999197&bnefType=all&svcId=142000000014"
+        }
+      ],
+      "grade": {
+        "rank": 1,
+        "retrievalApplicable": true,
+        "hitAt1": true,
+        "hitAt3": true,
+        "hitAt5": true,
+        "checks": [
+          {
+            "label": "중소기업 경력 합계 5년 이상",
+            "passed": true
+          },
+          {
+            "label": "동일 중소기업 3년 이상",
+            "passed": true
+          },
+          {
+            "label": "무주택 세대구성원",
+            "passed": true
+          }
+        ],
+        "factsPassed": 3,
+        "citationPassed": true,
+        "abstentionPassed": true,
+        "forbiddenMatches": [],
+        "answerPassed": true
+      },
+      "generated": {
+        "answer": "### 중소기업장기근속자주택우선공급 [1]\n\n중소기업 장기근속자 주택 우선공급은 중소기업에 5년 이상 근무하거나 동일한 중소기업에서 3년 이상 근무한 경력이 있어야 합니다. 즉, 여러 중소기업에서의 경력을 합산하여 총 5년 이상이면 자격이 주어지고, 동일 기업에서의 경력만으로는 3년 이상이 필요합니다. 또한, 신청자는 공고한 날을 기준으로 무주택 세대구성원이어야 하며, 주택 보유사실을 은폐하거나 서류를 위조하는 경우 선정 및 계약이 취소될 수 있습니다.\n\n추가로 필요한 사용자 조건이 있으면 말씀해 주세요.\n\n최종 자격과 최신 신청 가능 여부는 원문에서 확인해 주세요.",
+        "sections": [
+          {
+            "source_number": 1,
+            "explanation": "중소기업 장기근속자 주택 우선공급은 중소기업에 5년 이상 근무하거나 동일한 중소기업에서 3년 이상 근무한 경력이 있어야 합니다. 즉, 여러 중소기업에서의 경력을 합산하여 총 5년 이상이면 자격이 주어지고, 동일 기업에서의 경력만으로는 3년 이상이 필요합니다. 또한, 신청자는 공고한 날을 기준으로 무주택 세대구성원이어야 하며, 주택 보유사실을 은폐하거나 서류를 위조하는 경우 선정 및 계약이 취소될 수 있습니다.",
+            "policyKey": "GOV24-142000000014"
+          }
+        ],
+        "message": "추가로 필요한 사용자 조건이 있으면 말씀해 주세요.",
+        "usage": {
+          "input_tokens": 3823,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_12h_tokens": 0,
+              "ttl_30m_tokens": 0
+            },
+            "cached_tokens": 0
+          },
+          "output_tokens": 170,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 3993
+        }
+      },
+      "elapsedMs": 3077,
+      "retrieved": [
+        {
+          "policy": {
+            "policy_key": "GOV24-142000000014",
+            "name": "중소기업장기근속자주택우선공급",
+            "source": "GOV24",
+            "source_url": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=999197&bnefType=all&svcId=142000000014"
+          },
+          "score": 1
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20250829005400211535",
+            "name": "중소기업 정규직 프로젝트(구미시)",
+            "source": "YOUTHCENTER",
+            "source_url": "http://gumisb.or.kr/"
+          },
+          "score": 0.4756366409070613
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20250902005400211573",
+            "name": "청년일자리 근속장려금 지원사업",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.gumi.go.kr/portal/board/post/view.do?bcIdx=1&mid=0401020000&idx=821984"
+          },
+          "score": 0.46765144998531727
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20250718005400211383",
+            "name": "공공임대주택 공급",
+            "source": "YOUTHCENTER",
+            "source_url": "www.jpdc.co.kr"
+          },
+          "score": 0.4668495931844482
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20261029005400214541",
+            "name": "중소기업 청년근로자 3·6·9 미래희망 지원사업",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.gc.go.kr/"
+          },
+          "score": 0.4643782435439836
+        }
+      ]
+    },
+    {
+      "id": "N09",
+      "category": "상황설명",
+      "question": "농촌의 저소득 가구가 노후 주택 수리를 봉사단체를 통해 지원받는 사업의 가구당 한도는 얼마야? 세입자도 대상에 포함돼?",
+      "policyKeys": [
+        "GOV24-154300005037"
+      ],
+      "facts": [
+        {
+          "label": "가구당 700만원 한도",
+          "pattern": "700\\s*만|7[,.]?000[,.]?000\\s*원",
+          "path": "benefit.text",
+          "quote": "가구당 700만원 한도"
+        },
+        {
+          "label": "임차인 포함",
+          "pattern": "임차인|임차\\s*가구|세입자",
+          "path": "benefit.text",
+          "quote": "임차인 포함"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "GOV24-154300005037"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "GOV24-154300005037",
+          "name": "농촌취약계층주거개선",
+          "source": "GOV24",
+          "sourceUrl": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=2149942&bnefType=all&svcId=154300005037"
+        }
+      ],
+      "grade": {
+        "rank": 1,
+        "retrievalApplicable": true,
+        "hitAt1": true,
+        "hitAt3": true,
+        "hitAt5": true,
+        "checks": [
+          {
+            "label": "가구당 700만원 한도",
+            "passed": true
+          },
+          {
+            "label": "임차인 포함",
+            "passed": true
+          }
+        ],
+        "factsPassed": 2,
+        "citationPassed": true,
+        "abstentionPassed": true,
+        "forbiddenMatches": [],
+        "answerPassed": true
+      },
+      "generated": {
+        "answer": "### 농촌취약계층주거개선 [1]\n\n농촌지역 취약계층의 노후 및 불량 주택 수리에 대한 지원으로, 가구당 최대 700만 원까지 지원됩니다. 지원 대상은 기초생활수급권자, 차상위계층, 소년소녀가장, 조손가구, 독거노인, 장애인, 다문화가정, 한부모가정 등 저소득 가구로서 임차인도 포함됩니다.\n\n저소득 가구의 노후 주택 수리를 지원하는 정책의 가구당 한도는 700만 원이며, 세입자도 지원 대상에 포함됩니다. 추가적인 정보가 필요하시면 문의해 주세요.\n\n최종 자격과 최신 신청 가능 여부는 원문에서 확인해 주세요.",
+        "sections": [
+          {
+            "source_number": 1,
+            "explanation": "농촌지역 취약계층의 노후 및 불량 주택 수리에 대한 지원으로, 가구당 최대 700만 원까지 지원됩니다. 지원 대상은 기초생활수급권자, 차상위계층, 소년소녀가장, 조손가구, 독거노인, 장애인, 다문화가정, 한부모가정 등 저소득 가구로서 임차인도 포함됩니다.",
+            "policyKey": "GOV24-154300005037"
+          }
+        ],
+        "message": "저소득 가구의 노후 주택 수리를 지원하는 정책의 가구당 한도는 700만 원이며, 세입자도 지원 대상에 포함됩니다. 추가적인 정보가 필요하시면 문의해 주세요.",
+        "usage": {
+          "input_tokens": 6036,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_12h_tokens": 0,
+              "ttl_30m_tokens": 0
+            },
+            "cached_tokens": 0
+          },
+          "output_tokens": 162,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 6198
+        }
+      },
+      "elapsedMs": 3685,
+      "retrieved": [
+        {
+          "policy": {
+            "policy_key": "GOV24-154300005037",
+            "name": "농촌취약계층주거개선",
+            "source": "GOV24",
+            "source_url": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=2149942&bnefType=all&svcId=154300005037"
+          },
+          "score": 1
+        },
+        {
+          "policy": {
+            "policy_key": "GOV24-611000000131",
+            "name": "저소득 장애인 주거편의 지원",
+            "source": "GOV24",
+            "source_url": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=1002483&bnefType=all&svcId=611000000131"
+          },
+          "score": 0.769643355430053
+        },
+        {
+          "policy": {
+            "policy_key": "GOV24-398000000117",
+            "name": "저소득 장애인 주거환경 개선 지원",
+            "source": "GOV24",
+            "source_url": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=1003404&bnefType=all&svcId=398000000117"
+          },
+          "score": 0.7558171115729315
+        },
+        {
+          "policy": {
+            "policy_key": "GOV24-474000000112",
+            "name": "귀농·귀촌·귀향인 주택 수리비 지원",
+            "source": "GOV24",
+            "source_url": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=1002297&bnefType=all&svcId=474000000112"
+          },
+          "score": 0.6880383032494428
+        },
+        {
+          "policy": {
+            "policy_key": "GOV24-362000000106",
+            "name": "행복둥지 사랑의 집수리 지원",
+            "source": "GOV24",
+            "source_url": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=1004441&bnefType=all&svcId=362000000106"
+          },
+          "score": 0.6813026504229445
+        }
+      ]
+    },
+    {
+      "id": "N10",
+      "category": "지역구분",
+      "question": "버팀목전세자금대출 일반가구의 한도를 수도권과 수도권 밖으로 나눠 알려줘. 신혼가구 한도와 섞지 말아줘.",
+      "policyKeys": [
+        "GOV24-161300000076"
+      ],
+      "facts": [
+        {
+          "label": "일반가구 수도권 1억2천만원",
+          "pattern": "1\\s*억\\s*2\\s*천|1[.]2\\s*억|12[,.]?000\\s*만",
+          "path": "benefit.text",
+          "quote": "일반가구: 수도권 최대 1억 2천만원"
+        },
+        {
+          "label": "그 외 8천만원",
+          "pattern": "8\\s*천\\s*만|8[,.]?000\\s*만|80[,.]?000[,.]?000\\s*원",
+          "path": "benefit.text",
+          "quote": "그 외 지역 최대 8천만원"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "GOV24-161300000076"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "GOV24-161300000076",
+          "name": "버팀목전세자금대출",
+          "source": "GOV24",
+          "sourceUrl": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=739245&bnefType=all&svcId=161300000076"
+        }
+      ],
+      "grade": {
+        "rank": 1,
+        "retrievalApplicable": true,
+        "hitAt1": true,
+        "hitAt3": true,
+        "hitAt5": true,
+        "checks": [
+          {
+            "label": "일반가구 수도권 1억2천만원",
+            "passed": true
+          },
+          {
+            "label": "그 외 8천만원",
+            "passed": true
+          }
+        ],
+        "factsPassed": 2,
+        "citationPassed": true,
+        "abstentionPassed": true,
+        "forbiddenMatches": [],
+        "answerPassed": true
+      },
+      "generated": {
+        "answer": "### 버팀목전세자금대출 [1]\n\n버팀목전세자금대출의 일반가구 한도는 수도권에서 최대 1억 2천만원, 수도권 밖에서는 최대 8천만원입니다.\n\n버팀목전세자금대출의 지원금 한도는 수도권과 수도권 밖으로 나누어 제공됩니다. 추가로 필요한 사용자 조건이 있으면 말씀해 주세요.\n\n최종 자격과 최신 신청 가능 여부는 원문에서 확인해 주세요.",
+        "sections": [
+          {
+            "source_number": 1,
+            "explanation": "버팀목전세자금대출의 일반가구 한도는 수도권에서 최대 1억 2천만원, 수도권 밖에서는 최대 8천만원입니다.",
+            "policyKey": "GOV24-161300000076"
+          }
+        ],
+        "message": "버팀목전세자금대출의 지원금 한도는 수도권과 수도권 밖으로 나누어 제공됩니다. 추가로 필요한 사용자 조건이 있으면 말씀해 주세요.",
+        "usage": {
+          "input_tokens": 5337,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_12h_tokens": 0,
+              "ttl_30m_tokens": 0
+            },
+            "cached_tokens": 0
+          },
+          "output_tokens": 97,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 5434
+        }
+      },
+      "elapsedMs": 3212,
+      "retrieved": [
+        {
+          "policy": {
+            "policy_key": "GOV24-161300000076",
+            "name": "버팀목전세자금대출",
+            "source": "GOV24",
+            "source_url": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=739245&bnefType=all&svcId=161300000076"
+          },
+          "score": 1
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20260430005400212957",
+            "name": "부산 전세피해 임차인 버팀목 전세자금 대출이자 지원사업",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.busan.go.kr/depart/charterdamage001/1662197"
+          },
+          "score": 0.6351526166941782
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20261103005400214712",
+            "name": "청년전용 버팀목 전세자금 대출이자 지원",
+            "source": "YOUTHCENTER",
+            "source_url": "https://anbang.daegu.go.kr/"
+          },
+          "score": 0.6344840565613672
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20250502005400210776",
+            "name": "청년전용 버팀목 전세자금 대출이자 지원 사업 관리",
+            "source": "YOUTHCENTER",
+            "source_url": "https://anbang.daegu.go.kr/youthBeotim/businessOverView.do"
+          },
+          "score": 0.6308491645867855
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20240109005400100004",
+            "name": "신혼부부 전용 전세자금",
+            "source": "YOUTHCENTER",
+            "source_url": "https://nhuf.molit.go.kr/FP/FP05/FP0502/FP05020401.jsp"
+          },
+          "score": 0.592177256669917
+        }
+      ]
+    },
+    {
+      "id": "N11",
+      "category": "예외조건",
+      "question": "장애인 주택주거용 편의시설 설치지원은 다른 법령의 집수리 지원을 받은 이력이 있으면 무조건 제외돼? 지원 내용이 중복되지 않는 경우도 설명해줘.",
+      "policyKeys": [
+        "GOV24-161300000081"
+      ],
+      "facts": [
+        {
+          "label": "지원내용 비중복 시 가능",
+          "pattern": "중복되지[\\s\\S]{0,45}가능|중복.{0,10}않[\\s\\S]{0,45}가능|중복[\\s\\S]{0,20}없[\\s\\S]{0,30}가능",
+          "path": "eligibility.criteria_text",
+          "quote": "지원내용이 중복되지 않은 경우 지원 가능"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "GOV24-161300000081"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "GOV24-161300000081",
+          "name": "장애인 주택주거용 편의시설 설치지원",
+          "source": "GOV24",
+          "sourceUrl": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=999072&bnefType=all&svcId=161300000081"
+        }
+      ],
+      "grade": {
+        "rank": 1,
+        "retrievalApplicable": true,
+        "hitAt1": true,
+        "hitAt3": true,
+        "hitAt5": true,
+        "checks": [
+          {
+            "label": "지원내용 비중복 시 가능",
+            "passed": false
+          }
+        ],
+        "factsPassed": 0,
+        "citationPassed": true,
+        "abstentionPassed": true,
+        "forbiddenMatches": [],
+        "answerPassed": false
+      },
+      "generated": {
+        "answer": "### 장애인 주택주거용 편의시설 설치지원 [1]\n\n장애인 주택주거용 편의시설 설치지원은 장애인의 이동 및 생활에 적합하도록 주거용 편의시설 개선에 소요되는 비용을 지원합니다. 지원대상은 등록 장애인으로, 가구의 소득이 전년도 도시근로자 가구당 월평균 소득 이하인 자로 제한되며, 주택 내 편의시설 및 안전장치, 이동 편의시설 등의 설치 비용을 최대 380만원까지 국가와 지자체가 공동으로 부담합니다. 또한, 중복수혜불가 조건이 있으며 지자체에서 지원을 받고 3년이 경과하지 않거나, 금융기관에서 주택개조 비용융자를 추천받아 개조지원을 받았던 경우 지원받을 수 없습니다. 다만, 유사 주거환경 개선사업의 지원 내용이 중복되지 않는 경우는 지원을 받을 수 있습니다.\n\n### 장애인 주택개조 지원 [2]\n\n장애인 주택개조 지원은 저소득 장애인 가구에 주거용 편의시설 설치를 지원하는 것으로, 소득기준은 전년도 도시근로자 가구당 월평균 소득액 이하입니다. 신청자는 관내 거주 장애인으로, 유사한 주택개조 지원을 받고 3년이 경과하지 않은 경우에는 지원이 제외됩니다.\n\n### 저소득 장애인 주거편의 지원 [3]\n\n저소득 장애인 주거편의 지원은 기초수급자 또는 차상위계층으로 중증 장애인이 포함된 가구에 대한 집수리 및 가정 내 잔고장 수리 서비스를 제공합니다. 기준 중위소득 50~65% 이하인 가구가 해당되며, 지원 내용에 대해서는 장애인 복지법에 따라 달라질 수 있습니다.\n\n### 장애인 주택개조사업 [5]\n\n장애인 주택개조사업은 등록 장애인 중 소득기준에 맞고 주택소유 또는 장기임대 주택에 거주하는 자에게 지원됩니다. 주택 내 편의시설 및 안전장치의 개보수를 지원하며, 소득 기준은 전년도 도시근로자 가구당 월평균 소득액 이하로 제한됩니다.\n\n지원 내용이 중복되지 않는 경우에도 장애인 주택주거용 편의시설 설치지원의 중복수혜불가 조건에 해당하지 않는다면 신청할 수 있습니다. 단, 각 정책마다 조건이 다를 수 있으니 구체적인 사항은 해당 정책의 안내를 참조하시기 바랍니다.\n\n최종 자격과 최신 신청 가능 여부는 원문에서 확인해 주세요.",
+        "sections": [
+          {
+            "source_number": 1,
+            "explanation": "장애인 주택주거용 편의시설 설치지원은 장애인의 이동 및 생활에 적합하도록 주거용 편의시설 개선에 소요되는 비용을 지원합니다. 지원대상은 등록 장애인으로, 가구의 소득이 전년도 도시근로자 가구당 월평균 소득 이하인 자로 제한되며, 주택 내 편의시설 및 안전장치, 이동 편의시설 등의 설치 비용을 최대 380만원까지 국가와 지자체가 공동으로 부담합니다. 또한, 중복수혜불가 조건이 있으며 지자체에서 지원을 받고 3년이 경과하지 않거나, 금융기관에서 주택개조 비용융자를 추천받아 개조지원을 받았던 경우 지원받을 수 없습니다. 다만, 유사 주거환경 개선사업의 지원 내용이 중복되지 않는 경우는 지원을 받을 수 있습니다.",
+            "policyKey": "GOV24-161300000081"
+          },
+          {
+            "source_number": 2,
+            "explanation": "장애인 주택개조 지원은 저소득 장애인 가구에 주거용 편의시설 설치를 지원하는 것으로, 소득기준은 전년도 도시근로자 가구당 월평균 소득액 이하입니다. 신청자는 관내 거주 장애인으로, 유사한 주택개조 지원을 받고 3년이 경과하지 않은 경우에는 지원이 제외됩니다. ",
+            "policyKey": "GOV24-405000000635"
+          },
+          {
+            "source_number": 3,
+            "explanation": "저소득 장애인 주거편의 지원은 기초수급자 또는 차상위계층으로 중증 장애인이 포함된 가구에 대한 집수리 및 가정 내 잔고장 수리 서비스를 제공합니다. 기준 중위소득 50~65% 이하인 가구가 해당되며, 지원 내용에 대해서는 장애인 복지법에 따라 달라질 수 있습니다.",
+            "policyKey": "GOV24-611000000131"
+          },
+          {
+            "source_number": 5,
+            "explanation": "장애인 주택개조사업은 등록 장애인 중 소득기준에 맞고 주택소유 또는 장기임대 주택에 거주하는 자에게 지원됩니다. 주택 내 편의시설 및 안전장치의 개보수를 지원하며, 소득 기준은 전년도 도시근로자 가구당 월평균 소득액 이하로 제한됩니다.",
+            "policyKey": "GOV24-629000000793"
+          }
+        ],
+        "message": "지원 내용이 중복되지 않는 경우에도 장애인 주택주거용 편의시설 설치지원의 중복수혜불가 조건에 해당하지 않는다면 신청할 수 있습니다. 단, 각 정책마다 조건이 다를 수 있으니 구체적인 사항은 해당 정책의 안내를 참조하시기 바랍니다.",
+        "usage": {
+          "input_tokens": 5613,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_12h_tokens": 0,
+              "ttl_30m_tokens": 0
+            },
+            "cached_tokens": 0
+          },
+          "output_tokens": 559,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 6172
+        }
+      },
+      "elapsedMs": 7021,
+      "retrieved": [
+        {
+          "policy": {
+            "policy_key": "GOV24-161300000081",
+            "name": "장애인 주택주거용 편의시설 설치지원",
+            "source": "GOV24",
+            "source_url": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=999072&bnefType=all&svcId=161300000081"
+          },
+          "score": 1
+        },
+        {
+          "policy": {
+            "policy_key": "GOV24-405000000635",
+            "name": "장애인 주택개조 지원",
+            "source": "GOV24",
+            "source_url": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=1001615&bnefType=all&svcId=405000000635"
+          },
+          "score": 0.537728867514585
+        },
+        {
+          "policy": {
+            "policy_key": "GOV24-611000000131",
+            "name": "저소득 장애인 주거편의 지원",
+            "source": "GOV24",
+            "source_url": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=1002483&bnefType=all&svcId=611000000131"
+          },
+          "score": 0.5348181810320128
+        },
+        {
+          "policy": {
+            "policy_key": "GOV24-314000000114",
+            "name": "장애인 주거환경 개선 지원",
+            "source": "GOV24",
+            "source_url": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=1003758&bnefType=all&svcId=314000000114"
+          },
+          "score": 0.5261540563787765
+        },
+        {
+          "policy": {
+            "policy_key": "GOV24-629000000793",
+            "name": "장애인 주택개조사업",
+            "source": "GOV24",
+            "source_url": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=2130827&bnefType=all&svcId=629000000793"
+          },
+          "score": 0.5255284580091402
+        }
+      ]
+    },
+    {
+      "id": "N12",
+      "category": "정책명",
+      "question": "청년주택드림 청약통장 자료의 우대금리 가산폭은 몇 %p이며 적용 납입원금 한도와 최대 기간은 얼마야? 최종 이율과 가산폭을 구분해줘.",
+      "policyKeys": [
+        "GOV24-161300000088"
+      ],
+      "facts": [
+        {
+          "label": "가산폭 1.7%p",
+          "pattern": "1[.]7\\s*%\\s*p|1[.]7\\s*퍼센트\\s*포인트",
+          "path": "benefit.text",
+          "quote": "우대금리 1.7%p"
+        },
+        {
+          "label": "원금 5000만원 한도",
+          "pattern": "5[,.]?000\\s*만|50[,.]?000[,.]?000\\s*원",
+          "path": "benefit.text",
+          "quote": "납입원금 5,000만원 한도"
+        },
+        {
+          "label": "최대 10년",
+          "pattern": "10\\s*년",
+          "path": "benefit.text",
+          "quote": "최대 10년간"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "GOV24-161300000088"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "GOV24-161300000088",
+          "name": "청년주택드림 청약통장",
+          "source": "GOV24",
+          "sourceUrl": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=999078&bnefType=all&svcId=161300000088"
+        }
+      ],
+      "grade": {
+        "rank": 1,
+        "retrievalApplicable": true,
+        "hitAt1": true,
+        "hitAt3": true,
+        "hitAt5": true,
+        "checks": [
+          {
+            "label": "가산폭 1.7%p",
+            "passed": true
+          },
+          {
+            "label": "원금 5000만원 한도",
+            "passed": true
+          },
+          {
+            "label": "최대 10년",
+            "passed": true
+          }
+        ],
+        "factsPassed": 3,
+        "citationPassed": true,
+        "abstentionPassed": true,
+        "forbiddenMatches": [],
+        "answerPassed": true
+      },
+      "generated": {
+        "answer": "### 청년주택드림 청약통장 [1]\n\n청년주택드림 청약통장에 대한 우대금리는 최대 1.7%p입니다. 적용되는 납입 원금 한도는 5,000만원이며, 이 우대금리는 최대 10년간 적용됩니다.\n\n최종 이율은 1.7%p의 우대금리이며, 청약통장 가입 후 최대 10년간 이 금리를 적용받을 수 있습니다. 신청 자격 및 방법이 필요하시면 알려주세요.\n\n최종 자격과 최신 신청 가능 여부는 원문에서 확인해 주세요.",
+        "sections": [
+          {
+            "source_number": 1,
+            "explanation": "청년주택드림 청약통장에 대한 우대금리는 최대 1.7%p입니다. 적용되는 납입 원금 한도는 5,000만원이며, 이 우대금리는 최대 10년간 적용됩니다.",
+            "policyKey": "GOV24-161300000088"
+          }
+        ],
+        "message": "최종 이율은 1.7%p의 우대금리이며, 청약통장 가입 후 최대 10년간 이 금리를 적용받을 수 있습니다. 신청 자격 및 방법이 필요하시면 알려주세요.",
+        "usage": {
+          "input_tokens": 8755,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_12h_tokens": 0,
+              "ttl_30m_tokens": 0
+            },
+            "cached_tokens": 0
+          },
+          "output_tokens": 123,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 8878
+        }
+      },
+      "elapsedMs": 2869,
+      "retrieved": [
+        {
+          "policy": {
+            "policy_key": "GOV24-161300000088",
+            "name": "청년주택드림 청약통장",
+            "source": "GOV24",
+            "source_url": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=999078&bnefType=all&svcId=161300000088"
+          },
+          "score": 0.9978149652793774
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20260616005400113238",
+            "name": "청년주택드림청약통장",
+            "source": "YOUTHCENTER",
+            "source_url": "https://nhuf.molit.go.kr/FP/FP07/FP0701/FP07010301.jsp"
+          },
+          "score": 0.858686361747045
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20250226005400110565",
+            "name": "청년주택드림청약통장",
+            "source": "YOUTHCENTER",
+            "source_url": "https://nhuf.molit.go.kr/FP/FP07/FP0701/FP07010301.jsp"
+          },
+          "score": 0.8351704144767662
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20260922005400113546",
+            "name": "청년 주택드림 디딤돌 대출",
+            "source": "YOUTHCENTER",
+            "source_url": "https://nhuf.molit.go.kr/FP/FP05/FP0503/FP05030901.jsp"
+          },
+          "score": 0.6161171305917862
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20250514005400110811",
+            "name": "청년 주택드림 디딤돌 대출",
+            "source": "YOUTHCENTER",
+            "source_url": "https://nhuf.molit.go.kr/FP/FP05/FP0503/FP05030901.jsp"
+          },
+          "score": 0.6147767186675774
+        }
+      ]
+    },
+    {
+      "id": "N13",
+      "category": "예외조건",
+      "question": "국토교통부 전세보증금반환보증 보증료 지원은 2025년 3월 30일 이전 가입건도 40만원까지야? 이전 가입건 한도와 청년 외 신청자의 지원 비율을 구분해줘.",
+      "policyKeys": [
+        "GOV24-161300000103"
+      ],
+      "facts": [
+        {
+          "label": "이전 가입건 최대 30만원",
+          "pattern": "30\\s*만|300[,.]?000\\s*원",
+          "path": "benefit.text",
+          "quote": "'25.3.30 이전 가입건은 최대 30만원"
+        },
+        {
+          "label": "일반 상한 40만원",
+          "pattern": "40\\s*만|400[,.]?000\\s*원",
+          "path": "benefit.text",
+          "quote": "최대 40만원 한도"
+        },
+        {
+          "label": "청년 외 보증료 90%",
+          "pattern": "90\\s*%",
+          "path": "benefit.text",
+          "quote": "청년외의 경우 신청인이 기납부한 보증료의 90%"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "GOV24-161300000103"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "GOV24-161300000103",
+          "name": "국토교통부 전세보증금반환보증 보증료 지원",
+          "source": "GOV24",
+          "sourceUrl": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=2126303&bnefType=all&svcId=161300000103"
+        }
+      ],
+      "grade": {
+        "rank": 1,
+        "retrievalApplicable": true,
+        "hitAt1": true,
+        "hitAt3": true,
+        "hitAt5": true,
+        "checks": [
+          {
+            "label": "이전 가입건 최대 30만원",
+            "passed": true
+          },
+          {
+            "label": "일반 상한 40만원",
+            "passed": true
+          },
+          {
+            "label": "청년 외 보증료 90%",
+            "passed": true
+          }
+        ],
+        "factsPassed": 3,
+        "citationPassed": true,
+        "abstentionPassed": true,
+        "forbiddenMatches": [],
+        "answerPassed": true
+      },
+      "generated": {
+        "answer": "### 국토교통부 전세보증금반환보증 보증료 지원 [1]\n\n전세보증금반환보증 보증료에 대해 최대 40만원 지원 가능합니다. 단, 2025년 3월 30일 이전 가입한 경우는 최대 30만원 지원됩니다. 청년이 아닌 신청자의 경우 기납부한 보증료의 90%를 지원하며, 최대 40만원 한도가 적용됩니다.\n\n이 정책에 따르면, 2025년 3월 30일 이전 가입건의 지원 한도는 30만원이며, 청년 외 신청자의 지원 비율은 기납부한 보증료의 90%로 설정되어 있습니다. 추가로 필요한 사항이 있을 경우 문의해 주세요.\n\n최종 자격과 최신 신청 가능 여부는 원문에서 확인해 주세요.",
+        "sections": [
+          {
+            "source_number": 1,
+            "explanation": "전세보증금반환보증 보증료에 대해 최대 40만원 지원 가능합니다. 단, 2025년 3월 30일 이전 가입한 경우는 최대 30만원 지원됩니다. 청년이 아닌 신청자의 경우 기납부한 보증료의 90%를 지원하며, 최대 40만원 한도가 적용됩니다.",
+            "policyKey": "GOV24-161300000103"
+          }
+        ],
+        "message": "이 정책에 따르면, 2025년 3월 30일 이전 가입건의 지원 한도는 30만원이며, 청년 외 신청자의 지원 비율은 기납부한 보증료의 90%로 설정되어 있습니다. 추가로 필요한 사항이 있을 경우 문의해 주세요.",
+        "usage": {
+          "input_tokens": 4326,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_12h_tokens": 0,
+              "ttl_30m_tokens": 0
+            },
+            "cached_tokens": 0
+          },
+          "output_tokens": 158,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 4484
+        }
+      },
+      "elapsedMs": 3266,
+      "retrieved": [
+        {
+          "policy": {
+            "policy_key": "GOV24-161300000103",
+            "name": "국토교통부 전세보증금반환보증 보증료 지원",
+            "source": "GOV24",
+            "source_url": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=2126303&bnefType=all&svcId=161300000103"
+          },
+          "score": 0.9631445310978104
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20251218005400212018",
+            "name": "2025년 전세보증금반환보증 보증료 지원사업",
+            "source": "YOUTHCENTER",
+            "source_url": "https://baro.gyeongnam.go.kr/baro/"
+          },
+          "score": 0.9157010455866663
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20250901005400211561",
+            "name": "2025년 전세보증금반환보증 보증료 지원사업",
+            "source": "YOUTHCENTER",
+            "source_url": null
+          },
+          "score": 0.9048217377078708
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20250903005400111592",
+            "name": "전세보증금반환보증 보증료 지원사업",
+            "source": "YOUTHCENTER",
+            "source_url": "https://gbyouth.co.kr/main.tc"
+          },
+          "score": 0.896679729720878
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20261004005400113877",
+            "name": "전세보증금반환보증 보증료 지원사업",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.chungbuk.go.kr/young/contents.do?key=5426"
+          },
+          "score": 0.855866106290085
+        }
+      ]
+    },
+    {
+      "id": "N14",
+      "category": "지역구분",
+      "question": "군위에서 1년 넘게 거주한 청년에게 문화·체육 선불카드를 주는 지원은 연간 얼마이며, 나이는 몇 세부터 몇 세까지야?",
+      "policyKeys": [
+        "YOUTHCENTER-20261021005400214198"
+      ],
+      "facts": [
+        {
+          "label": "연 10만원",
+          "pattern": "10\\s*만|100[,.]?000\\s*원",
+          "path": "benefit.text",
+          "quote": "연 10만원"
+        },
+        {
+          "label": "20~27세",
+          "pattern": "20[\\s\\S]{0,25}27\\s*세",
+          "path": "benefit.text",
+          "quote": "20세 ~ 27세"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "YOUTHCENTER-20261021005400214198"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "YOUTHCENTER-20261021005400214198",
+          "name": "군위청년문화카드 지원사업",
+          "source": "YOUTHCENTER",
+          "sourceUrl": "https://www.gunwi.go.kr/ko/page.do?board_code=&srchSDate=&srchKwd=%EC%B2%AD%EB%85%84%EB%AC%B8%ED%99%94&srchColumn=title&srchDept=&srchEDate=&mnu_uid=666&not_ancmt_mgt_no=25737&pageNo=1&cmd=2"
+        }
+      ],
+      "grade": {
+        "rank": 1,
+        "retrievalApplicable": true,
+        "hitAt1": true,
+        "hitAt3": true,
+        "hitAt5": true,
+        "checks": [
+          {
+            "label": "연 10만원",
+            "passed": true
+          },
+          {
+            "label": "20~27세",
+            "passed": true
+          }
+        ],
+        "factsPassed": 2,
+        "citationPassed": true,
+        "abstentionPassed": true,
+        "forbiddenMatches": [],
+        "answerPassed": true
+      },
+      "generated": {
+        "answer": "### 군위청년문화카드 지원사업 [1]\n\n군위에 1년 이상 거주한 청년에게 연간 10만원의 군위청년문화카드를 지원합니다. 지원 대상은 20세부터 27세까지로, 기준중위소득 150% 이하의 청년에게 지급됩니다.\n\n추가로 필요한 사용자 조건이나 신청 방법이 궁금하시면 문의해 주세요.\n\n최종 자격과 최신 신청 가능 여부는 원문에서 확인해 주세요.",
+        "sections": [
+          {
+            "source_number": 1,
+            "explanation": "군위에 1년 이상 거주한 청년에게 연간 10만원의 군위청년문화카드를 지원합니다. 지원 대상은 20세부터 27세까지로, 기준중위소득 150% 이하의 청년에게 지급됩니다.",
+            "policyKey": "YOUTHCENTER-20261021005400214198"
+          }
+        ],
+        "message": "추가로 필요한 사용자 조건이나 신청 방법이 궁금하시면 문의해 주세요.",
+        "usage": {
+          "input_tokens": 3086,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_12h_tokens": 0,
+              "ttl_30m_tokens": 0
+            },
+            "cached_tokens": 0
+          },
+          "output_tokens": 94,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 3180
+        }
+      },
+      "elapsedMs": 2636,
+      "retrieved": [
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20261021005400214198",
+            "name": "군위청년문화카드 지원사업",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.gunwi.go.kr/ko/page.do?board_code=&srchSDate=&srchKwd=%EC%B2%AD%EB%85%84%EB%AC%B8%ED%99%94&srchColumn=title&srchDept=&srchEDate=&mnu_uid=666&not_ancmt_mgt_no=25737&pageNo=1&cmd=2"
+          },
+          "score": 1
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20250516005400210831",
+            "name": "전남청년 문화복지카드",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.jeonnam.go.kr/J0203/boardView.do?seq=22560&infoReturn=&menuId=jeonnam0203000000&displayHeader=&searchType=0&searchText=%EB%B3%B5%EC%A7%80%EC%B9%B4%EB%93%9C&searchStDate=&searchEnDate=&pageIndex=1&boardId=J0203&displayHeader="
+          },
+          "score": 0.5748307521703468
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20261019005400214016",
+            "name": "전남광주청년 문화복지카드(시)",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.jangheung.go.kr/www/life_welfare/population_plan/youth"
+          },
+          "score": 0.5651708938652883
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20260513005400213204",
+            "name": "부산 청년 일하는 기쁨카드 지원",
+            "source": "YOUTHCENTER",
+            "source_url": "https://young.busan.go.kr/index.nm?menuCd=33"
+          },
+          "score": 0.5360578417717277
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20260728005400213311",
+            "name": "전남광주 청년 문화복지카드",
+            "source": "YOUTHCENTER",
+            "source_url": "https://youth.gwangju.go.kr/www/50?siteId=www&policyId=1409&url=%2Fwww%2Fpolicy%2FgjYgPolicyView"
+          },
+          "score": 0.5135837020197292
+        }
+      ]
+    },
+    {
+      "id": "N15",
+      "category": "지역구분",
+      "question": "강진에서 창업한 청년의 사업장 임대료 지원은 월 얼마, 총 최대 얼마이고 창업 후 몇 개월이 지나야 해?",
+      "policyKeys": [
+        "YOUTHCENTER-20261021005400214186"
+      ],
+      "facts": [
+        {
+          "label": "월 30만원",
+          "pattern": "30\\s*만|300[,.]?000\\s*원",
+          "path": "benefit.text",
+          "quote": "월 30만원"
+        },
+        {
+          "label": "최대 360만원",
+          "pattern": "360\\s*만|3[,.]?600[,.]?000\\s*원",
+          "path": "benefit.text",
+          "quote": "최대 360만원"
+        },
+        {
+          "label": "창업 후 3개월 경과",
+          "pattern": "3\\s*개월",
+          "path": "benefit.text",
+          "quote": "창업 후 3개월이 경과"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "YOUTHCENTER-20261021005400214186"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "YOUTHCENTER-20261021005400214186",
+          "name": "강진군 창업 청년 임대료 지원사업",
+          "source": "YOUTHCENTER",
+          "sourceUrl": "https://www.gangjin.go.kr/www/government/notice/gosi?idx=27906&mode=view&search_type=title&search_word=%EC%9E%84%EB%8C%80%EB%A3%8C&start_date=20251021&finish_date=20261021"
+        }
+      ],
+      "grade": {
+        "rank": 1,
+        "retrievalApplicable": true,
+        "hitAt1": true,
+        "hitAt3": true,
+        "hitAt5": true,
+        "checks": [
+          {
+            "label": "월 30만원",
+            "passed": true
+          },
+          {
+            "label": "최대 360만원",
+            "passed": true
+          },
+          {
+            "label": "창업 후 3개월 경과",
+            "passed": true
+          }
+        ],
+        "factsPassed": 3,
+        "citationPassed": true,
+        "abstentionPassed": true,
+        "forbiddenMatches": [],
+        "answerPassed": true
+      },
+      "generated": {
+        "answer": "### 강진군 창업 청년 임대료 지원사업 [1]\n\n강진군 창업 청년 임대료 지원사업에서는 창업 후 3개월이 경과한 만 19세에서 45세 이하의 청년에게 월 30만 원을 지원하며, 최대 360만 원까지 지원합니다.\n\n### 창업 청년 임대료 지원사업 [5]\n\n2024년 1월 1일 이후 관내에서 창업하여 임대료를 납부 중인 만 19세에서 45세 이하의 청년에게는 1인당 월 30만 원을 지원하며, 최대 360만 원까지 지원 가능합니다.\n\n임대료 지원에 대한 정보는 강진군 창업 청년 임대료 지원사업과 관련된 자료에서 확인하실 수 있습니다. 추가적으로, 신청 기간 및 방법은 정책에 따라 다를 수 있으니 해당 정책의 링크를 통해 구체적인 내용을 확인해 주시기 바랍니다.\n\n최종 자격과 최신 신청 가능 여부는 원문에서 확인해 주세요.",
+        "sections": [
+          {
+            "source_number": 1,
+            "explanation": "강진군 창업 청년 임대료 지원사업에서는 창업 후 3개월이 경과한 만 19세에서 45세 이하의 청년에게 월 30만 원을 지원하며, 최대 360만 원까지 지원합니다.",
+            "policyKey": "YOUTHCENTER-20261021005400214186"
+          },
+          {
+            "source_number": 5,
+            "explanation": "2024년 1월 1일 이후 관내에서 창업하여 임대료를 납부 중인 만 19세에서 45세 이하의 청년에게는 1인당 월 30만 원을 지원하며, 최대 360만 원까지 지원 가능합니다.",
+            "policyKey": "YOUTHCENTER-20250109005400210130"
+          }
+        ],
+        "message": "임대료 지원에 대한 정보는 강진군 창업 청년 임대료 지원사업과 관련된 자료에서 확인하실 수 있습니다. 추가적으로, 신청 기간 및 방법은 정책에 따라 다를 수 있으니 해당 정책의 링크를 통해 구체적인 내용을 확인해 주시기 바랍니다.",
+        "usage": {
+          "input_tokens": 2511,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_12h_tokens": 0,
+              "ttl_30m_tokens": 0
+            },
+            "cached_tokens": 0
+          },
+          "output_tokens": 206,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2717
+        }
+      },
+      "elapsedMs": 4285,
+      "retrieved": [
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20261021005400214186",
+            "name": "강진군 창업 청년 임대료 지원사업",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.gangjin.go.kr/www/government/notice/gosi?idx=27906&mode=view&search_type=title&search_word=%EC%9E%84%EB%8C%80%EB%A3%8C&start_date=20251021&finish_date=20261021"
+          },
+          "score": 1
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20260429005400212915",
+            "name": "「2026년 광산구 청년창업자 사업장 월 임대료 지원사업」 지원대상자 모집",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000121452"
+          },
+          "score": 0.8991846599223146
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20260914005400213408",
+            "name": "「2026년 광산구 청년창업자 사업장 월 임대료 지원사업」 지원대상자 모집",
+            "source": "YOUTHCENTER",
+            "source_url": "https://youth.gwangju.go.kr/www/51?siteId=www&plcyNo=20260429005400212915&url=%2Fwww%2Fpolicy%2FallYgPolicyView"
+          },
+          "score": 0.8983226604546544
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20250319005400210644",
+            "name": "2025 북구 청년 창업자 임대료 지원사업",
+            "source": "YOUTHCENTER",
+            "source_url": null
+          },
+          "score": 0.7755149928794233
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20250109005400210130",
+            "name": "창업 청년 임대료 지원사업",
+            "source": "YOUTHCENTER",
+            "source_url": null
+          },
+          "score": 0.7642080645588962
+        }
+      ]
+    },
+    {
+      "id": "N16",
+      "category": "지역구분",
+      "question": "영천 청년창업 특화거리에서 점포 리모델링·간판제작비는 최대 얼마까지 지원하고 대상 연령은?",
+      "policyKeys": [
+        "YOUTHCENTER-20261021005400214177"
+      ],
+      "facts": [
+        {
+          "label": "최대 2500만원",
+          "pattern": "2[,.]?500\\s*만|25[,.]?000[,.]?000\\s*원",
+          "path": "benefit.text",
+          "quote": "2,500만원 한도"
+        },
+        {
+          "label": "19~45세",
+          "pattern": "19[\\s\\S]{0,25}45\\s*세",
+          "path": "benefit.text",
+          "quote": "19 ~ 45세"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "YOUTHCENTER-20261021005400214177"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "YOUTHCENTER-20261021005400214177",
+          "name": "청년창업 특화거리 점포 리모델링 및 간판제작비 지원",
+          "source": "YOUTHCENTER",
+          "sourceUrl": "https://gbyouth.go.kr/policy/list.tc?mn=2379&pageNo=5069"
+        }
+      ],
+      "grade": {
+        "rank": 1,
+        "retrievalApplicable": true,
+        "hitAt1": true,
+        "hitAt3": true,
+        "hitAt5": true,
+        "checks": [
+          {
+            "label": "최대 2500만원",
+            "passed": true
+          },
+          {
+            "label": "19~45세",
+            "passed": true
+          }
+        ],
+        "factsPassed": 2,
+        "citationPassed": true,
+        "abstentionPassed": true,
+        "forbiddenMatches": [],
+        "answerPassed": true
+      },
+      "generated": {
+        "answer": "### 청년창업 특화거리 점포 리모델링 및 간판제작비 지원 [1]\n\n청년창업 특화거리에서 점포 리모델링 및 간판제작비는 최대 2,500만원까지 지원됩니다. 지원 대상은 19세에서 45세 이하의 (예비)청년창업가입니다.\n\n추가로 필요한 사용자 조건이나 일반적인 안내가 필요하면 말씀해 주세요.\n\n최종 자격과 최신 신청 가능 여부는 원문에서 확인해 주세요.",
+        "sections": [
+          {
+            "source_number": 1,
+            "explanation": "청년창업 특화거리에서 점포 리모델링 및 간판제작비는 최대 2,500만원까지 지원됩니다. 지원 대상은 19세에서 45세 이하의 (예비)청년창업가입니다.",
+            "policyKey": "YOUTHCENTER-20261021005400214177"
+          }
+        ],
+        "message": "추가로 필요한 사용자 조건이나 일반적인 안내가 필요하면 말씀해 주세요.",
+        "usage": {
+          "input_tokens": 2602,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_12h_tokens": 0,
+              "ttl_30m_tokens": 0
+            },
+            "cached_tokens": 0
+          },
+          "output_tokens": 89,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2691
+        }
+      },
+      "elapsedMs": 3193,
+      "retrieved": [
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20261021005400214177",
+            "name": "청년창업 특화거리 점포 리모델링 및 간판제작비 지원",
+            "source": "YOUTHCENTER",
+            "source_url": "https://gbyouth.go.kr/policy/list.tc?mn=2379&pageNo=5069"
+          },
+          "score": 1
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20260331005400212358",
+            "name": "청년창업공간 리모델링 지원사업",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.goryeong.go.kr/kor/boardView.do?IDX=154&BRD_ID=1023&BOARD_IDX=41107&searchType=ALL&searchValue=%EB%A6%AC%EB%AA%A8%EB%8D%B8%EB%A7%81&page=1"
+          },
+          "score": 0.6086213830549565
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20261021005400214176",
+            "name": "청년창업 특화거리 점포 임차료 지원사업",
+            "source": "YOUTHCENTER",
+            "source_url": "https://youngplus.univjobcenter.kr/region/gyeongbuk/%EC%98%81%EC%B2%9C%EC%8B%9C"
+          },
+          "score": 0.5871871927898105
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20260407005400212575",
+            "name": "2026년 빈집(빈점포) 청년창업 채움 프로젝트 (예비)청년창업자 모집",
+            "source": "YOUTHCENTER",
+            "source_url": null
+          },
+          "score": 0.47429421382800563
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20251211005400211972",
+            "name": "빈집 리모델링 및 활용 지원",
+            "source": "YOUTHCENTER",
+            "source_url": "https://youth.chungnam.go.kr/web/main/main"
+          },
+          "score": 0.45436455054007074
+        }
+      ]
+    },
+    {
+      "id": "N17",
+      "category": "지역구분",
+      "question": "영천 청년창업 특화거리 점포 임차료 지원은 월 한도와 최장 기간이 어떻게 돼?",
+      "policyKeys": [
+        "YOUTHCENTER-20261021005400214176"
+      ],
+      "facts": [
+        {
+          "label": "월 30만원 한도",
+          "pattern": "30\\s*만|300[,.]?000\\s*원",
+          "path": "benefit.text",
+          "quote": "월 임차료 30만원 한도"
+        },
+        {
+          "label": "최대 2년",
+          "pattern": "2\\s*년|24\\s*개월",
+          "path": "benefit.text",
+          "quote": "최대 2년"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "YOUTHCENTER-20261021005400214176"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "YOUTHCENTER-20261021005400214176",
+          "name": "청년창업 특화거리 점포 임차료 지원사업",
+          "source": "YOUTHCENTER",
+          "sourceUrl": "https://youngplus.univjobcenter.kr/region/gyeongbuk/%EC%98%81%EC%B2%9C%EC%8B%9C"
+        }
+      ],
+      "grade": {
+        "rank": 1,
+        "retrievalApplicable": true,
+        "hitAt1": true,
+        "hitAt3": true,
+        "hitAt5": true,
+        "checks": [
+          {
+            "label": "월 30만원 한도",
+            "passed": true
+          },
+          {
+            "label": "최대 2년",
+            "passed": true
+          }
+        ],
+        "factsPassed": 2,
+        "citationPassed": true,
+        "abstentionPassed": true,
+        "forbiddenMatches": [],
+        "answerPassed": true
+      },
+      "generated": {
+        "answer": "### 청년창업 특화거리 점포 임차료 지원사업 [1]\n\n청년창업 특화거리 점포 임차료 지원사업은 19세에서 45세 이하의 예비 청년 창업가를 대상으로 월 임차료를 최대 30만원까지 지원하며, 지원기간은 최장 2년입니다.\n\n추가로 궁금한 내용이나 자격 조건이 필요하시면 말씀해 주세요.\n\n최종 자격과 최신 신청 가능 여부는 원문에서 확인해 주세요.",
+        "sections": [
+          {
+            "source_number": 1,
+            "explanation": "청년창업 특화거리 점포 임차료 지원사업은 19세에서 45세 이하의 예비 청년 창업가를 대상으로 월 임차료를 최대 30만원까지 지원하며, 지원기간은 최장 2년입니다.",
+            "policyKey": "YOUTHCENTER-20261021005400214176"
+          }
+        ],
+        "message": "추가로 궁금한 내용이나 자격 조건이 필요하시면 말씀해 주세요.",
+        "usage": {
+          "input_tokens": 2362,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_12h_tokens": 0,
+              "ttl_30m_tokens": 0
+            },
+            "cached_tokens": 0
+          },
+          "output_tokens": 93,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2455
+        }
+      },
+      "elapsedMs": 2913,
+      "retrieved": [
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20261021005400214176",
+            "name": "청년창업 특화거리 점포 임차료 지원사업",
+            "source": "YOUTHCENTER",
+            "source_url": "https://youngplus.univjobcenter.kr/region/gyeongbuk/%EC%98%81%EC%B2%9C%EC%8B%9C"
+          },
+          "score": 1
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20261021005400214177",
+            "name": "청년창업 특화거리 점포 리모델링 및 간판제작비 지원",
+            "source": "YOUTHCENTER",
+            "source_url": "https://gbyouth.go.kr/policy/list.tc?mn=2379&pageNo=5069"
+          },
+          "score": 0.7948673056869229
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20261020005400214148",
+            "name": "청년창업 사업장  임차료 지원사업",
+            "source": "YOUTHCENTER",
+            "source_url": "https://gbyouth.go.kr/policy/list.tc?mn=2379&pageNo=5069&searchPolicyNm=%EC%9E%84%EC%B0%A8%EB%A3%8C&_csrf=5ff74cc9-7e5c-4c76-bda2-4407ba03281a"
+          },
+          "score": 0.6573828315644277
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20251114005400211891",
+            "name": "2026년 청년 소상공인 점포 임차료 지원사업",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.uiryeong.go.kr/youthcenter/index.uiryeong#"
+          },
+          "score": 0.5793346633956057
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20260331005400212357",
+            "name": "청년창업자 임차료 지원사업",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.goryeong.go.kr/kor/boardView.do?IDX=154&BRD_ID=1023&BOARD_IDX=41376&searchType=ALL&searchValue=%EC%9E%84%EC%B0%A8%EB%A3%8C&page=1"
+          },
+          "score": 0.5625897864786122
+        }
+      ]
+    },
+    {
+      "id": "N18",
+      "category": "상황설명",
+      "question": "영천에 거주하는 미취업 청년이 자격증 응시료뿐 아니라 수강료도 실비로 지원받는 역량강화 사업의 1인 최대 지원액은?",
+      "policyKeys": [
+        "YOUTHCENTER-20261021005400214175"
+      ],
+      "facts": [
+        {
+          "label": "1인 최대 30만원",
+          "pattern": "30\\s*만|300[,.]?000\\s*원",
+          "path": "benefit.text",
+          "quote": "최대 30만원/1인"
+        },
+        {
+          "label": "응시료와 수강료",
+          "pattern": "응시료[\\s\\S]{0,35}수강료|수강료[\\s\\S]{0,35}응시료",
+          "path": "benefit.text",
+          "quote": "자격증 응시료, 수강료"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "YOUTHCENTER-20261021005400214175"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "YOUTHCENTER-20261021005400214175",
+          "name": "미취업청년 역량강화 지원사업",
+          "source": "YOUTHCENTER",
+          "sourceUrl": "https://www.yc.go.kr/job/contents.do?mId=1701000000"
+        }
+      ],
+      "grade": {
+        "rank": 1,
+        "retrievalApplicable": true,
+        "hitAt1": true,
+        "hitAt3": true,
+        "hitAt5": true,
+        "checks": [
+          {
+            "label": "1인 최대 30만원",
+            "passed": true
+          },
+          {
+            "label": "응시료와 수강료",
+            "passed": true
+          }
+        ],
+        "factsPassed": 2,
+        "citationPassed": true,
+        "abstentionPassed": true,
+        "forbiddenMatches": [],
+        "answerPassed": true
+      },
+      "generated": {
+        "answer": "### 미취업청년 역량강화 지원사업 [1]\n\n미취업청년 역량강화 지원사업은 영천시에 거주하는 19세에서 45세의 미취업 청년을 대상으로 자격증 응시료와 수강료를 실비로 지원합니다. 이 사업의 1인 최대 지원액은 30만원입니다.\n\n다른 정책에 대한 정보는 확인할 수 없습니다. 영천시에 거주하는 미취업 청년으로서 지원받고자 하신다면, 만 19세 이상 45세 이하의 연령 요건을 충족하셔야 합니다.\n\n최종 자격과 최신 신청 가능 여부는 원문에서 확인해 주세요.",
+        "sections": [
+          {
+            "source_number": 1,
+            "explanation": "미취업청년 역량강화 지원사업은 영천시에 거주하는 19세에서 45세의 미취업 청년을 대상으로 자격증 응시료와 수강료를 실비로 지원합니다. 이 사업의 1인 최대 지원액은 30만원입니다.",
+            "policyKey": "YOUTHCENTER-20261021005400214175"
+          }
+        ],
+        "message": "다른 정책에 대한 정보는 확인할 수 없습니다. 영천시에 거주하는 미취업 청년으로서 지원받고자 하신다면, 만 19세 이상 45세 이하의 연령 요건을 충족하셔야 합니다.",
+        "usage": {
+          "input_tokens": 3329,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_12h_tokens": 0,
+              "ttl_30m_tokens": 0
+            },
+            "cached_tokens": 0
+          },
+          "output_tokens": 138,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 3467
+        }
+      },
+      "elapsedMs": 3302,
+      "retrieved": [
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20261021005400214175",
+            "name": "미취업청년 역량강화 지원사업",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.yc.go.kr/job/contents.do?mId=1701000000"
+          },
+          "score": 1
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20260522005400213216",
+            "name": "미취업 청년 자격증 응시료 지원사업",
+            "source": "YOUTHCENTER",
+            "source_url": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=2130026&bnefType=all&svcId=424100000003"
+          },
+          "score": 0.8989307984075039
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20240418005400200013",
+            "name": "미취업 청년 어학 및 자격증 응시료 지원(성북구)",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.sb.go.kr/yeyak/contents.do?key=6602"
+          },
+          "score": 0.8486171832608829
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20260415005400212750",
+            "name": "2026년 미취업청년 자격증 응시료 지원사업(중랑구)",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.jungnang.go.kr/health/bbs/view/B0000117/164097?menuNo=400493"
+          },
+          "score": 0.8350093279491844
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20260423005400212870",
+            "name": "2026년 고성군 미취업 청년 자격증 응시료 지원",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.gwgs.go.kr/prog/saeolGosi/GOSI/kor/sub04_030401/list.do"
+          },
+          "score": 0.8311444819568026
+        }
+      ]
+    },
+    {
+      "id": "N19",
+      "category": "상황설명",
+      "question": "강진 산업단지 입주기업에서 일하는 청년의 일자리장려금은 근속 몇 년부터이고 얼마를 어떤 형태로 몇 회 나눠 줘?",
+      "policyKeys": [
+        "YOUTHCENTER-20261021005400214173"
+      ],
+      "facts": [
+        {
+          "label": "1년 이상 근속",
+          "pattern": "1\\s*년[\\s\\S]{0,15}이상",
+          "path": "benefit.text",
+          "quote": "1년 이상 근속"
+        },
+        {
+          "label": "100만원",
+          "pattern": "100\\s*만|1[,.]?000[,.]?000\\s*원",
+          "path": "benefit.text",
+          "quote": "100만원 지급"
+        },
+        {
+          "label": "강진사랑 상품권",
+          "pattern": "강진\\s*사랑[\\s\\S]{0,15}상품권",
+          "path": "benefit.text",
+          "quote": "모바일 강진사랑 상품권"
+        },
+        {
+          "label": "2회 분할",
+          "pattern": "2\\s*회|두\\s*번",
+          "path": "benefit.text",
+          "quote": "2회 분할"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "YOUTHCENTER-20261021005400214173",
+        "YOUTHCENTER-20250109005400210131"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "YOUTHCENTER-20261021005400214173",
+          "name": "강진품애 청년 일자리장려금 지원사업",
+          "source": "YOUTHCENTER",
+          "sourceUrl": "https://www.gangjin.go.kr/www/government/notice/gosi?idx=27905&mode=view&search_type=title&search_word=%EC%9D%BC%EC%9E%90%EB%A6%AC%20%EC%9E%A5%EB%A0%A4%EA%B8%88&start_date=20251021&finish_date=20261021"
+        }
+      ],
+      "grade": {
+        "rank": 1,
+        "retrievalApplicable": true,
+        "hitAt1": true,
+        "hitAt3": true,
+        "hitAt5": true,
+        "checks": [
+          {
+            "label": "1년 이상 근속",
+            "passed": true
+          },
+          {
+            "label": "100만원",
+            "passed": true
+          },
+          {
+            "label": "강진사랑 상품권",
+            "passed": true
+          },
+          {
+            "label": "2회 분할",
+            "passed": true
+          }
+        ],
+        "factsPassed": 4,
+        "citationPassed": true,
+        "abstentionPassed": true,
+        "forbiddenMatches": [],
+        "answerPassed": true
+      },
+      "generated": {
+        "answer": "### 강진품애 청년 일자리장려금 지원사업 [1]\n\n강진품애 청년 일자리장려금 지원사업은 신청일 기준으로 관내 주소를 두고 산업 단지 입주기업에 1년 이상 근속 중인 19세부터 45세까지의 청년에게 모바일 강진사랑 상품권 100만원을 지급하며, 이 금액은 2회 분할하여 지급됩니다.\n\n청년에 대한 특별한 조건이나 추가 정보가 필요하다면 구체적으로 말씀해 주세요.\n\n최종 자격과 최신 신청 가능 여부는 원문에서 확인해 주세요.",
+        "sections": [
+          {
+            "source_number": 1,
+            "explanation": "강진품애 청년 일자리장려금 지원사업은 신청일 기준으로 관내 주소를 두고 산업 단지 입주기업에 1년 이상 근속 중인 19세부터 45세까지의 청년에게 모바일 강진사랑 상품권 100만원을 지급하며, 이 금액은 2회 분할하여 지급됩니다.",
+            "policyKey": "YOUTHCENTER-20261021005400214173"
+          }
+        ],
+        "message": "청년에 대한 특별한 조건이나 추가 정보가 필요하다면 구체적으로 말씀해 주세요.",
+        "usage": {
+          "input_tokens": 2591,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_12h_tokens": 0,
+              "ttl_30m_tokens": 0
+            },
+            "cached_tokens": 0
+          },
+          "output_tokens": 116,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2707
+        }
+      },
+      "elapsedMs": 3498,
+      "retrieved": [
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20261021005400214173",
+            "name": "강진품애 청년 일자리장려금 지원사업",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.gangjin.go.kr/www/government/notice/gosi?idx=27905&mode=view&search_type=title&search_word=%EC%9D%BC%EC%9E%90%EB%A6%AC%20%EC%9E%A5%EB%A0%A4%EA%B8%88&start_date=20251021&finish_date=20261021"
+          },
+          "score": 0.9871411782315122
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20250109005400210131",
+            "name": "강진품애 청년 일자리장려금 지원사업",
+            "source": "YOUTHCENTER",
+            "source_url": null
+          },
+          "score": 0.986795441404631
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20251120005400211911",
+            "name": "산업단지 중소기업 근로자 출퇴근 지원사업",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.chungbuk.go.kr/www/index.do"
+          },
+          "score": 0.7003761305548211
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20260930005400213703",
+            "name": "산업단지 중소기업 근로자 출퇴근 지원사업",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.chungbuk.go.kr/www/index.do"
+          },
+          "score": 0.6786310455520435
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20250902005400211573",
+            "name": "청년일자리 근속장려금 지원사업",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.gumi.go.kr/portal/board/post/view.do?bcIdx=1&mid=0401020000&idx=821984"
+          },
+          "score": 0.6781122998530934
+        }
+      ]
+    },
+    {
+      "id": "N20",
+      "category": "상황설명",
+      "question": "대구 희망옷장에서 면접 정장을 빌리려고 해. 연간 대여 횟수, 한 번 빌리는 기간, 본인 세탁비는 얼마야?",
+      "policyKeys": [
+        "YOUTHCENTER-20261021005400214170"
+      ],
+      "facts": [
+        {
+          "label": "연 3회",
+          "pattern": "3\\s*회|세\\s*번",
+          "path": "benefit.text",
+          "quote": "연 3회"
+        },
+        {
+          "label": "3박 4일",
+          "pattern": "3\\s*박\\s*4\\s*일",
+          "path": "benefit.text",
+          "quote": "3박 4일"
+        },
+        {
+          "label": "세탁비 7천원",
+          "pattern": "7\\s*천\\s*원|7[,.]?000\\s*원",
+          "path": "benefit.text",
+          "quote": "세탁비 7천원"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "YOUTHCENTER-20261021005400214170"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "YOUTHCENTER-20261021005400214170",
+          "name": "대학생 취업준비패키지 지원",
+          "source": "YOUTHCENTER",
+          "sourceUrl": "https://fulldress.daegu.go.kr/"
+        }
+      ],
+      "grade": {
+        "rank": null,
+        "retrievalApplicable": true,
+        "hitAt1": false,
+        "hitAt3": false,
+        "hitAt5": false,
+        "checks": [
+          {
+            "label": "연 3회",
+            "passed": false
+          },
+          {
+            "label": "3박 4일",
+            "passed": false
+          },
+          {
+            "label": "세탁비 7천원",
+            "passed": false
+          }
+        ],
+        "factsPassed": 0,
+        "citationPassed": false,
+        "abstentionPassed": true,
+        "forbiddenMatches": [],
+        "answerPassed": false
+      },
+      "generated": {
+        "answer": "### 청년 면접정장 무료대여 '꿈이룸옷장' [1]\n\n대구의 '꿈이룸옷장'에서는 대구 소재 대학의 재학생 및 대구에 주소를 둔 34세 미만 청년(달서구 거주자는 39세까지 포함)이 면접용 정장을 무료로 대여합니다. 대여기간은 2박 3일이며, 본인 세탁비는 7천원입니다.\n\n대구 희망옷장에서 연간 대여 횟수에 대한 정보는 제공되지 않았습니다. 추가로 필요한 사용자 조건에 대해 궁금하신 점이 있으시면 말씀해 주세요.\n\n최종 자격과 최신 신청 가능 여부는 원문에서 확인해 주세요.",
+        "sections": [
+          {
+            "source_number": 1,
+            "explanation": "대구의 '꿈이룸옷장'에서는 대구 소재 대학의 재학생 및 대구에 주소를 둔 34세 미만 청년(달서구 거주자는 39세까지 포함)이 면접용 정장을 무료로 대여합니다. 대여기간은 2박 3일이며, 본인 세탁비는 7천원입니다.",
+            "policyKey": "YOUTHCENTER-20250423005400210717"
+          }
+        ],
+        "message": "대구 희망옷장에서 연간 대여 횟수에 대한 정보는 제공되지 않았습니다. 추가로 필요한 사용자 조건에 대해 궁금하신 점이 있으시면 말씀해 주세요.",
+        "usage": {
+          "input_tokens": 3004,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_12h_tokens": 0,
+              "ttl_30m_tokens": 0
+            },
+            "cached_tokens": 0
+          },
+          "output_tokens": 142,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 3146
+        }
+      },
+      "elapsedMs": 5208,
+      "retrieved": [
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20250423005400210717",
+            "name": "청년 면접정장 무료대여 '꿈이룸옷장'",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.dalseo.daegu.kr/index.do?menu_id=00004787"
+          },
+          "score": 1
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20260313005400212141",
+            "name": "청년 희망옷장",
+            "source": "YOUTHCENTER",
+            "source_url": "https://youth.yongin.go.kr/web/main/youthApply/applyList"
+          },
+          "score": 0.963013660287741
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20250401005400210681",
+            "name": "의왕시 청년옷장(면접정장 무료대여서비스)",
+            "source": "YOUTHCENTER",
+            "source_url": "https://apply.jobaba.net/bsns/bsnsDetailView.do?bsnsSeq=4018"
+          },
+          "score": 0.9131154704684957
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20260513005400213202",
+            "name": "부산 면접정장 대여서비스(드림옷장)",
+            "source": "YOUTHCENTER",
+            "source_url": "https://young.busan.go.kr/index.nm?menuCd=32"
+          },
+          "score": 0.8275654618182995
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20250515005400210821",
+            "name": "부산청년 정장대여서비스(드림옷장)",
+            "source": "YOUTHCENTER",
+            "source_url": "https://young.busan.go.kr/index.nm?menuCd=32"
+          },
+          "score": 0.8207076600614065
+        }
+      ]
+    },
+    {
+      "id": "N21",
+      "category": "상황설명",
+      "question": "대구 업사이클 청년창업 스케일업 프로젝트에서 공간·컨설팅을 지원받을 때 사용료는 유료야? 자료에 적힌 2026년 운영 기간도 알려줘.",
+      "policyKeys": [
+        "YOUTHCENTER-20261021005400214171"
+      ],
+      "facts": [
+        {
+          "label": "사용료 무상",
+          "pattern": "무상|무료",
+          "path": "benefit.text",
+          "quote": "사용료)무상"
+        },
+        {
+          "label": "4월~12월",
+          "pattern": "4\\s*월[\\s\\S]{0,20}12\\s*월",
+          "path": "benefit.text",
+          "quote": "2026년 4월 ~ 12월"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "YOUTHCENTER-20261021005400214171"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "YOUTHCENTER-20261021005400214171",
+          "name": "업사이클 청년창업 스케일업 프로젝트",
+          "source": "YOUTHCENTER",
+          "sourceUrl": "https://www.kupc.or.kr/"
+        }
+      ],
+      "grade": {
+        "rank": 1,
+        "retrievalApplicable": true,
+        "hitAt1": true,
+        "hitAt3": true,
+        "hitAt5": true,
+        "checks": [
+          {
+            "label": "사용료 무상",
+            "passed": true
+          },
+          {
+            "label": "4월~12월",
+            "passed": true
+          }
+        ],
+        "factsPassed": 2,
+        "citationPassed": true,
+        "abstentionPassed": true,
+        "forbiddenMatches": [],
+        "answerPassed": true
+      },
+      "generated": {
+        "answer": "### 업사이클 청년창업 스케일업 프로젝트 [1]\n\n대구 업사이클 청년창업 스케일업 프로젝트는 2026년 4월부터 12월까지 운영되며, 아이디어 구성 및 시제품 제작을 위한 공간과 컨설팅을 지원합니다. 해당 공간의 사용료는 무상입니다.\n\n추가로 궁금한 정보가 있다면 질문해 주세요.\n\n최종 자격과 최신 신청 가능 여부는 원문에서 확인해 주세요.",
+        "sections": [
+          {
+            "source_number": 1,
+            "explanation": "대구 업사이클 청년창업 스케일업 프로젝트는 2026년 4월부터 12월까지 운영되며, 아이디어 구성 및 시제품 제작을 위한 공간과 컨설팅을 지원합니다. 해당 공간의 사용료는 무상입니다.",
+            "policyKey": "YOUTHCENTER-20261021005400214171"
+          }
+        ],
+        "message": "추가로 궁금한 정보가 있다면 질문해 주세요.",
+        "usage": {
+          "input_tokens": 3539,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_12h_tokens": 0,
+              "ttl_30m_tokens": 0
+            },
+            "cached_tokens": 0
+          },
+          "output_tokens": 92,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 3631
+        }
+      },
+      "elapsedMs": 13133,
+      "retrieved": [
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20261021005400214171",
+            "name": "업사이클 청년창업 스케일업 프로젝트",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.kupc.or.kr/"
+          },
+          "score": 1
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20261027005400214445",
+            "name": "2026년 김제 창업청년 스케일업 컨설팅(점프업)",
+            "source": "YOUTHCENTER",
+            "source_url": "https://event.jbci.or.kr"
+          },
+          "score": 0.6365961140095382
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20260413005400212725",
+            "name": "청년창업 스케일업 지원사업",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.jeis.or.kr/"
+          },
+          "score": 0.6139435588468414
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20260422005400212861",
+            "name": "청년창업 스케일업 지원사업",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.jeis.or.kr/suppbis/suppbisdtl.ac?currentPageNo=&annoId=af7e699240b740ab94e7592cdfa7e4e3&annoName=&state=&businessDiv=&indDiv=&receiptSDate=&receiptEDate="
+          },
+          "score": 0.6138449383179976
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20250718005400211377",
+            "name": "청년창업 스케일업 지원사업",
+            "source": "YOUTHCENTER",
+            "source_url": null
+          },
+          "score": 0.6125097202116024
+        }
+      ]
+    },
+    {
+      "id": "N22",
+      "category": "상황설명",
+      "question": "서울에서 고립·은둔 생활을 하는 청년을 발굴해 사회 복귀를 돕는 지원의 대상 연령과 온라인 신청 사이트를 알려줘.",
+      "policyKeys": [
+        "YOUTHCENTER-20261021005400214204"
+      ],
+      "facts": [
+        {
+          "label": "19~39세",
+          "pattern": "19[\\s\\S]{0,25}39\\s*세",
+          "path": "eligibility.target_text",
+          "quote": "19~39세"
+        },
+        {
+          "label": "청년몽땅정보통",
+          "pattern": "청년\\s*몽땅\\s*정보통|youth[.]seoul[.]go[.]kr",
+          "path": "application.method_text",
+          "quote": "청년몽땅정보통(youth.seoul.go.kr)"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "YOUTHCENTER-20261021005400214204"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "YOUTHCENTER-20261021005400214204",
+          "name": "2026 고립·은둔 청년 지원",
+          "source": "YOUTHCENTER",
+          "sourceUrl": "https://youth.seoul.go.kr"
+        }
+      ],
+      "grade": {
+        "rank": 4,
+        "retrievalApplicable": true,
+        "hitAt1": false,
+        "hitAt3": false,
+        "hitAt5": true,
+        "checks": [
+          {
+            "label": "19~39세",
+            "passed": true
+          },
+          {
+            "label": "청년몽땅정보통",
+            "passed": true
+          }
+        ],
+        "factsPassed": 2,
+        "citationPassed": true,
+        "abstentionPassed": true,
+        "forbiddenMatches": [],
+        "answerPassed": true
+      },
+      "generated": {
+        "answer": "### 고립·은둔 청년 지원사업 [1]\n\n서울시 거주 19~39세 고립·은둔 청년을 지원하며, 신청은 청년정책과를 통해 온라인 접수 또는 방문 접수가 가능합니다.\n\n### 2026 고립·은둔 청년 지원 [4]\n\n서울시 거주 19~39세 고립·은둔 청년을 지원하며, 온라인 신청은 청년몽땅정보통(youth.seoul.go.kr)을 통해 가능하니다.\n\n서울에서 고립·은둔 생활을 하는 청년의 지원을 위해서는 19세에서 39세 사이여야 하며, 정해진 온라인 신청 사이트를 통해 접근할 수 있습니다.\n\n최종 자격과 최신 신청 가능 여부는 원문에서 확인해 주세요.",
+        "sections": [
+          {
+            "source_number": 1,
+            "explanation": "서울시 거주 19~39세 고립·은둔 청년을 지원하며, 신청은 청년정책과를 통해 온라인 접수 또는 방문 접수가 가능합니다.",
+            "policyKey": "YOUTHCENTER-20260430005400212974"
+          },
+          {
+            "source_number": 4,
+            "explanation": "서울시 거주 19~39세 고립·은둔 청년을 지원하며, 온라인 신청은 청년몽땅정보통(youth.seoul.go.kr)을 통해 가능하니다.",
+            "policyKey": "YOUTHCENTER-20261021005400214204"
+          }
+        ],
+        "message": "서울에서 고립·은둔 생활을 하는 청년의 지원을 위해서는 19세에서 39세 사이여야 하며, 정해진 온라인 신청 사이트를 통해 접근할 수 있습니다.",
+        "usage": {
+          "input_tokens": 2993,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_12h_tokens": 0,
+              "ttl_30m_tokens": 0
+            },
+            "cached_tokens": 0
+          },
+          "output_tokens": 154,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 3147
+        }
+      },
+      "elapsedMs": 3976,
+      "retrieved": [
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20260430005400212974",
+            "name": "고립·은둔 청년 지원사업",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.bokjiro.go.kr/ssis-tbu/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006301"
+          },
+          "score": 0.9382901869777579
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20250519005400210859",
+            "name": "서울시 고립·은둔청년 지원사업",
+            "source": "YOUTHCENTER",
+            "source_url": null
+          },
+          "score": 0.9375535703235832
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20251106005400211807",
+            "name": "생성형 AI 고위험 고립 · 은둔 청(소)년 사전예방 시스템[점프프렌즈(JUMP FRIENDS)]",
+            "source": "YOUTHCENTER",
+            "source_url": "https://hey.hscity.go.kr/base/board/read?boardManagementNo=8&boardNo=1159&searchCategory=&page=1&searchType=&searchWord=&menuLevel=2&menuNo=31"
+          },
+          "score": 0.9000609879570575
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20261021005400214204",
+            "name": "2026 고립·은둔 청년 지원",
+            "source": "YOUTHCENTER",
+            "source_url": "https://youth.seoul.go.kr"
+          },
+          "score": 0.8891449028252856
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20250715005400211261",
+            "name": "고립·은둔청년 지원",
+            "source": "YOUTHCENTER",
+            "source_url": null
+          },
+          "score": 0.8499762631868284
+        }
+      ]
+    },
+    {
+      "id": "N23",
+      "category": "복합조건",
+      "question": "2026 서울 희망두배 청년통장 원본에서 부양의무자의 소득과 재산은 각각 얼마 미만이어야 해? 본인 소득 기준으로 바꿔 설명하지 말아줘.",
+      "policyKeys": [
+        "YOUTHCENTER-20261021005400214205"
+      ],
+      "facts": [
+        {
+          "label": "부양의무자 소득 1억원 미만",
+          "pattern": "1\\s*억[\\s\\S]{0,20}미만|미만[\\s\\S]{0,20}1\\s*억",
+          "path": "eligibility.target_text",
+          "quote": "고소득(1억원)"
+        },
+        {
+          "label": "재산 9억원 미만",
+          "pattern": "9\\s*억[\\s\\S]{0,20}미만|미만[\\s\\S]{0,20}9\\s*억",
+          "path": "eligibility.target_text",
+          "quote": "고재산(9억원) 미만"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "YOUTHCENTER-20261021005400214205"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "YOUTHCENTER-20261021005400214205",
+          "name": "2026 희망두배 청년통장",
+          "source": "YOUTHCENTER",
+          "sourceUrl": "https://youth.seoul.go.kr"
+        }
+      ],
+      "grade": {
+        "rank": 1,
+        "retrievalApplicable": true,
+        "hitAt1": true,
+        "hitAt3": true,
+        "hitAt5": true,
+        "checks": [
+          {
+            "label": "부양의무자 소득 1억원 미만",
+            "passed": true
+          },
+          {
+            "label": "재산 9억원 미만",
+            "passed": true
+          }
+        ],
+        "factsPassed": 2,
+        "citationPassed": true,
+        "abstentionPassed": true,
+        "forbiddenMatches": [],
+        "answerPassed": true
+      },
+      "generated": {
+        "answer": "### 2026 희망두배 청년통장 [1]\n\n부양의무자의 고소득은 1억원 미만이어야 하며, 고재산은 9억원 미만이어야 합니다.\n\n명확한 정보를 제공하기 위해 추가로 필요한 사용자 조건이나 문의사항이 있으면 말씀해 주세요.\n\n최종 자격과 최신 신청 가능 여부는 원문에서 확인해 주세요.",
+        "sections": [
+          {
+            "source_number": 1,
+            "explanation": "부양의무자의 고소득은 1억원 미만이어야 하며, 고재산은 9억원 미만이어야 합니다.",
+            "policyKey": "YOUTHCENTER-20261021005400214205"
+          }
+        ],
+        "message": "명확한 정보를 제공하기 위해 추가로 필요한 사용자 조건이나 문의사항이 있으면 말씀해 주세요.",
+        "usage": {
+          "input_tokens": 3976,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_12h_tokens": 0,
+              "ttl_30m_tokens": 0
+            },
+            "cached_tokens": 0
+          },
+          "output_tokens": 72,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 4048
+        }
+      },
+      "elapsedMs": 3405,
+      "retrieved": [
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20261021005400214205",
+            "name": "2026 희망두배 청년통장",
+            "source": "YOUTHCENTER",
+            "source_url": "https://youth.seoul.go.kr"
+          },
+          "score": 1
+        },
+        {
+          "policy": {
+            "policy_key": "GOV24-630000000131",
+            "name": "미래두배 청년통장",
+            "source": "GOV24",
+            "source_url": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=1002503&bnefType=all&svcId=630000000131"
+          },
+          "score": 0.6053433053848449
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20250114005400210249",
+            "name": "모다드림 청년통장 지원사업",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.modadream.kr/"
+          },
+          "score": 0.5015869043860984
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20251106005400211809",
+            "name": "함안정착 청년통장",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.haman.go.kr"
+          },
+          "score": 0.49963827507286307
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20250916005400211693",
+            "name": "모다드림 청년통장 지원",
+            "source": "YOUTHCENTER",
+            "source_url": "https://youth.gyeongnam.go.kr/youth/"
+          },
+          "score": 0.4842432380085363
+        }
+      ]
+    },
+    {
+      "id": "N24",
+      "category": "상황설명",
+      "question": "곡성군이 청년 창업자에게 공유사무실을 지원한다는데, 나이 범위와 창업 경력 기준이 궁금해. 예비창업자도 가능해?",
+      "policyKeys": [
+        "YOUTHCENTER-20261021005400214189"
+      ],
+      "facts": [
+        {
+          "label": "19~49세",
+          "pattern": "19[\\s\\S]{0,25}49\\s*세",
+          "path": "benefit.text",
+          "quote": "19세 이상 49세 이하"
+        },
+        {
+          "label": "예비창업자 또는 5년 이내 창업자",
+          "pattern": "예비[\\s\\S]{0,40}5\\s*년|5\\s*년[\\s\\S]{0,40}예비",
+          "path": "benefit.text",
+          "quote": "예비 창업자 또는 5년 이내 창업자"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "YOUTHCENTER-20261021005400214189"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "YOUTHCENTER-20261021005400214189",
+          "name": "2026 곡성군 청년창업 공유사무실 입주자 모집",
+          "source": "YOUTHCENTER",
+          "sourceUrl": "https://www.gokseong.go.kr/board/GosiView.do?menuNo=102001003000&pageIndex=1&searchCnd=0&not_ancmt_mgt_no=34821&not_ancmt_se_code=&list_gubun=&srhCate=title&searchWrd=%EA%B3%B5%EC%9C%A0%EC%82%AC%EB%AC%B4%EC%8B%A4"
+        }
+      ],
+      "grade": {
+        "rank": 1,
+        "retrievalApplicable": true,
+        "hitAt1": true,
+        "hitAt3": true,
+        "hitAt5": true,
+        "checks": [
+          {
+            "label": "19~49세",
+            "passed": true
+          },
+          {
+            "label": "예비창업자 또는 5년 이내 창업자",
+            "passed": true
+          }
+        ],
+        "factsPassed": 2,
+        "citationPassed": true,
+        "abstentionPassed": true,
+        "forbiddenMatches": [],
+        "answerPassed": true
+      },
+      "generated": {
+        "answer": "### 2026 곡성군 청년창업 공유사무실 입주자 모집 [1]\n\n곡성군의 공유사무실 지원 대상은 신청일 기준으로 관내 주소지가 있는 19세 이상 49세 이하의 예비 창업자 또는 5년 이내의 창업자입니다. 따라서 예비창업자도 지원 가능합니다.\n\n추가로 궁금하신 내용이 있으시면 말씀해 주세요.\n\n최종 자격과 최신 신청 가능 여부는 원문에서 확인해 주세요.",
+        "sections": [
+          {
+            "source_number": 1,
+            "explanation": "곡성군의 공유사무실 지원 대상은 신청일 기준으로 관내 주소지가 있는 19세 이상 49세 이하의 예비 창업자 또는 5년 이내의 창업자입니다. 따라서 예비창업자도 지원 가능합니다.",
+            "policyKey": "YOUTHCENTER-20261021005400214189"
+          }
+        ],
+        "message": "추가로 궁금하신 내용이 있으시면 말씀해 주세요.",
+        "usage": {
+          "input_tokens": 3842,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_12h_tokens": 0,
+              "ttl_30m_tokens": 0
+            },
+            "cached_tokens": 0
+          },
+          "output_tokens": 89,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 3931
+        }
+      },
+      "elapsedMs": 3682,
+      "retrieved": [
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20261021005400214189",
+            "name": "2026 곡성군 청년창업 공유사무실 입주자 모집",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.gokseong.go.kr/board/GosiView.do?menuNo=102001003000&pageIndex=1&searchCnd=0&not_ancmt_mgt_no=34821&not_ancmt_se_code=&list_gubun=&srhCate=title&searchWrd=%EA%B3%B5%EC%9C%A0%EC%82%AC%EB%AC%B4%EC%8B%A4"
+          },
+          "score": 0.9986566932727239
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20260331005400212360",
+            "name": "익산다이로움 청년공유주방 청년 예비창업자 재공고(2차)",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.iksan.go.kr/index.do?menuUid=ff8080819a39930e019a4de8c1ae0afd"
+          },
+          "score": 0.619622093576083
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20260325005400212265",
+            "name": "2026년도 경북청년예비창업가 육성사업",
+            "source": "YOUTHCENTER",
+            "source_url": "https://bi.andong.ac.kr/main/jw/main/list/view.php?mid=/bz/bz_list&search_bzkind=1&bznum=197"
+          },
+          "score": 0.6053997594795764
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20250901005400211541",
+            "name": "2025년도 경북청년예비창업가 육성사업",
+            "source": "YOUTHCENTER",
+            "source_url": null
+          },
+          "score": 0.6053358071565811
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20261021005400214236",
+            "name": "2026년 곡성군 청년도전지원사업 상시 모집",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.gokseong.go.kr/kr/board/view.do?bbsId=BBS_000000000000150&pageIndex=1&nttId=112936&menuNo=102001001000&searchCategory1=&searchCategory2=&searchCategory3="
+          },
+          "score": 0.5898486616573378
+        }
+      ]
+    },
+    {
+      "id": "N25",
+      "category": "예외조건",
+      "question": "강진 가업승계 청년 정착기반 지원에서 반드시 부모 소유 농지를 상속받아야만 해? 부모가 임대해 경작하던 농지의 임대 승계 예외도 알려줘.",
+      "policyKeys": [
+        "YOUTHCENTER-20261021005400214181"
+      ],
+      "facts": [
+        {
+          "label": "부모 5년 이상 임대 경작 예외",
+          "pattern": "5\\s*년[\\s\\S]{0,70}(?:부모|임대|경작)|(?:부모|임대|경작)[\\s\\S]{0,70}5\\s*년",
+          "path": "benefit.text",
+          "quote": "5년 이상 (조)부모가 임대하여 경작"
+        },
+        {
+          "label": "신청인 5년 이상 임대 계약",
+          "pattern": "(?:신청인|받을\\s*자|본인|청년)[\\s\\S]{0,60}5\\s*년|임대[\\s\\S]{0,15}5\\s*년[\\s\\S]{0,20}계약",
+          "path": "benefit.text",
+          "quote": "임대(5년 이상) 계약한 경우 가능"
+        }
+      ],
+      "acceptedPolicyKeys": [
+        "YOUTHCENTER-20261021005400214181",
+        "YOUTHCENTER-20250109005400210134"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "YOUTHCENTER-20261021005400214181",
+          "name": "가업승계 청년 정착기반 지원사업",
+          "source": "YOUTHCENTER",
+          "sourceUrl": "https://www.gangjin.go.kr/www/government/news/notice?idx=659456&mode=view&search_type=title&search_word=%EC%B0%BD%EC%97%85&page_scale=15&search_date=y&start_date=2025-10-21&finish_date=2026-10-21"
+        }
+      ],
+      "grade": {
+        "rank": 1,
+        "retrievalApplicable": true,
+        "hitAt1": true,
+        "hitAt3": true,
+        "hitAt5": true,
+        "checks": [
+          {
+            "label": "부모 5년 이상 임대 경작 예외",
+            "passed": true
+          },
+          {
+            "label": "신청인 5년 이상 임대 계약",
+            "passed": true
+          }
+        ],
+        "factsPassed": 2,
+        "citationPassed": true,
+        "abstentionPassed": true,
+        "forbiddenMatches": [],
+        "answerPassed": true
+      },
+      "generated": {
+        "answer": "### 가업승계 청년 정착기반 지원사업 [1]\n\n가업승계 청년 정착기반 지원사업에서는 부모 소유의 농지 외에 5년 이상 부모가 임대하여 경작한 농지에서도 임대 계약을 통해 가업을 승계받을 수 있습니다. 즉, 반드시 부모 소유 농지를 상속받아야만 하는 것은 아니며, 부모가 임대하여 경작하던 농지의 임대 승계도 예외적으로 인정됩니다.\n\n추가로 필요한 사용자 조건이나 일반적인 안내가 필요하시면 말씀해 주세요.\n\n최종 자격과 최신 신청 가능 여부는 원문에서 확인해 주세요.",
+        "sections": [
+          {
+            "source_number": 1,
+            "explanation": "가업승계 청년 정착기반 지원사업에서는 부모 소유의 농지 외에 5년 이상 부모가 임대하여 경작한 농지에서도 임대 계약을 통해 가업을 승계받을 수 있습니다. 즉, 반드시 부모 소유 농지를 상속받아야만 하는 것은 아니며, 부모가 임대하여 경작하던 농지의 임대 승계도 예외적으로 인정됩니다.",
+            "policyKey": "YOUTHCENTER-20261021005400214181"
+          }
+        ],
+        "message": "추가로 필요한 사용자 조건이나 일반적인 안내가 필요하시면 말씀해 주세요.",
+        "usage": {
+          "input_tokens": 3092,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_12h_tokens": 0,
+              "ttl_30m_tokens": 0
+            },
+            "cached_tokens": 0
+          },
+          "output_tokens": 129,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 3221
+        }
+      },
+      "elapsedMs": 4080,
+      "retrieved": [
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20261021005400214181",
+            "name": "가업승계 청년 정착기반 지원사업",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.gangjin.go.kr/www/government/news/notice?idx=659456&mode=view&search_type=title&search_word=%EC%B0%BD%EC%97%85&page_scale=15&search_date=y&start_date=2025-10-21&finish_date=2026-10-21"
+          },
+          "score": 0.9973803881105974
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20250109005400210134",
+            "name": "가업승계 청년 정착기반 지원사업",
+            "source": "YOUTHCENTER",
+            "source_url": null
+          },
+          "score": 0.9962659794129952
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20250109005400210106",
+            "name": "영농승계 청년농업인 육성 지원사업",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.haenam.go.kr/"
+          },
+          "score": 0.445534729312807
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20250918005400211770",
+            "name": "청년후계농 농지 임대료 지원",
+            "source": "YOUTHCENTER",
+            "source_url": "https://youth.gyeongnam.go.kr/youth/"
+          },
+          "score": 0.4352817700046058
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20261018005400213987",
+            "name": "전통공예청년승계자특별지원사업",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.gyeongju.go.kr/health/page.do?pageNo=38&pagePrvNxt=1&pageRef=0&pageOrder=0&step=258&parm_bod_uid=328612&srchVoteType=-1&parm_mnu_uid=423&srchEnable=1&srchKeyword=&srchBgpUid=-1&srchSDate=2026-06-21&srchColumn=&srchEDate=2026-09-21&mnu_uid=3143&"
+          },
+          "score": 0.42991744687564176
+        }
+      ]
+    },
+    {
+      "id": "N26",
+      "category": "정보부족",
+      "question": "LH 서울지역본부 26년 3차 청년 매입임대주택 예비입주자 공고의 보증금과 월 임대료는 각각 얼마야? 이 카탈로그에 숫자가 없으면 없다고 해줘.",
+      "policyKeys": [
+        "LH-2015122300020759"
+      ],
+      "facts": [
+        {
+          "label": "보증금·임대료 누락 인정",
+          "pattern": "(?:확인|확정|알\\s*수|제공|명시|기재|포함)[\\s\\S]{0,30}(?:불가|없|않|어렵|안\\s*되)|(?:누락|명시되지|기재되지|제공되지)",
+          "missingPaths": [
+            "benefit.text",
+            "benefit.structured_amounts"
+          ]
+        }
+      ],
+      "forbiddenPatterns": [
+        "\\d[\\d,.]*\\s*(?:억|만\\s*원|천\\s*원|원)"
+      ],
+      "acceptedPolicyKeys": [
+        "LH-2015122300020759"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "LH-2015122300020759",
+          "name": "[서울지역본부] 26년 3차 청년 매입임대주택 예비입주자 모집공고",
+          "source": "LH",
+          "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020759&ccrCnntSysDsCd=03&uppAisTpCd=13&aisTpCd=26&mi=1026"
+        }
+      ],
+      "grade": {
+        "rank": 1,
+        "retrievalApplicable": true,
+        "hitAt1": true,
+        "hitAt3": true,
+        "hitAt5": true,
+        "checks": [
+          {
+            "label": "보증금·임대료 누락 인정",
+            "passed": true
+          }
+        ],
+        "factsPassed": 1,
+        "citationPassed": true,
+        "abstentionPassed": true,
+        "forbiddenMatches": [],
+        "answerPassed": true
+      },
+      "generated": {
+        "answer": "정책 자료에 보증금과 월 임대료에 대한 정보가 누락되어 있습니다. 추가로 필요한 사용자 조건에 대한 정보가 있으면 알려주시면 확인해 드리겠습니다.",
+        "sections": [],
+        "message": "정책 자료에 보증금과 월 임대료에 대한 정보가 누락되어 있습니다. 추가로 필요한 사용자 조건에 대한 정보가 있으면 알려주시면 확인해 드리겠습니다.",
+        "usage": {
+          "input_tokens": 2397,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_12h_tokens": 0,
+              "ttl_30m_tokens": 0
+            },
+            "cached_tokens": 0
+          },
+          "output_tokens": 49,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2446
+        }
+      },
+      "elapsedMs": 2459,
+      "retrieved": [
+        {
+          "policy": {
+            "policy_key": "LH-2015122300020759",
+            "name": "[서울지역본부] 26년 3차 청년 매입임대주택 예비입주자 모집공고",
+            "source": "LH",
+            "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020759&ccrCnntSysDsCd=03&uppAisTpCd=13&aisTpCd=26&mi=1026"
+          },
+          "score": 1
+        },
+        {
+          "policy": {
+            "policy_key": "LH-2015122300020749",
+            "name": "[서울지역본부] 26년 3차 신혼·신생아매입임대주택Ⅱ(전세형) 예비입주자 모집공고",
+            "source": "LH",
+            "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020749&ccrCnntSysDsCd=03&uppAisTpCd=13&aisTpCd=26&mi=1026"
+          },
+          "score": 0.9197618628944159
+        },
+        {
+          "policy": {
+            "policy_key": "LH-2015122300020750",
+            "name": "[서울지역본부] 26년 3차 신혼·신생아 매입임대Ⅰ 예비입주자 모집공고",
+            "source": "LH",
+            "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020750&ccrCnntSysDsCd=03&uppAisTpCd=13&aisTpCd=26&mi=1026"
+          },
+          "score": 0.8697153293029184
+        },
+        {
+          "policy": {
+            "policy_key": "LH-2015122300020843",
+            "name": "[서울지역본부] 26년 2차 비분양전환형 든든전세주택 입주자 모집공고",
+            "source": "LH",
+            "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020843&ccrCnntSysDsCd=03&uppAisTpCd=13&aisTpCd=26&mi=1026"
+          },
+          "score": 0.6632745784712448
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20260428005400212893",
+            "name": "2026년 전주 청년만원주택 청춘★별채 예비입주자 모집",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.jeonju.go.kr/youth/index.9is"
+          },
+          "score": 0.5502674937547262
+        }
+      ]
+    },
+    {
+      "id": "N27",
+      "category": "정보부족",
+      "question": "LH 서울지역본부 26년 3차 신혼·신생아 매입임대Ⅱ 전세형 공고의 정확한 소득 상한과 연령 제한은? 해당 공고 레코드에 있는 정보만 답하고 일반 기준을 대신 넣지 말아줘.",
+      "policyKeys": [
+        "LH-2015122300020749"
+      ],
+      "facts": [
+        {
+          "label": "소득·연령 기준 누락 인정",
+          "pattern": "(?:확인|확정|알\\s*수|제공|명시|기재|포함)[\\s\\S]{0,30}(?:불가|없|않|어렵|안\\s*되)|(?:누락|명시되지|기재되지|제공되지)",
+          "missingPaths": [
+            "eligibility.target_text",
+            "eligibility.criteria_text"
+          ]
+        }
+      ],
+      "forbiddenPatterns": [
+        "\\d+\\s*세|\\d+\\s*%|\\d[\\d,.]*\\s*만\\s*원"
+      ],
+      "acceptedPolicyKeys": [
+        "LH-2015122300020749"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "LH-2015122300020749",
+          "name": "[서울지역본부] 26년 3차 신혼·신생아매입임대주택Ⅱ(전세형) 예비입주자 모집공고",
+          "source": "LH",
+          "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020749&ccrCnntSysDsCd=03&uppAisTpCd=13&aisTpCd=26&mi=1026"
+        }
+      ],
+      "grade": {
+        "rank": 1,
+        "retrievalApplicable": true,
+        "hitAt1": true,
+        "hitAt3": true,
+        "hitAt5": true,
+        "checks": [
+          {
+            "label": "소득·연령 기준 누락 인정",
+            "passed": false
+          }
+        ],
+        "factsPassed": 0,
+        "citationPassed": true,
+        "abstentionPassed": true,
+        "forbiddenMatches": [
+          "\\d+\\s*세|\\d+\\s*%|\\d[\\d,.]*\\s*만\\s*원"
+        ],
+        "answerPassed": false
+      },
+      "generated": {
+        "answer": "### [서울지역본부] 26년 3차 신혼·신생아매입임대주택Ⅱ(전세형) 예비입주자 모집공고 [1]\n\n26년 3차 신혼·신생아 매입임대주택Ⅱ의 신청자는 만 19세 이상 44세 이하의 신혼부부 및 한부모가족이 포함됩니다. 또한, 소득 상한은 신혼·신생아Ⅱ 기준으로 월평균소득 130%입니다.\n\n정확한 신청 조건이나 방법은 LH 서울지역본부 공고문을 참고하세요. 추가로 필요한 사용자 조건이나 일반적인 안내가 필요하시면 말씀해 주세요.\n\n최종 자격과 최신 신청 가능 여부는 원문에서 확인해 주세요.",
+        "sections": [
+          {
+            "source_number": 1,
+            "explanation": "26년 3차 신혼·신생아 매입임대주택Ⅱ의 신청자는 만 19세 이상 44세 이하의 신혼부부 및 한부모가족이 포함됩니다. 또한, 소득 상한은 신혼·신생아Ⅱ 기준으로 월평균소득 130%입니다.",
+            "policyKey": "LH-2015122300020749"
+          }
+        ],
+        "message": "정확한 신청 조건이나 방법은 LH 서울지역본부 공고문을 참고하세요. 추가로 필요한 사용자 조건이나 일반적인 안내가 필요하시면 말씀해 주세요.",
+        "usage": {
+          "input_tokens": 2830,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_12h_tokens": 0,
+              "ttl_30m_tokens": 0
+            },
+            "cached_tokens": 0
+          },
+          "output_tokens": 126,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2956
+        }
+      },
+      "elapsedMs": 3010,
+      "retrieved": [
+        {
+          "policy": {
+            "policy_key": "LH-2015122300020749",
+            "name": "[서울지역본부] 26년 3차 신혼·신생아매입임대주택Ⅱ(전세형) 예비입주자 모집공고",
+            "source": "LH",
+            "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020749&ccrCnntSysDsCd=03&uppAisTpCd=13&aisTpCd=26&mi=1026"
+          },
+          "score": 0.9861050643827574
+        },
+        {
+          "policy": {
+            "policy_key": "LH-2015122300020750",
+            "name": "[서울지역본부] 26년 3차 신혼·신생아 매입임대Ⅰ 예비입주자 모집공고",
+            "source": "LH",
+            "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020750&ccrCnntSysDsCd=03&uppAisTpCd=13&aisTpCd=26&mi=1026"
+          },
+          "score": 0.9119572641904444
+        },
+        {
+          "policy": {
+            "policy_key": "LH-2015122300020759",
+            "name": "[서울지역본부] 26년 3차 청년 매입임대주택 예비입주자 모집공고",
+            "source": "LH",
+            "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020759&ccrCnntSysDsCd=03&uppAisTpCd=13&aisTpCd=26&mi=1026"
+          },
+          "score": 0.6915024581248428
+        },
+        {
+          "policy": {
+            "policy_key": "LH-2015122300020843",
+            "name": "[서울지역본부] 26년 2차 비분양전환형 든든전세주택 입주자 모집공고",
+            "source": "LH",
+            "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020843&ccrCnntSysDsCd=03&uppAisTpCd=13&aisTpCd=26&mi=1026"
+          },
+          "score": 0.5902881286026991
+        },
+        {
+          "policy": {
+            "policy_key": "GOV24-O00026200008",
+            "name": "신혼ㆍ신생아 매입임대주택 지원",
+            "source": "GOV24",
+            "source_url": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=2001713&bnefType=all&svcId=O00026200008"
+          },
+          "score": 0.4965662903413785
+        }
+      ]
+    },
+    {
+      "id": "N28",
+      "category": "정보부족",
+      "question": "2026 서울 영테크에 제가 어제 제출한 개인 신청서의 접수번호와 승인 여부를 알려줘. 이 정책 카탈로그에 제 개인 신청 내역도 있어?",
+      "policyKeys": [
+        "YOUTHCENTER-20261021005400214202"
+      ],
+      "facts": [
+        {
+          "label": "개인 접수·승인 내역 확인 불가",
+          "pattern": "(?:확인|확정|알\\s*수|제공|명시|기재|포함|접근)[\\s\\S]{0,30}(?:불가|없|않|어렵|안\\s*되)|(?:누락|명시되지|기재되지|제공되지)",
+          "missingPaths": [
+            "personal_application_history"
+          ]
+        }
+      ],
+      "forbiddenPatterns": [
+        "접수번호는\\s*[A-Za-z0-9]|신청이\\s*승인되었"
+      ],
+      "acceptedPolicyKeys": [
+        "YOUTHCENTER-20261021005400214202"
+      ],
+      "goldPolicies": [
+        {
+          "policyKey": "YOUTHCENTER-20261021005400214202",
+          "name": "2026 서울 영테크",
+          "source": "YOUTHCENTER",
+          "sourceUrl": "https://youth.seoul.go.kr"
+        }
+      ],
+      "grade": {
+        "rank": 1,
+        "retrievalApplicable": true,
+        "hitAt1": true,
+        "hitAt3": true,
+        "hitAt5": true,
+        "checks": [
+          {
+            "label": "개인 접수·승인 내역 확인 불가",
+            "passed": true
+          }
+        ],
+        "factsPassed": 1,
+        "citationPassed": true,
+        "abstentionPassed": true,
+        "forbiddenMatches": [],
+        "answerPassed": true
+      },
+      "generated": {
+        "answer": "### 2026 서울 영테크 [1]\n\n2026 서울 영테크는 서울시에 주소가 등록된 만 19세에서 39세의 청년을 대상으로 하는 정책으로, 무료 재무상담 및 금융교육을 제공하여 경제적 자립을 지원합니다. 신청 기간은 2026년 3월 1일부터 2026년 11월 30일까지이며, 신청 방법은 서울 영테크 온라인 신청을 통하여 가능합니다. 현재 신청 상태는 '확인 필요'입니다.\n\n### 서울 영테크 [2]\n\n서울 영테크는 청년이 재무상담과 금융교육을 받을 수 있는 프로그램입니다. 신청 대상은 서울시에 거주하는 만 19세부터 39세까지의 청년이며, 금융교육 강좌는 영테크 홈페이지에서 선착순으로 신청 가능합니다. 신청 상태는 '확인 필요'입니다.\n\n신청서의 접수번호 및 승인 여부는 정책 카탈로그에 포함되어 있지 않으며, 위의 정보를 바탕으로 상태를 확인하시기 바랍니다.\n\n최종 자격과 최신 신청 가능 여부는 원문에서 확인해 주세요.",
+        "sections": [
+          {
+            "source_number": 1,
+            "explanation": "2026 서울 영테크는 서울시에 주소가 등록된 만 19세에서 39세의 청년을 대상으로 하는 정책으로, 무료 재무상담 및 금융교육을 제공하여 경제적 자립을 지원합니다. 신청 기간은 2026년 3월 1일부터 2026년 11월 30일까지이며, 신청 방법은 서울 영테크 온라인 신청을 통하여 가능합니다. 현재 신청 상태는 '확인 필요'입니다.",
+            "policyKey": "YOUTHCENTER-20261021005400214202"
+          },
+          {
+            "source_number": 2,
+            "explanation": "서울 영테크는 청년이 재무상담과 금융교육을 받을 수 있는 프로그램입니다. 신청 대상은 서울시에 거주하는 만 19세부터 39세까지의 청년이며, 금융교육 강좌는 영테크 홈페이지에서 선착순으로 신청 가능합니다. 신청 상태는 '확인 필요'입니다.",
+            "policyKey": "YOUTHCENTER-20250519005400210851"
+          }
+        ],
+        "message": "신청서의 접수번호 및 승인 여부는 정책 카탈로그에 포함되어 있지 않으며, 위의 정보를 바탕으로 상태를 확인하시기 바랍니다.",
+        "usage": {
+          "input_tokens": 4221,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_12h_tokens": 0,
+              "ttl_30m_tokens": 0
+            },
+            "cached_tokens": 0
+          },
+          "output_tokens": 233,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 4454
+        }
+      },
+      "elapsedMs": 4177,
+      "retrieved": [
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20261021005400214202",
+            "name": "2026 서울 영테크",
+            "source": "YOUTHCENTER",
+            "source_url": "https://youth.seoul.go.kr"
+          },
+          "score": 0.9932952624305669
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20250519005400210851",
+            "name": "서울 영테크",
+            "source": "YOUTHCENTER",
+            "source_url": "https://youth.seoul.go.kr/youngtech/main"
+          },
+          "score": 0.9623668592258046
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20260521005400213210",
+            "name": "청년고용정책 싹! 알려드림 <싹!알데이>",
+            "source": "YOUTHCENTER",
+            "source_url": null
+          },
+          "score": 0.6064355608672773
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20250305005400110593",
+            "name": "서울시 청년수당",
+            "source": "YOUTHCENTER",
+            "source_url": "https://youth.seoul.go.kr/youthConts.do?key=2310100061&sc_pbancSeCd=012&sc_bbsStngSn=2212200001&sc_bbsCtgrySn=2310200011&sc_qnaCtgryCd=004&sc_faqCtgryCd=005"
+          },
+          "score": 0.5838042092711805
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20261021005400214165",
+            "name": "2026 청년쿡 비즈니스‧푸드테크 센터 운영",
+            "source": "YOUTHCENTER",
+            "source_url": "https://youth.seoul.go.kr"
+          },
+          "score": 0.5727482739982191
+        }
+      ]
+    },
+    {
+      "id": "N29",
+      "category": "범위밖",
+      "question": "나이와 소득에 상관없이 모든 청년에게 평생 매달 200만원을 주는 '전국 청년 평생소득'을 이 자료에서 찾아 신청 방법을 알려줘. 실제 제도가 없으면 없다고 해줘.",
+      "policyKeys": [],
+      "facts": [
+        {
+          "label": "가상 제도 확인 불가",
+          "pattern": "(?:찾|확인|제공|해당|관련|포함|존재|자료|정책|정보)[\\s\\S]{0,35}(?:없|않|불가)"
+        }
+      ],
+      "requireAbstention": true,
+      "acceptedPolicyKeys": [],
+      "goldPolicies": [],
+      "grade": {
+        "rank": null,
+        "retrievalApplicable": false,
+        "hitAt1": false,
+        "hitAt3": false,
+        "hitAt5": false,
+        "checks": [
+          {
+            "label": "가상 제도 확인 불가",
+            "passed": true
+          }
+        ],
+        "factsPassed": 1,
+        "citationPassed": true,
+        "abstentionPassed": true,
+        "forbiddenMatches": [],
+        "answerPassed": true
+      },
+      "generated": {
+        "answer": "제공된 자료에서는 나이와 소득에 상관없이 모든 청년에게 매달 200만원을 지원하는 '전국 청년 평생소득' 관련 내용이 없습니다. 추가로 필요한 정보가 있다면 말씀해 주세요.",
+        "sections": [],
+        "message": "제공된 자료에서는 나이와 소득에 상관없이 모든 청년에게 매달 200만원을 지원하는 '전국 청년 평생소득' 관련 내용이 없습니다. 추가로 필요한 정보가 있다면 말씀해 주세요.",
+        "usage": {
+          "input_tokens": 5226,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_12h_tokens": 0,
+              "ttl_30m_tokens": 0
+            },
+            "cached_tokens": 0
+          },
+          "output_tokens": 60,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 5286
+        }
+      },
+      "elapsedMs": 2764,
+      "retrieved": [
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20250403005400210687",
+            "name": "전국민 마음투자 지원사업",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.socialservice.or.kr/"
+          },
+          "score": 0.8889160031657746
+        },
+        {
+          "policy": {
+            "policy_key": "GOV24-462000000309",
+            "name": "결혼장려금 지원",
+            "source": "GOV24",
+            "source_url": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=1002352&bnefType=all&svcId=462000000309"
+          },
+          "score": 0.8778006325101579
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20260107005400212076",
+            "name": "심리상담 바우처 사업(구 전국민 마음투자 지원사업)",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.socialservice.or.kr:444/"
+          },
+          "score": 0.8521646099706448
+        },
+        {
+          "policy": {
+            "policy_key": "GOV24-327000000251",
+            "name": "동구 학교 밖 청소년 검정고시 합격축하금 지원",
+            "source": "GOV24",
+            "source_url": "https://plus.gov.kr/portal/benefitV2/benefitTotalSrvcList/benefitSrvcDtl?svcSeq=2150322&bnefType=all&svcId=327000000251"
+          },
+          "score": 0.8464592194670266
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20250617005400110946",
+            "name": "빈곤 청년에 대한 근로인센티브 확대",
+            "source": "YOUTHCENTER",
+            "source_url": null
+          },
+          "score": 0.780836924621771
+        }
+      ]
+    },
+    {
+      "id": "N30",
+      "category": "범위밖",
+      "question": "일본 도쿄에 거주하는 청년인데 도쿄도의 월세 지원금이 얼마인지 이 한국 정책 카탈로그만 근거로 확정해줘.",
+      "policyKeys": [],
+      "facts": [
+        {
+          "label": "도쿄 지원액 확정 불가",
+          "pattern": "(?:확인|확정|제공|알\\s*수|관련|정책|정보|포함|찾)[\\s\\S]{0,35}(?:없|않|불가|어렵)|범위.{0,10}벗어"
+        }
+      ],
+      "requireAbstention": true,
+      "forbiddenPatterns": [
+        "\\d[\\d,.]*\\s*엔"
+      ],
+      "acceptedPolicyKeys": [],
+      "goldPolicies": [],
+      "grade": {
+        "rank": null,
+        "retrievalApplicable": false,
+        "hitAt1": false,
+        "hitAt3": false,
+        "hitAt5": false,
+        "checks": [
+          {
+            "label": "도쿄 지원액 확정 불가",
+            "passed": false
+          }
+        ],
+        "factsPassed": 0,
+        "citationPassed": true,
+        "abstentionPassed": true,
+        "forbiddenMatches": [],
+        "answerPassed": false
+      },
+      "generated": {
+        "answer": "정확한 정보를 찾지 못했습니다. 일본 도쿄의 월세 지원금에 대한 정보가 필요하신 경우, 일본 정부나 관련 기관에 직접 문의하시는 것이 좋습니다.",
+        "sections": [],
+        "message": "정확한 정보를 찾지 못했습니다. 일본 도쿄의 월세 지원금에 대한 정보가 필요하신 경우, 일본 정부나 관련 기관에 직접 문의하시는 것이 좋습니다.",
+        "usage": {
+          "input_tokens": 5918,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_12h_tokens": 0,
+              "ttl_30m_tokens": 0
+            },
+            "cached_tokens": 0
+          },
+          "output_tokens": 49,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 5967
+        }
+      },
+      "elapsedMs": 2653,
+      "retrieved": [
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20250411005400210701",
+            "name": "경기청년 해외진출(일본) 사업",
+            "source": "YOUTHCENTER",
+            "source_url": "https://apply.jobaba.net"
+          },
+          "score": 0.9571780586767995
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20261026005400214440",
+            "name": "영암군 청년월세 지원사업",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.yeongam.go.kr/"
+          },
+          "score": 0.8053611119380284
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20240109005400100003",
+            "name": "주거안정월세대출",
+            "source": "YOUTHCENTER",
+            "source_url": "https://nhuf.molit.go.kr/FP/FP05/FP0502/FP05020201.jsp"
+          },
+          "score": 0.7924356346478373
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20260326005400212287",
+            "name": "2026년 평택시 청년 월세 지원",
+            "source": "YOUTHCENTER",
+            "source_url": "https://www.pyeongtaek.go.kr/"
+          },
+          "score": 0.7830245260289368
+        },
+        {
+          "policy": {
+            "policy_key": "YOUTHCENTER-20260922005400113545",
+            "name": "청년전용 보증부 월세대출",
+            "source": "YOUTHCENTER",
+            "source_url": "https://nhuf.molit.go.kr/FP/FP05/FP0502/FP05020701.jsp"
+          },
+          "score": 0.782980561327057
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total": 30,
+    "errors": 0,
+    "retrievalTotal": 28,
+    "hitAt1": 24,
+    "hitAt3": 24,
+    "hitAt5": 25,
+    "meanReciprocalRank": 0.8660714285714286,
+    "answerCorrect": 24,
+    "factCorrect": 51,
+    "factTotal": 62,
+    "categories": {
+      "상황설명": {
+        "total": 10,
+        "answerCorrect": 8
+      },
+      "정책명": {
+        "total": 4,
+        "answerCorrect": 4
+      },
+      "복합조건": {
+        "total": 3,
+        "answerCorrect": 2
+      },
+      "지역구분": {
+        "total": 5,
+        "answerCorrect": 5
+      },
+      "예외조건": {
+        "total": 3,
+        "answerCorrect": 2
+      },
+      "정보부족": {
+        "total": 3,
+        "answerCorrect": 2
+      },
+      "범위밖": {
+        "total": 2,
+        "answerCorrect": 1
+      }
+    }
+  },
+  "updatedAt": "2026-11-20T05:54:31.619Z",
+  "completedAt": "2026-11-20T05:54:31.619Z"
+}

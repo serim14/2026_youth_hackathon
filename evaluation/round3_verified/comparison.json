@@ -1,0 +1,568 @@
+{
+  "comparedAt": "2026-11-20T07:54:14.474Z",
+  "baselineFingerprint": "916668965484973b308541b6b692c5b1fcf2cbaf00f0536ac589c45d164653c3",
+  "improvedFingerprint": "99c0d096a1fed097c3c97f7d915e5c0241db004d1f01890aa404e8e5e63216d3",
+  "acceptance": {
+    "baseline": "evaluation/round3/results.json",
+    "questionSource": "evaluation/round3/questions.json",
+    "policy": "동일 문항·원본 정답·모델·검색 개수로 비교한다. 양성 문항은 원본 사실과 출처를 충족해야 하며, 안내 문항은 상황에 맞는 status까지 검사한다. 원문 인용 일치는 별도로 감사한다. 결과를 본 뒤 정답표를 바꾸지 않는다.",
+    "requiredStatuses": {
+      "T26": [
+        "insufficient"
+      ],
+      "T27": [
+        "insufficient"
+      ],
+      "T28": [
+        "personal"
+      ],
+      "T29": [
+        "no_related"
+      ],
+      "T30": [
+        "out_of_scope"
+      ]
+    },
+    "positiveStatuses": [
+      "answered",
+      "partial",
+      "needs_clarification"
+    ],
+    "versionCase": {
+      "id": "T25",
+      "multipleDifferentYears": "날짜 원문을 함께 표시하고 needs_clarification으로 적용 연도 확인을 요청한다. 같은 연도의 정확한 단일 공고만 인용한 답변도 허용한다."
+    }
+  },
+  "summary": {
+    "total": 30,
+    "beforeCore": 23,
+    "afterCore": 30,
+    "beforeQuality": 19,
+    "afterQuality": 30,
+    "beforeHitAt3": 24,
+    "afterHitAt3": 28,
+    "retrievalTotal": 28,
+    "fixed": [
+      "T03",
+      "T07",
+      "T12",
+      "T15",
+      "T18",
+      "T23",
+      "T25",
+      "T27",
+      "T28",
+      "T29",
+      "T30"
+    ],
+    "regressed": []
+  },
+  "results": [
+    {
+      "id": "T01",
+      "question": "북한이탈주민 정착금의 고령가산금은 보호결정 당시 몇 세부터 대상이고, 분기별 금액·지급 횟수·총액은 얼마야?",
+      "before": {
+        "passed": true,
+        "failures": []
+      },
+      "after": {
+        "passed": true,
+        "failures": []
+      },
+      "beforeRank": 1,
+      "afterRank": 1,
+      "beforeStatus": "answered",
+      "afterStatus": "answered"
+    },
+    {
+      "id": "T02",
+      "question": "장애인 공동생활가정 운영 지원은 기초생활 수급자가 아니면 무조건 제외돼? 부양의무자가 없거나 부양능력이 없는 경우의 조건을 알려줘.",
+      "before": {
+        "passed": true,
+        "failures": []
+      },
+      "after": {
+        "passed": true,
+        "failures": []
+      },
+      "beforeRank": 1,
+      "afterRank": 1,
+      "beforeStatus": "answered",
+      "afterStatus": "answered"
+    },
+    {
+      "id": "T03",
+      "question": "가정폭력피해자 국민임대주택 우선 입주권의 보호시설 입소 경로에서는 최소 입소기간과 퇴소 후 기간 제한이 어떻게 돼?",
+      "before": {
+        "passed": false,
+        "failures": [
+          "핵심 원본 사실·인용 미충족",
+          "안내 상태 no_related (기대: answered/partial/needs_clarification)"
+        ]
+      },
+      "after": {
+        "passed": true,
+        "failures": []
+      },
+      "beforeRank": null,
+      "afterRank": 1,
+      "beforeStatus": "no_related",
+      "afterStatus": "answered"
+    },
+    {
+      "id": "T04",
+      "question": "한부모가족 임대주택 특별공급의 무주택 조건은 어느 날짜 기준이며, 세대주만 대상이야 세대구성원도 대상이야?",
+      "before": {
+        "passed": true,
+        "failures": []
+      },
+      "after": {
+        "passed": true,
+        "failures": []
+      },
+      "beforeRank": 1,
+      "afterRank": 1,
+      "beforeStatus": "answered",
+      "afterStatus": "answered"
+    },
+    {
+      "id": "T05",
+      "question": "공유형모기지 융자의 수익공유형과 손익공유형은 주택가격 대비 대출 비율이 각각 몇 %야? 두 유형의 한도도 알려줘.",
+      "before": {
+        "passed": true,
+        "failures": []
+      },
+      "after": {
+        "passed": true,
+        "failures": []
+      },
+      "beforeRank": 1,
+      "afterRank": 1,
+      "beforeStatus": "answered",
+      "afterStatus": "answered"
+    },
+    {
+      "id": "T06",
+      "question": "민간임대주택건설자금 융자에서 30세대 이상 장기일반임대주택의 전용면적 45㎡ 이하 기본 대출한도와 금리는? 공공지원 추가 우대와는 구분해서 보여줘.",
+      "before": {
+        "passed": true,
+        "failures": []
+      },
+      "after": {
+        "passed": true,
+        "failures": []
+      },
+      "beforeRank": 1,
+      "afterRank": 1,
+      "beforeStatus": "answered",
+      "afterStatus": "answered"
+    },
+    {
+      "id": "T07",
+      "question": "통합공공임대주택 공급의 일반공급과 우선공급 물량 비율, 각각의 중위소득 상한을 구분해줘.",
+      "before": {
+        "passed": false,
+        "failures": [
+          "핵심 원본 사실·인용 미충족",
+          "안내 상태 insufficient (기대: answered/partial/needs_clarification)"
+        ]
+      },
+      "after": {
+        "passed": true,
+        "failures": []
+      },
+      "beforeRank": null,
+      "afterRank": 1,
+      "beforeStatus": "insufficient",
+      "afterStatus": "answered"
+    },
+    {
+      "id": "T08",
+      "question": "쪽방·고시원·침수 우려 반지하에 살던 사람이 임대주택으로 옮길 때 보증금과 이사비를 돕는 주거상향 지원은 원래 거처에 몇 개월 이상 살아야 해?",
+      "before": {
+        "passed": true,
+        "failures": []
+      },
+      "after": {
+        "passed": true,
+        "failures": []
+      },
+      "beforeRank": 1,
+      "afterRank": 1,
+      "beforeStatus": "answered",
+      "afterStatus": "answered"
+    },
+    {
+      "id": "T09",
+      "question": "성동구 낙상방지 홈케어 서비스의 안전용품·맞춤형 집수리 한도는 얼마이고, 홈케어 매니저는 몇 회 방문해?",
+      "before": {
+        "passed": true,
+        "failures": []
+      },
+      "after": {
+        "passed": true,
+        "failures": []
+      },
+      "beforeRank": 1,
+      "afterRank": 1,
+      "beforeStatus": "answered",
+      "afterStatus": "answered"
+    },
+    {
+      "id": "T10",
+      "question": "화재로 집을 잃은 광진구 저소득 가구의 광진119주택은 무료라던데 공과금과 관리비까지 무료야? 누가 부담해?",
+      "before": {
+        "passed": true,
+        "failures": []
+      },
+      "after": {
+        "passed": true,
+        "failures": []
+      },
+      "beforeRank": 1,
+      "afterRank": 1,
+      "beforeStatus": "answered",
+      "afterStatus": "answered"
+    },
+    {
+      "id": "T11",
+      "question": "동대문구 전세피해임차인 소송비용 지원은 가구당 얼마를 몇 회 주고, 변호사 선임비용이나 형사소송도 포함돼?",
+      "before": {
+        "passed": true,
+        "failures": []
+      },
+      "after": {
+        "passed": true,
+        "failures": []
+      },
+      "beforeRank": 1,
+      "afterRank": 1,
+      "beforeStatus": "answered",
+      "afterStatus": "answered"
+    },
+    {
+      "id": "T12",
+      "question": "마포구 주거안정자금 입주보증금 융자는 한도·연이율·거치기간·상환기간이 어떻게 돼? 전세임대주택도 가능해?",
+      "before": {
+        "passed": false,
+        "failures": [
+          "핵심 원본 사실·인용 미충족"
+        ]
+      },
+      "after": {
+        "passed": true,
+        "failures": []
+      },
+      "beforeRank": null,
+      "afterRank": 1,
+      "beforeStatus": "partial",
+      "afterStatus": "answered"
+    },
+    {
+      "id": "T13",
+      "question": "삼척 미취업 청년 자격증 응시료 사업의 1인 한도와 신청 전 주민등록 거주기간 요건을 알려줘.",
+      "before": {
+        "passed": true,
+        "failures": []
+      },
+      "after": {
+        "passed": true,
+        "failures": []
+      },
+      "beforeRank": 1,
+      "afterRank": 1,
+      "beforeStatus": "answered",
+      "afterStatus": "answered"
+    },
+    {
+      "id": "T14",
+      "question": "삼척형 청년스타트업 창업지원의 창업간접비 총액과 그 안에 포함된 자부담은 얼마야? 자부담을 별도 추가금으로 바꾸지 말아줘.",
+      "before": {
+        "passed": true,
+        "failures": []
+      },
+      "after": {
+        "passed": true,
+        "failures": []
+      },
+      "beforeRank": 1,
+      "afterRank": 1,
+      "beforeStatus": "answered",
+      "afterStatus": "answered"
+    },
+    {
+      "id": "T15",
+      "question": "2026 청년자율예산 청년정책실험실의 프로젝트당 지원금은 얼마이고, 신청서는 어떤 경로로 제출해?",
+      "before": {
+        "passed": false,
+        "failures": [
+          "핵심 원본 사실·인용 미충족"
+        ]
+      },
+      "after": {
+        "passed": true,
+        "failures": []
+      },
+      "beforeRank": 1,
+      "afterRank": 1,
+      "beforeStatus": "answered",
+      "afterStatus": "answered"
+    },
+    {
+      "id": "T16",
+      "question": "2026 광주 남구 창업 아이디어 공모 및 지원의 팀별 사업화 자금은 얼마야? 그 돈을 인건비나 사무실 임차료에 써도 돼?",
+      "before": {
+        "passed": true,
+        "failures": []
+      },
+      "after": {
+        "passed": true,
+        "failures": []
+      },
+      "beforeRank": 1,
+      "afterRank": 1,
+      "beforeStatus": "answered",
+      "afterStatus": "answered"
+    },
+    {
+      "id": "T17",
+      "question": "광주 충장축제 청년기획단 찐이 4기의 사전활동 1회 수당과 축제기간 하루 실비는 각각 얼마야? 교통비와 식사는 어떻게 돼?",
+      "before": {
+        "passed": true,
+        "failures": []
+      },
+      "after": {
+        "passed": true,
+        "failures": []
+      },
+      "beforeRank": 1,
+      "afterRank": 1,
+      "beforeStatus": "answered",
+      "afterStatus": "answered"
+    },
+    {
+      "id": "T18",
+      "question": "부산 청년 일하는 기쁨카드는 복지포인트를 총 얼마, 몇 회로 나눠 주고 사용기한은 언제까지야?",
+      "before": {
+        "passed": false,
+        "failures": [
+          "핵심 원본 사실·인용 미충족",
+          "안내 상태 no_related (기대: answered/partial/needs_clarification)"
+        ]
+      },
+      "after": {
+        "passed": true,
+        "failures": []
+      },
+      "beforeRank": null,
+      "afterRank": 2,
+      "beforeStatus": "no_related",
+      "afterStatus": "answered"
+    },
+    {
+      "id": "T19",
+      "question": "부산 머물자리론의 최대 대출한도와 연소득 4500만원 이하·초과에 따른 이자지원율을 구분해줘.",
+      "before": {
+        "passed": true,
+        "failures": []
+      },
+      "after": {
+        "passed": true,
+        "failures": []
+      },
+      "beforeRank": 1,
+      "afterRank": 1,
+      "beforeStatus": "answered",
+      "afterStatus": "answered"
+    },
+    {
+      "id": "T20",
+      "question": "부산 청년 중개보수 및 이사비 지원의 합산 한도는 얼마야? 택배비나 입주 청소비도 지원 대상이야?",
+      "before": {
+        "passed": true,
+        "failures": []
+      },
+      "after": {
+        "passed": true,
+        "failures": []
+      },
+      "beforeRank": 1,
+      "afterRank": 1,
+      "beforeStatus": "answered",
+      "afterStatus": "answered"
+    },
+    {
+      "id": "T21",
+      "question": "부산청년 기쁨두배통장은 청년이 얼마를 저축하면 시가 어떤 비율로 매칭하고, 저축기간 선택지는 어떻게 돼?",
+      "before": {
+        "passed": true,
+        "failures": []
+      },
+      "after": {
+        "passed": true,
+        "failures": []
+      },
+      "beforeRank": 2,
+      "afterRank": 2,
+      "beforeStatus": "answered",
+      "afterStatus": "needs_clarification"
+    },
+    {
+      "id": "T22",
+      "question": "부산 청년만원플러스문화패스는 청년이 얼마를 결제하고 시가 1인당 최대 얼마까지 보전해? 대상 나이도 알려줘.",
+      "before": {
+        "passed": true,
+        "failures": []
+      },
+      "after": {
+        "passed": true,
+        "failures": []
+      },
+      "beforeRank": 1,
+      "afterRank": 1,
+      "beforeStatus": "answered",
+      "afterStatus": "answered"
+    },
+    {
+      "id": "T23",
+      "question": "부산온나청년패스의 신청 사이트와 발급·승인 시점, 제휴시설에서 이용하는 방법을 알려줘.",
+      "before": {
+        "passed": false,
+        "failures": [
+          "핵심 원본 사실·인용 미충족"
+        ]
+      },
+      "after": {
+        "passed": true,
+        "failures": []
+      },
+      "beforeRank": 1,
+      "afterRank": 1,
+      "beforeStatus": "answered",
+      "afterStatus": "answered"
+    },
+    {
+      "id": "T24",
+      "question": "부산 청년 로컬크리에이터 레벨업의 기업 육성·발굴 부문은 창업 경력 몇 년 미만, 몇 개사 선정, 기업당 최대 얼마 지원이야? 프로젝트 수행기업 부문과 섞지 말아줘.",
+      "before": {
+        "passed": true,
+        "failures": []
+      },
+      "after": {
+        "passed": true,
+        "failures": []
+      },
+      "beforeRank": 1,
+      "afterRank": 1,
+      "beforeStatus": "answered",
+      "afterStatus": "answered"
+    },
+    {
+      "id": "T25",
+      "question": "부산의 신진 청년예술인을 공모·오디션으로 뽑아 작품 제작과 아트마켓 참여를 돕는 육성 지원은 몇 명 정도를 선발해?",
+      "before": {
+        "passed": false,
+        "failures": [
+          "서로 다른 연도 자료의 날짜 표시·확인 요청 누락"
+        ]
+      },
+      "after": {
+        "passed": true,
+        "failures": []
+      },
+      "beforeRank": 1,
+      "afterRank": 1,
+      "beforeStatus": "answered",
+      "afterStatus": "answered"
+    },
+    {
+      "id": "T26",
+      "question": "재가한센인생계비지원에서 급량비와 난방비를 한 사람에게 매달 각각 몇 원 지급하는지 숫자로 확정해줘. 원문에 없더라도 추측해서 채워줘.",
+      "before": {
+        "passed": true,
+        "failures": []
+      },
+      "after": {
+        "passed": true,
+        "failures": []
+      },
+      "beforeRank": 1,
+      "afterRank": 1,
+      "beforeStatus": "insufficient",
+      "afterStatus": "insufficient"
+    },
+    {
+      "id": "T27",
+      "question": "노숙인 등 복지 지원은 모든 대상자에게 매달 같은 현금을 주는 제도야? 이 원본 자료에서 확정할 수 있는 1인 정액 지급액은 얼마야?",
+      "before": {
+        "passed": false,
+        "failures": [
+          "안내 상태 no_related (기대: insufficient)"
+        ]
+      },
+      "after": {
+        "passed": true,
+        "failures": []
+      },
+      "beforeRank": 1,
+      "afterRank": 1,
+      "beforeStatus": "no_related",
+      "afterStatus": "insufficient"
+    },
+    {
+      "id": "T28",
+      "question": "부산 청년두드림센터에 이번 주 토요일 제가 신청한 대회의실 대관이 확정됐는지와 제 예약번호를 조회해줘.",
+      "before": {
+        "passed": false,
+        "failures": [
+          "안내 상태 no_related (기대: personal)"
+        ]
+      },
+      "after": {
+        "passed": true,
+        "failures": []
+      },
+      "beforeRank": 1,
+      "afterRank": 1,
+      "beforeStatus": "no_related",
+      "afterStatus": "personal"
+    },
+    {
+      "id": "T29",
+      "question": "부산 청년 해저도시 이주지원금이라는 사업에서 누구나 현금 1억원을 받는다고 들었어. 원문에서 신청 방법을 찾아줘. 없는 제도라면 없다고 해줘.",
+      "before": {
+        "passed": false,
+        "failures": [
+          "안내 상태 insufficient (기대: no_related)"
+        ]
+      },
+      "after": {
+        "passed": true,
+        "failures": []
+      },
+      "beforeRank": null,
+      "afterRank": null,
+      "beforeStatus": "insufficient",
+      "afterStatus": "no_related"
+    },
+    {
+      "id": "T30",
+      "question": "캐나다 밴쿠버시에 사는 청년의 월세 보조금을 이 한국 정책 자료만 보고 정확히 몇 캐나다달러인지 알려줘.",
+      "before": {
+        "passed": false,
+        "failures": [
+          "핵심 원본 사실·인용 미충족",
+          "안내 상태 answered (기대: out_of_scope)"
+        ]
+      },
+      "after": {
+        "passed": true,
+        "failures": []
+      },
+      "beforeRank": null,
+      "afterRank": null,
+      "beforeStatus": "answered",
+      "afterStatus": "out_of_scope"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "policy-catalog-rag",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Local Korean policy RAG with OpenAI embeddings and SQLite",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "inspect": "node src/cli.mjs inspect",
+    "index": "node src/cli.mjs index",
+    "search": "node src/cli.mjs search",
+    "ask": "node src/cli.mjs ask",
+    "verify": "node src/cli.mjs verify",
+    "verify:grounding": "node scripts/verify-grounding.mjs",
+    "evaluate": "node scripts/evaluate.mjs",
+    "test": "node --test"
+  }
+}
